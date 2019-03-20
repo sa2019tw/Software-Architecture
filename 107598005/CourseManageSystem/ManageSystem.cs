@@ -14,8 +14,9 @@ namespace CourseManageSystem
     {
         private TextBox txtEdit;
         private int newItem;
-        private Controller _controller;
+        private Controller.Controller _controller;
         private BindingManagerBase bindingManager;
+        private DataTable courseData;
 
         public ManageSystem()
         {
@@ -24,13 +25,13 @@ namespace CourseManageSystem
 
         private void ManageSystem_Load(object sender, EventArgs e)
         {
-            _controller = new Controller();
+            _controller = new Controller.Controller();
 
             txtEdit = new TextBox();
             txtEdit.KeyDown += new KeyEventHandler(txtEdit_KeyDown);
 
             //binding
-            DataTable courseData = _controller.getDataTable();
+            courseData = _controller.GetDataTable();
             Binding databinding = new Binding("Text", courseData, "Name");
             nameBox.DataBindings.Add(databinding);
             descriptionBox.DataBindings.Add("Text", courseData, "Description");
@@ -73,7 +74,9 @@ namespace CourseManageSystem
         {
             if (e.KeyCode == Keys.Enter)
             {
-                _controller.setCourseDataName(newItem, txtEdit.Text);
+                courseData.Rows[newItem]["Name"] = txtEdit.Text;
+                _controller.AddCourse(txtEdit.Text, "","","","","");
+
                 courseList.Items[newItem] = txtEdit.Text;
                 courseList.SelectionMode = SelectionMode.One;
                 txtEdit.Visible = false;
@@ -82,7 +85,8 @@ namespace CourseManageSystem
             }
             if (e.KeyCode == Keys.Escape)
             {
-                _controller.deleteCourse(newItem);
+                courseData.Rows.RemoveAt(newItem);
+
                 courseList.Items.RemoveAt(newItem);
                 courseList.SelectionMode = SelectionMode.One;
                 txtEdit.Visible = false;
@@ -111,7 +115,7 @@ namespace CourseManageSystem
             addButton.Enabled = false;
             courseNotSelectingButton();
 
-            _controller.addCourse(newItem);
+            courseData.Rows.Add("", "", "", "", "", "");
             bindingManager.Position = newItem;
         }
 
@@ -124,7 +128,7 @@ namespace CourseManageSystem
         {
             int index = courseList.SelectedIndex;
 
-            _controller.getDataTable().Rows.RemoveAt(index);
+            courseData.Rows.RemoveAt(index);
             courseList.Items.RemoveAt(index);   
             
             if (index!=0 && courseList.Items.Count!=0)
@@ -132,7 +136,7 @@ namespace CourseManageSystem
             if (index == 0 && courseList.Items.Count != 0)
                 courseList.SetSelected(index, true);
 
-            _controller.updateModel();
+            _controller.DeleteCourse(index);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -144,7 +148,14 @@ namespace CourseManageSystem
         {
             setViewMode();
             courseList.Items[bindingManager.Position] = nameBox.Text;
-            _controller.updateModel();
+
+            _controller.UpdateCourse(bindingManager.Position,
+                                    nameBox.Text,
+                                    descriptionBox.Text,
+                                    objectiveBox.Text,
+                                    priceBox.Text,
+                                    cautionBox.Text,
+                                    remarksBox.Text);
         }
 
         private void setEditMode()

@@ -31,12 +31,10 @@ public class deleteCourse extends HttpServlet{
         CourseError error = new CourseError();
         deleteCourseUseCase course = new deleteCourseUseCase(input,error);
 
-        try {
-            CourseDao courseDao = new CourseDao();
-            courseDao.deleteCourse(ID);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(error.isError()){
+            //
+        }else{
+            response.sendRedirect("CourseHome");
         }
-        response.sendRedirect("CourseHome");
     }
 }

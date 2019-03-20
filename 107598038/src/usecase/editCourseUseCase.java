@@ -1,6 +1,7 @@
 package usecase;
 
 import dao.CourseDao;
+import dto.CourseDto;
 import error.CourseError;
 import input.CourseInput;
 import model.Course;
@@ -14,7 +15,18 @@ public class editCourseUseCase {
         try {
             courseDao = new CourseDao();
             Course course = courseDao.selectCourse(ID);
-            output.setCourse(course);
+
+            CourseDto dto = new CourseDto(
+                    course.getID(),
+                    course.getPrice(),
+                    course.getNumberOfPeople(),
+                    course.getName(),
+                    course.getNote(),
+                    course.getRemark(),
+                    course.getSuitable(),
+                    course.getDescription()
+            );
+            output.setCourse(dto);
 
         } catch (Exception e ){
             e.printStackTrace();

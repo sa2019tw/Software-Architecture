@@ -11,7 +11,7 @@ public class deleteCourseUseCase {
         course.setID(input.getID());
         try {
             CourseDao courseDao = new CourseDao();
-            courseDao.insertCourse(course);
+            courseDao.deleteCourse(course.getID());
         } catch (Exception e) {
             e.printStackTrace();
             error.reportError(e.getMessage());

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoData">
+
+    <LinearLayout
+        android:layout_width="341dp"
+        android:layout_height="438dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/courseName"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/courseName"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/courseName"
+            tools:ignore="Autofill"
+            />
+
+        <EditText
+            android:id="@+id/courseIntro"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/courseIntro"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/courseIntro"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/courseSuitable"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/courseSuitable"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/courseSuitable"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/coursePrice"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/coursePrice"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/coursePrice"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/courseNotice"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/courseNotice"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/courseNotice"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/courseRemark"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/courseRemark"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="27dp"
+            android:hint="@string/courseRemark"
+            tools:ignore="Autofill" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonFinishCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/buttonFinishCreate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDiscardCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/buttonDiscardCreate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

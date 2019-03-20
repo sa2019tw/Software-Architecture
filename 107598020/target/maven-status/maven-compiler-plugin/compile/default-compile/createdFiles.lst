@@ -1,0 +1,7 @@
+dao\CourseManager.class
+controller\FxmlController.class
+dataBase\SqlLite.class
+FxApplication.class
+configuration\DatabaseConfiguration.class
+controller\PresentationModel.class
+dao\CourseDao.class

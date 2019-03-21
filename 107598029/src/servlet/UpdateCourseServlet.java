@@ -1,9 +1,7 @@
 package servlet;
 
-import io.UseCaseOutput;
-import io.UseCaseInput;
-import io.UseCaseError;
-import usecase.UpdateCourseUseCase;
+import dao.Coursedao;
+import model.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,29 +18,18 @@ public class UpdateCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         id = Integer.parseInt(request.getParameter("id"));
-        UseCaseInput input = new UseCaseInput(
-                id,
-                null,
-                null,
-                0,
-                null,
-                null,
-                null
-        );
-        UseCaseOutput output = new UseCaseOutput();
-        UseCaseError error = new UseCaseError();
 
-        UpdateCourseUseCase getcourse = new UpdateCourseUseCase();
-
-        getcourse.getcourse(input, output, error);
-
-        if(error.hasError()){
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            log(error.getErrorMessage());
-        } else {
-            request.setAttribute("course", output.getCourseInfo());
-            request.getRequestDispatcher("/WEB-INF/jsp/update.jsp").forward(request, response);
+        Course course = new Course();
+        Coursedao coursedao = new Coursedao();
+        try{
+            course = coursedao.getcourseinfo(id);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        request.setAttribute("course", course);
+        request.getRequestDispatcher("/WEB-INF/jsp/update.jsp").forward(request, response);
+
     }
 
     @Override
@@ -61,8 +48,8 @@ public class UpdateCourseServlet extends HttpServlet {
         String precautions = request.getParameter("precautions");
         String remarks = request.getParameter("remarks");
 
-        UseCaseInput input = new UseCaseInput(
-                id,
+        Course course = new Course(
+                0,
                 coursename,
                 level,
                 price,
@@ -70,16 +57,17 @@ public class UpdateCourseServlet extends HttpServlet {
                 precautions,
                 remarks
         );
-        UseCaseError error = new UseCaseError();
 
-        UpdateCourseUseCase updatecourse = new UpdateCourseUseCase();
-        updatecourse.update(input, error);
+        Coursedao coursedao = new Coursedao();
 
-        if (error.hasError()){
-            response.sendRedirect("/error");
-            log(error.getErrorMessage());
-        }else {
-            response.sendRedirect("/list");
+        try{
+            coursedao.updatecourse(course);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+
+        response.sendRedirect("/list");
+
     }
 }

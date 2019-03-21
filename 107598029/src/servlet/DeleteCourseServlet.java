@@ -1,8 +1,6 @@
 package servlet;
 
-import io.UseCaseInput;
-import io.UseCaseError;
-import usecase.DeleteCourseUseCase;
+import dao.Coursedao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,25 +19,14 @@ public class DeleteCourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        DeleteCourseUseCase deletecourse = new DeleteCourseUseCase();
-        UseCaseInput input = new UseCaseInput(
-                id,
-                null,
-                null,
-                0,
-                null,
-                null,
-                null
-        );
-        UseCaseError error = new UseCaseError();
+        Coursedao coursedao = new Coursedao();
 
-        deletecourse.deleteCourse(input, error);
-        
-        if(error.hasError()){
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            log(error.getErrorMessage());
-        } else {
-            response.sendRedirect("/list");
+        try{
+            coursedao.deletecourse(id);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        response.sendRedirect("/list");
     }
 }

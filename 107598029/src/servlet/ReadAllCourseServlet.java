@@ -1,8 +1,7 @@
 package servlet;
 
-import io.UseCaseOutput;
-import io.UseCaseError;
-import usecase.ReadAllCourseUseCase;
+import dao.Coursedao;
+import model.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/list")
 public class ReadAllCourseServlet extends HttpServlet {
@@ -25,19 +26,17 @@ public class ReadAllCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        UseCaseOutput output = new UseCaseOutput();
-        UseCaseError error = new UseCaseError();
+        List<Course> list = new ArrayList<>();
+        Coursedao coursedao = new Coursedao();
 
-        ReadAllCourseUseCase listCourseUseCase = new ReadAllCourseUseCase();
-
-        listCourseUseCase.listCourse(output, error);
-
-        if(error.hasError()){
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            log(error.getErrorMessage());
-        } else {
-            request.setAttribute("list", output.getCourses());
-            request.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(request, response);
+        try{
+            list = coursedao.readallcourse();
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(request, response);
+
     }
 }

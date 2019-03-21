@@ -1,8 +1,8 @@
 package servlet;
 
-import io.UseCaseInput;
-import io.UseCaseError;
-import usecase.CreateCourseUseCase;
+
+import dao.Coursedao;
+import model.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class CreatCourseServlet extends HttpServlet {
         String precautions = request.getParameter("precautions");
         String remarks = request.getParameter("remarks");
 
-        UseCaseInput input = new UseCaseInput(
+        Course course = new Course(
                 0,
                 coursename,
                 level,
@@ -38,16 +38,16 @@ public class CreatCourseServlet extends HttpServlet {
                 remarks
         );
 
-        UseCaseError error = new UseCaseError();
-        CreateCourseUseCase createCourseUseCase = new CreateCourseUseCase();
-        createCourseUseCase.creat(input, error);
+        Coursedao coursedao = new Coursedao();
 
-        if(error.hasError()){
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            log(error.getErrorMessage());
-        }else {
-            response.sendRedirect("/list");
+        try{
+            coursedao.creatcourse(course);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        response.sendRedirect("/list");
+
     }
 
     @Override

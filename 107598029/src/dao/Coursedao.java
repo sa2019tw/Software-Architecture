@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCoursedaoimpl implements CourseDaoInterface {
+public class Coursedao{
     public List<Course> readallcourse() throws SQLException {
         List<Course> list = new ArrayList<Course>();
         String sql = "SELECT * FROM coursesys";

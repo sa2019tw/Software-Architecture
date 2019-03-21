@@ -1,10 +1,8 @@
 package servlet;
 
 
-import io.UseCaseInput;
-import io.UseCaseError;
-import io.UseCaseOutput;
-import usecase.FindCourseUseCase;
+import dao.Coursedao;
+import model.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/find")
 public class FindCourseServlet extends HttpServlet {
@@ -20,28 +20,17 @@ public class FindCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String coursename = request.getParameter("cname");
-        UseCaseInput input = new UseCaseInput(
-                0,
-                coursename,
-                null,
-                0,
-                null,
-                null,
-                null
-        );
-        UseCaseOutput output = new UseCaseOutput();
-        UseCaseError error = new UseCaseError();
 
-        FindCourseUseCase findcourse = new FindCourseUseCase();
-        findcourse.find(input, output, error);
-
-        if(error.hasError()){
-            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            log(error.getErrorMessage());
-        } else {
-            request.setAttribute("list", output.getCourses());
-            request.getRequestDispatcher("/WEB-INF/jsp/find.jsp").forward(request, response);
+        Coursedao coursedao = new Coursedao();
+        List<Course> list = new ArrayList<>();
+        try {
+            list = coursedao.findcourse(coursename);
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("/WEB-INF/jsp/find.jsp").forward(request, response);
     }
 
     @Override

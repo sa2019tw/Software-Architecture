@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CourseManageSystem.UseCases
 {
-    class ControllerUseCases
+    class CRUDUseCases
     {
-        public ControllerUseCases()
+        public CRUDUseCases()
         {
             _courseDao = new Dao.XmlFileDao("../../coursedata.xml");
         }

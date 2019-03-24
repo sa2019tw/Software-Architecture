@@ -12,7 +12,7 @@ namespace CourseManageSystem.Controller
     {
         public Controller()
         {
-            _usecases = new UseCases.ControllerUseCases();
+            _usecases = new UseCases.CRUDUseCases();
         }
 
         public DataTable GetDataTable()
@@ -37,6 +37,6 @@ namespace CourseManageSystem.Controller
             _usecases.UpdateCourse(index, courseInput);
         }
 
-        private UseCases.ControllerUseCases _usecases;
+        private UseCases.CRUDUseCases _usecases;
     }
 }

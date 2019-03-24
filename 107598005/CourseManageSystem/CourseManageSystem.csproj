@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UseCases\ControllerUseCases.cs" />
+    <Compile Include="UseCases\CRUDUseCases.cs" />
     <EmbeddedResource Include="ManageSystem.resx">
       <DependentUpon>ManageSystem.cs</DependentUpon>
     </EmbeddedResource>

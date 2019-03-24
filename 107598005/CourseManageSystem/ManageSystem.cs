@@ -32,6 +32,7 @@ namespace CourseManageSystem
 
             //binding
             courseData = _controller.GetDataTable();
+
             Binding databinding = new Binding("Text", courseData, "Name");
             nameBox.DataBindings.Add(databinding);
             descriptionBox.DataBindings.Add("Text", courseData, "Description");

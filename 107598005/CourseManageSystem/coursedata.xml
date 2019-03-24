@@ -43,4 +43,28 @@
 3. 掃描器（老師在課程中示範使用，若沒有掃瞄器也可以用手機、相機代替）</Cautions>
     <Remarks></Remarks>
   </model>
+  <model>
+    <Name>123</Name>
+    <Description></Description>
+    <Objective></Objective>
+    <Price></Price>
+    <Cautions></Cautions>
+    <Remarks></Remarks>
+  </model>
+  <model>
+    <Name>456</Name>
+    <Description></Description>
+    <Objective></Objective>
+    <Price></Price>
+    <Cautions></Cautions>
+    <Remarks></Remarks>
+  </model>
+  <model>
+    <Name>567</Name>
+    <Description></Description>
+    <Objective></Objective>
+    <Price></Price>
+    <Cautions></Cautions>
+    <Remarks></Remarks>
+  </model>
 </models>

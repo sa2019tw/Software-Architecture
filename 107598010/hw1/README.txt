@@ -11,6 +11,6 @@ IntelliJ IDEA v2017.2
 Run hw1 through IntelliJ IDEA:
 
 1.Install Java JDK, Intellij, Maven (can be installed by Intellij)
-2.Open Intellij and import the project under the ACE directory.
+2.Open Intellij and import the project .
   Click 'Import Project', 'OK', and 'Maven'; use default value for the rest of the settings.
 3.In 'src/main/java/MainApp.java' click Right-click to select "Run MainApp.main()" to start hw1

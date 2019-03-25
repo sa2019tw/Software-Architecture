@@ -49,8 +49,8 @@
   <ItemGroup>
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Dao\DaoInterface.cs" />
-    <Compile Include="Dao\XmlFileDao.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Dao\XMLFileDao.cs" />
     <Compile Include="UseCases\CourseInput.cs" />
     <Compile Include="ManageSystem.cs">
       <SubType>Form</SubType>

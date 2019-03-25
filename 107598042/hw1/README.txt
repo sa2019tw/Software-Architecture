@@ -1,8 +1,12 @@
 程式執行環境:
     1. IDE使用intellj
     2. build tool 使用Maven
+       dependency:
+         1. junit
+         2. jmock
+         3. jdbc-mysql-connector
     3. Database 使用mysql
-
+    
 如何執行:
 1. import project使用Maven
 

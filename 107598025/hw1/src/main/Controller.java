@@ -1,6 +1,6 @@
 package main;
 
-import DAO.CourseDAO;
+import Dao.CourseDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import service.CourseService;
 
 public class Controller {
 
-    private ICourseService courseService = new CourseService(new CourseDAO());
+    private ICourseService courseService = new CourseService(new CourseDao());
 
     @FXML
     public TextField courseName = new TextField();

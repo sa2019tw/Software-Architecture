@@ -1,6 +1,6 @@
 package main;
 
-import mock.MockCourseDAO;
+import mock.MockCourseDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class CourseServiceTest {
 
-    private ICourseService courseService = new CourseService(new MockCourseDAO());
+    private ICourseService courseService = new CourseService(new MockCourseDao());
 
     @Before
     public void setUp() {

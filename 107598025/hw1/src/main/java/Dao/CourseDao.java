@@ -1,4 +1,4 @@
-package DAO;
+package Dao;
 
 import Entity.Course;
 import connectivity.DBConnector;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDAO implements ICourseDAO {
+public class CourseDao implements ICourseDao {
 
     private DBConnector dbConnector = new DBConnector();;
     private Connection connection;
@@ -88,12 +88,12 @@ public class CourseDAO implements ICourseDAO {
         connectToDatabase();
         Course course = new Course();
         try {
-            course.setCourseName(resultSet.getString(1));
-            course.setCourseDescription(resultSet.getString(2));
-            course.setCourseTarget(resultSet.getString(3));
-            course.setCoursePrice(resultSet.getInt(4));
-            course.setCourseAttention(resultSet.getString(5));
-            course.setCourseRemark(resultSet.getString(6));
+            course = new Course(resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getInt(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6));
         } catch (Exception e){
             System.out.println("SQLException: " + e.getMessage());
         } finally {

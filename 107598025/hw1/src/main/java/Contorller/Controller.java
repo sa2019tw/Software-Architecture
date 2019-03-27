@@ -1,7 +1,8 @@
 package Contorller;
 
 
-import DAO.MockCourseDAO;
+import Dao.CourseDao;
+import Dao.MockCourseDao;
 import Entity.Course;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +17,7 @@ import service.CourseService;
 
 public class Controller {
 
-    private ICourseService courseService = new CourseService(new MockCourseDAO());
+    private ICourseService courseService = new CourseService(new MockCourseDao());
 
     @FXML
     public TextField courseName = new TextField();

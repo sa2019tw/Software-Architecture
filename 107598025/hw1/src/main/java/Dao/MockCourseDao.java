@@ -1,11 +1,11 @@
-package DAO;
+package Dao;
 
 import Entity.Course;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockCourseDAO implements ICourseDAO {
+public class MockCourseDao implements ICourseDao {
 
     private List<Course> courses = new ArrayList<>();
 

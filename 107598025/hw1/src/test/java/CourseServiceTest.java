@@ -1,4 +1,4 @@
-import DAO.MockCourseDAO;
+import Dao.MockCourseDao;
 import Entity.Course;
 import org.junit.After;
 import org.junit.Before;
@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class CourseServiceTest {
 
-    private ICourseService courseService = new CourseService(new MockCourseDAO());
+    private ICourseService courseService = new CourseService(new MockCourseDao());
 
     @Before
     public void setUp() {

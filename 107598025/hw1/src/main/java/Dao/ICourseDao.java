@@ -1,9 +1,9 @@
-package DAO;
+package Dao;
 import Entity.Course;
 
 import java.util.List;
 
-public interface ICourseDAO {
+public interface ICourseDao {
 
     void addCourse(Course course);
 

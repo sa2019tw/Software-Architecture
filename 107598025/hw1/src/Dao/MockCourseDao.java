@@ -1,12 +1,12 @@
-package mock;
+package Dao;
 
 import main.Course;
-import DAO.ICourseDAO;
+import Dao.ICourseDao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockCourseDAO implements ICourseDAO {
+public class MockCourseDao implements ICourseDao {
 
     private List<Course> courses = new ArrayList<>();
 

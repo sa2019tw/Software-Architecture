@@ -1,15 +1,15 @@
 package service;
 
-import DAO.ICourseDAO;
+import Dao.ICourseDao;
 import main.Course;
 
 import java.util.List;
 
 public class CourseService implements ICourseService {
 
-    private ICourseDAO courseDAO;
+    private ICourseDao courseDAO;
 
-    public CourseService(ICourseDAO courseDAO) {
+    public CourseService(ICourseDao courseDAO) {
 
         this.courseDAO = courseDAO;
     }

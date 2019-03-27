@@ -1,6 +1,6 @@
-package DAO;
+package Dao;
 
-import connectivity.DBConnector;
+import connectivity.dbConnector;
 import main.Course;
 
 import java.sql.Connection;
@@ -10,9 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDAO implements ICourseDAO {
+public class CourseDao implements ICourseDao {
 
-    private DBConnector dbConnector = new DBConnector();;
+    private connectivity.dbConnector dbConnector = new dbConnector();;
     private Connection connection;
 
     private void connectToDatabase() {

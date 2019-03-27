@@ -1,4 +1,4 @@
-package mock;
+package Dao;
 
 import main.Course;
 import Dao.ICourseDao;

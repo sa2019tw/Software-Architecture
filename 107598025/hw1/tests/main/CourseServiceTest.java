@@ -1,6 +1,6 @@
 package main;
 
-import mock.MockCourseDao;
+import Dao.MockCourseDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

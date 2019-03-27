@@ -11,6 +11,9 @@
   1.開啟IntelliJ-> import project ->{homework-root-path}/107598038/HW1/  (HW1資料夾要展開)
   2.Import project from external model 選擇 Maven -> Next...
   3.finish後 IDE下方會跑讀取條，需等待一段下載時間
+  (若HW1/src/main/src這個資料夾不是藍色的{非source資料夾}，
+   請用快捷鍵shift+ctrl+alt+s左邊點modules，選擇該目錄點選上方source按鍵後apply
+   若該目錄已經是source則跳過此步驟)
   4.先按右上角的槌子(build)過
   5.選擇位於IDE右方的 Maven Projects
   6.開啟路徑 Plugins -> tomcat7 -> tomcat7:run

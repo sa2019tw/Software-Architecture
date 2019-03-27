@@ -1,13 +1,13 @@
-ç¨‹å¼åŸ·è¡Œç’°å¢ƒ:
-  IDEä½¿ç”¨: IntelliJ IDEA 2018.2.3 x64
-  Project SDKï¼š 1.8
-  build tool ä½¿ç”¨Maven
-  DataBaseä½¿ç”¨ï¼š Mysql
+µ{¦¡°õ¦æÀô¹Ò:
+  IDE¨Ï¥Î: IntelliJ IDEA 2018.2.3 x64
+  Project SDK¡G 1.8
+  build tool ¨Ï¥ÎMaven
+  DataBase¨Ï¥Î¡G Mysql
 
-è¨­å®šDataBaseï¼š
-  1. æ–°å¢ä¸€å€‹ Database schema åç¨±ç‚º sacms
-  2. æ–°å¢ä¸€å€‹è¡¨æ ¼, åç¨±ç‚º course_purpose
-     --- Create Course Table SQLï¼š
+³]©wDataBase¡G
+  1. ·s¼W¤@­Ó Database schema ¦WºÙ¬° sacms
+  2. ·s¼W¤@­Óªí®æ, ¦WºÙ¬° course_purpose
+     --- Create Course Table SQL¡G
      CREATE TABLE course_purpose (courseId int NOT NULL AUTO_INCREMENT, 
                                   courseName varchar(45) NOT NULL, 
                                   courseDetail varchar(45), 
@@ -18,24 +18,23 @@
                                   PRIMARY KEY (courseId)
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE=utf8_general_ci;
 
-é–‹å•Ÿæµç¨‹:
-  1.é–‹å•ŸIntelliJ-> import project ->{homework-root-path}/107598045/hw1/  (hw1è³‡æ–™å¤¾è¦å±•é–‹)
-  2.Import project from external model é¸æ“‡ Maven -> Next...
-  3.finishå¾Œ IDEä¸‹æ–¹æœƒè·‘è®€å–æ¢ï¼Œéœ€ç­‰å¾…ä¸€æ®µä¸‹è¼‰æ™‚é–“
+¶}±Ò¬yµ{:
+  1.¶}±ÒIntelliJ-> import project ->{homework-root-path}/107598045/hw1/
+  2.Import project from external model ¿ï¾Ü Maven -> Next...
     
-  4.åœ¨src/main/java/dbconn/Dbcon.java
-         æ›´æ”¹ä¸‹é¢åƒæ•¸
-         private final String SACMS= "sacms"; //æ‚¨å»ºç«‹çš„schemaåç¨±ï¼Œ
-         private final String userName= "<æ‚¨çš„Database å¸³è™Ÿ>";
-         private final String password = "<æ‚¨çš„Database å¯†ç¢¼>";
+  3.¦bsrc/main/java/dbconn/Dbcon.java
+         §ó§ï¤U­±°Ñ¼Æ
+         private final String SACMS= "sacms"; //±z«Ø¥ßªºschema¦WºÙ¡A
+         private final String userName= "<±zªºDatabase ±b¸¹>";
+         private final String password = "<±zªºDatabase ±K½X>";
 
-  5.é¸æ“‡ä½æ–¼IDEå³æ–¹çš„ Maven Projects
-  6.é–‹å•Ÿè·¯å¾‘ Plugins -> tomcat7 -> tomcat7:run
-  7.å·¦éµé»æ“Šå…©ä¸‹ tomcat7:run
-  8.IDEä¸‹æ–¹æœƒæœ‰ä¸€äº›è¨Šæ¯è·‘å‡ºï¼Œæ»‘é¼ æ»¾è¼ªå¾€ä¸Šæ‰¾åˆ° [INFO] Running war on http://localhost:8080/ è©²ROWï¼Œé»æ“Šè©²éˆçµ
-  9.ç€è¦½å™¨ä¸Šå³æœ‰åŸ·è¡Œç•«é¢
+  4.¿ï¾Ü¦ì©óIDE¥k¤èªº Maven Projects
+  5.¶}±Ò¸ô®| Plugins -> tomcat7 -> tomcat7:run
+  6.¥ªÁäÂIÀ»¨â¤U tomcat7:run
+  7.IDE¤U¤è·|¦³¤@¨Ç°T®§¶]¥X¡A·Æ¹«ºu½ü©¹¤W§ä¨ì [INFO] Running war on http://localhost:8080/ ¸ÓROW¡AÂIÀ»¸ÓÃìµ²
+  8.ÂsÄı¾¹¤W§Y¦³°õ¦æµe­±
   
 
-å‚™è¨»:
-  â€» è‹¥è·‘å‡ºhttp status 404 æ‰¾ä¸åˆ°åˆ†é çš„è¨Šæ¯ï¼Œå‰‡æŠŠç€è¦½å™¨urlæ”¹æˆ http://localhost:8080/listAllCourses
-  Maven dependencyï¼š javax.servlet-api3.1.0ã€jstl1.2ã€mysql-connector-java8.0.11  ã€tomcat7-maven-plugin 2.2
+³Æµù:
+  ¡° ­Y¶]¥Xhttp status 404 §ä¤£¨ì¤À­¶ªº°T®§¡A«h§âÂsÄı¾¹url§ï¦¨ http://localhost:8080/listAllCourses
+  Maven dependency¡G javax.servlet-api3.1.0¡Bjstl1.2¡Bmysql-connector-java8.0.11  ¡Btomcat7-maven-plugin 2.2

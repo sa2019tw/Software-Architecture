@@ -11,11 +11,12 @@
   1.開啟IntelliJ-> import project ->{homework-root-path}/107598038/HW1/  (HW1資料夾要展開)
   2.Import project from external model 選擇 Maven -> Next...
   3.finish後 IDE下方會跑讀取條，需等待一段下載時間
-  4.選擇位於IDE右方的 Maven Projects
-  5.開啟路徑 Plugins -> tomcat7 -> tomcat7:run
-  6.左鍵點擊兩下 tomcat7:run
-  7.IDE下方會有一些訊息跑出，滑鼠滾輪往上找到 [INFO] Running war on http://localhost:8080/ 該ROW，點擊該鏈結
-  8.瀏覽器上即有執行畫面
+  4.先按右上角的槌子(build)過
+  5.選擇位於IDE右方的 Maven Projects
+  6.開啟路徑 Plugins -> tomcat7 -> tomcat7:run
+  7.左鍵點擊兩下 tomcat7:run
+  8.IDE下方會有一些訊息跑出，滑鼠滾輪往上找到 [INFO] Running war on http://localhost:8080/ 該ROW，點擊該鏈結
+  9.瀏覽器上即有執行畫面
   
 
 備註:

@@ -1,0 +1,48 @@
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe.config
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\bin\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csprojAssemblyReference.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.addCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Form1.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Properties.Resources.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.GenerateResource.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.CoreCompileInputs.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.editCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software Architecture.csprojAssemblyReference.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software_Architecture.addCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software_Architecture.editCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software_Architecture.Form1.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software_Architecture.Properties.Resources.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software Architecture.csproj.GenerateResource.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software Architecture.csproj.CoreCompileInputs.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\obj\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\bin\Debug\Software Architecture.exe.config
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\bin\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture v.2\Software Architecture\bin\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe.config
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\bin\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csprojAssemblyReference.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.addCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.editCourse.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Form1.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Properties.Resources.resources
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.GenerateResource.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.CoreCompileInputs.cache
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\Software Architecture\Software Architecture\Software Architecture\obj\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe.config
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\bin\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\bin\Debug\Software Architecture.pdb
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csprojAssemblyReference.cache
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.addCourse.resources
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.editCourse.resources
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Form1.resources
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software_Architecture.Properties.Resources.resources
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.GenerateResource.cache
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software Architecture.csproj.CoreCompileInputs.cache
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software Architecture.exe
+C:\Users\Weijhe Huang\Desktop\輩分\Software Architecture\Software Architecture\obj\Debug\Software Architecture.pdb

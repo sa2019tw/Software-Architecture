@@ -1,0 +1,8 @@
+model\Course.class
+dbconn\DbConn.class
+servlet\UpdateCourseServlet.class
+servlet\ReadAllCourseServlet.class
+servlet\FindCourseServlet.class
+servlet\CreatCourseServlet.class
+servlet\DeleteCourseServlet.class
+dao\Coursedao.class

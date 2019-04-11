@@ -10,6 +10,15 @@ public class Course {
     private double price = 0;
     private int id;
 
+    public Course(String courseName, String description, String notes, String remark, String suitableObject, double price) {
+        this.courseName = courseName;
+        this.description = description;
+        this.notes = notes;
+        this.remark = remark;
+        this.suitableObject = suitableObject;
+        this.price = price;
+    }
+
     public static Course createCourse(String courseName) {
         return new Course(courseName);
     }

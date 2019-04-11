@@ -1,4 +1,4 @@
-package com.company;
+package com.company.ThreadTraining;
 
 import Gateway.PersistenceCourseBase;
 import Presenter.Presenter;
@@ -12,21 +12,82 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class NoVisibility {
 
-
-
-
-
     public static void main(String[] args) throws Exception {
-        Properties properties = new Properties();
+        final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(1);
 
-        properties.load(new FileInputStream("config.properties"));
+        final OuterLock outerLock = new OuterLock(queue);
 
-        System.out.println(properties.getProperty("AAA"));
+
+
+            Thread producer = new Thread(new Runnable() {
+                public void run() {
+                    for (int i = 0; i < 10; i++) {
+//                        try {
+//                            System.out.println("Producing product");
+//                            queue.put("product");
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+                        outerLock.put("123");
+//                            outerLock.blockingCurrentThread();
+                    }
+
+                }
+            });
+
+
+
+
+            Thread consumer = new Thread(new Runnable() {
+                public void run() {
+                    for (int i = 0; i < 10; i++) {
+                        System.out.println(outerLock.take());
+//                        outerLock.wakeUpWaitingThread();
+//                        try {
+//                            String aaa = queue.take();
+//                            System.out.println(aaa + "is get");
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+                    }
+
+                }
+            });
+
+            consumer.start();
+            producer.start();
+
+
+
+
+        //        final Counter counter = new Counter();
+//
+//        Thread thread1 = new Thread(new Runnable() {
+//            public void run() {
+//                for (int i = 0; i < 1000; i++)
+//                    counter.increment();
+//            }
+//        });
+//
+//        Thread thread2 = new Thread(new Runnable() {
+//            public void run() {
+//                for (int i = 0; i < 1000; i++)
+//                    counter.increment();
+//            }
+//        });
+//
+//        thread1.start();
+//        thread2.start();
+//
+//        thread1.join();
+//        thread2.join();
+//
+//        System.out.println(counter.getValue());
     }
-
-
 }
 

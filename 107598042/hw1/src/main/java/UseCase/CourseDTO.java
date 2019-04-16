@@ -14,6 +14,7 @@ public class CourseDTO {
     public CourseDTO() {
 
     }
+
 //
 //    public CourseDTO(Course course) {
 //        if (course == null)
@@ -33,12 +34,12 @@ public class CourseDTO {
     @Override
     public String toString() {
         String courseInfo = "Course Name: " + this.courseName;
-//        courseInfo += "Description" + this.description;
-//        courseInfo += "Price" + this.price;
-//        courseInfo += "Notes" + this.notes;
-//        courseInfo += "Remark" + this.remark;
-//        courseInfo += "SuitableObject" + this.suitableObject;
-//        courseInfo += "Id" + this.id;
+        courseInfo += "\nDescription: " + this.description;
+        courseInfo += "\nPrice: " + this.price;
+        courseInfo += "\nNotes: " + this.notes;
+        courseInfo += "\nRemark: " + this.remark;
+        courseInfo += "\nSuitableObject: " + this.suitableObject;
+        courseInfo += "\nId: " + this.id;
         return courseInfo;
     }
 

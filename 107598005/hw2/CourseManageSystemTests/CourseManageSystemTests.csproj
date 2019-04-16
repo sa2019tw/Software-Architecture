@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Dao\InMemoryDaoTests.cs" />
+    <Compile Include="Dao\XmlFileDaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

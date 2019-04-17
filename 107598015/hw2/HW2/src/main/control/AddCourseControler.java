@@ -17,14 +17,14 @@ public class AddCourseControler {
     String title;
     String description;
     String suitable;
-    String price;
+    int price;
     String notice;
     String other;
-    public AddCourseControler(String title, String description, String suitable, String price, String notice, String other) throws IOException {
+    public AddCourseControler(String title, String description, String suitable, int price, String notice, String other) throws IOException {
         if(title.equals("")){title="NULL";}
         if(description.equals("")){description="NULL";}
         if(suitable.equals("")){suitable="NULL";}
-        if(price.equals("")){price="NULL";}
+        if(Integer.toString(price).equals("")){ price=0;}
         if(notice.equals("")){notice="NULL";}
         if(other.equals("")){other="NULL";}
         this.title=title;

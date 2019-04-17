@@ -13,7 +13,7 @@ public class EditControl {
     EditCourseCase editCourseCase=new EditCourseCase(iCourseDao);
     EditCourseInput in =new EditCourseInput();
     EditCourseOutput out =new EditCourseOutput();
-    public EditControl(String coursename,String description,String suitable,String price,String notice,String other) throws IOException {
+    public EditControl(String coursename,String description,String suitable,int price,String notice,String other) throws IOException {
         in.setCourseName(coursename);
         out.setCourseDescription(description);
         out.setApplicableObject(suitable);

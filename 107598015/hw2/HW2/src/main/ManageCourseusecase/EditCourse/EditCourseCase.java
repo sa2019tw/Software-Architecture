@@ -11,7 +11,7 @@ public class EditCourseCase {
     }
 
     public static void execute(EditCourseInput input, EditCourseOutput output) throws IOException {
-        Course course=new Course(input.getCourseName(),output.getCourseDescription(),output.getApplicableObject(),output.getPrecautions(),output.getPrice(),output.getRemark());
+        Course course=new Course(input.getCourseName(),output.getCourseDescription(),output.getApplicableObject(),output.getPrice(),output.getPrecautions(),output.getRemark());
         iCourseDao.edit(course);
     }
 }

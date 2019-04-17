@@ -37,7 +37,7 @@ public class test {
         String description="必修";
         String suitable="研一";
         String notice="抄筆記";
-        String price="1222";
+        int price=123;
         String other="ssss";
         in.setCourseName(coursename);
         in.setCourseDescription(description);
@@ -61,7 +61,7 @@ public class test {
         String description="必修";
         String suitable="研一";
         String notice="抄筆記";
-        String price="1222";
+        int price=123;
         String other="ssss";
         in.setCourseName(coursename);
         in.setCourseDescription(description);
@@ -91,7 +91,7 @@ public class test {
         String description="必修";
         String suitable="研一";
         String notice="jjj";
-        String price="1222";
+        int price=111111;
         String other="ssss";
         in.setCourseName(coursename);
         in.setCourseDescription(description);
@@ -110,12 +110,12 @@ public class test {
         editCourseOutput.setCourseDescription("111");
         editCourseOutput.setApplicableObject("111");
         editCourseOutput.setPrecautions("111");
-        editCourseOutput.setPrice("111");
+        editCourseOutput.setPrice(1111);
         editCourseOutput.setRemark("111");
         EditCourseCase Edit=new EditCourseCase(i);
         Edit.execute(editCourseInput,editCourseOutput);
 
-        assertEquals("111",i.show().get(0).getPrice());
+        assertEquals(1111,i.show().get(0).getPrice());
     }
     @Test
     public void showAllCourse() throws IOException {
@@ -125,7 +125,7 @@ public class test {
         String description="必修";
         String suitable="研一";
         String notice="jjj";
-        String price="1222";
+        int price=4541;
         String other="ssss";
         in.setCourseName(coursename);
         in.setCourseDescription(description);

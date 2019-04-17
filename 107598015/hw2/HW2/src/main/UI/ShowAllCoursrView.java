@@ -33,8 +33,8 @@ public class ShowAllCoursrView {
             row.add(allCourse.get(i).getCourseName());
             row.add(allCourse.get(i).getCourseDescription());
             row.add(allCourse.get(i).getApplicableObject());
+            row.add(Integer.toString(allCourse.get(i).getPrice()));
             row.add(allCourse.get(i).getPrecautions());
-            row.add(allCourse.get(i).getPrice());
             row.add(allCourse.get(i).getRemark());
             rowData.add(row);
         }

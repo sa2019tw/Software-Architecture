@@ -34,8 +34,6 @@ public class InText implements ICourseDao {
         {
             if(list.get(i).getCourseName().equals(course.getCourseName()))
             {
-//                System.out.println("in");
-//                System.out.println("edit:"+list.get(i).getCourseName());
                 list.get(i).setCourseDescription(course.getCourseDescription());
                 list.get(i).setApplicableObject(course.getApplicableObject());
                 list.get(i).setPrecautions(course.getPrecautions());
@@ -79,8 +77,8 @@ public class InText implements ICourseDao {
                 c.setCourseName(s.next());
                 c.setCourseDescription(s.next());
                 c.setApplicableObject(s.next());
+                c.setPrice(Integer.parseInt(s.next()));
                 c.setPrecautions(s.next());
-                c.setPrice(s.next());
                 c.setRemark(s.next());
                 list.add(c);
             }
@@ -102,7 +100,7 @@ public class InText implements ICourseDao {
             outData.write(list.get(i).getCourseName()+',');
             outData.write(list.get(i).getCourseDescription()+',');
             outData.write(list.get(i).getApplicableObject()+',');
-            outData.write(list.get(i).getPrice()+',');
+            outData.write(Integer.toString(list.get(i).getPrice())+',');
             outData.write(list.get(i).getPrecautions()+',');
             outData.write(list.get(i).getRemark()+'\n');
         }

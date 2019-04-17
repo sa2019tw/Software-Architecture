@@ -1,9 +1,7 @@
 package main.UI;
-
 import main.control.AddCourseControler;
 import main.control.DeleteControler;
 import main.control.EditControl;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,11 +40,13 @@ public class ManageCourseView extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        JFrame f = null;
         for (int k = 0; k < btn.length; k++) {
             if (e.getSource() == btn[k]) {
                 if (k == 0) {
                     try {
-                        AddCourseControler addCourseControler=new AddCourseControler(textField[0].getText(),textField[1].getText(),textField[2].getText(),textField[3].getText(),textField[4].getText(),textField[5].getText());
+                        if(textField[3].getText().equals("")){textField[3].setText("0");}
+                        AddCourseControler addCourseControler = new AddCourseControler(textField[0].getText(), textField[1].getText(), textField[2].getText(), Integer.parseInt(textField[3].getText()), textField[4].getText(), textField[5].getText());
                         addCourseControler.exc();
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -59,23 +59,27 @@ public class ManageCourseView extends JFrame implements ActionListener {
                 }
                 if(k==1)
                 {
-                    String courseID=JOptionPane.showInputDialog("輸入你要修改第幾筆課程");
-                    String courseDescription=JOptionPane.showInputDialog("輸入你要修改課程說明");
-                    String applicableObject=JOptionPane.showInputDialog("輸入你要修改適合對象");
-                    String price=JOptionPane.showInputDialog("輸入你要修改定價");
-                    String precautions=JOptionPane.showInputDialog("輸入你要修改注意事項");
-                    String remark=JOptionPane.showInputDialog("輸入你要修改備註");
-                    try {
-                        EditControl editControl=new EditControl(courseID,courseDescription,applicableObject,price,precautions,remark);
-                        editControl.exc();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
+                    String courseName=JOptionPane.showInputDialog("輸入你要修改課程名稱");
+                    if(!courseName.equals(""))
+                    {
+                        String courseDescription=JOptionPane.showInputDialog("輸入你要修改課程說明");
+                        String applicableObject=JOptionPane.showInputDialog("輸入你要修改適合對象");
+                        int price=Integer.parseInt(JOptionPane.showInputDialog("輸入你要修改定價"));
+                        String precautions=JOptionPane.showInputDialog("輸入你要修改注意事項");
+                        String remark=JOptionPane.showInputDialog("輸入你要修改備註");
+                        try {
+                            EditControl editControl=new EditControl(courseName,courseDescription,applicableObject,price,precautions,remark);
+                            editControl.exc();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                     }
+
                     break;
                 }
                 if(k==2)
                 {
-                    String courseID=JOptionPane.showInputDialog("輸入你要刪除第幾筆課程");
+                    String courseID=JOptionPane.showInputDialog("輸入你要刪除課程名稱");
                     try {
                         DeleteControler deleteControler=new DeleteControler(courseID);
                         deleteControler.exc();

@@ -9,7 +9,7 @@ public class AddCourseUseCase{
     private String courseName;
     private String courseDescription;
     private String applicableObject;
-    private String price;
+    private int price;
     private String precautions;
     private String remark;
     private static ICourseDao iCourseDao;

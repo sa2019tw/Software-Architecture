@@ -12,7 +12,7 @@ public class DeleteCourseUseCase {
         this.iCourseDao=iCourseDao;
     }
     public static void execute(DeleteCourseIpute input, DeleteCourseOutput output) throws IOException {
-        Course course=new Course(input.getCourseName(),input.getCourseDescription(),input.getApplicableObject(),input.getPrecautions(),input.getPrice(),input.getRemark());
+        Course course=new Course(input.getCourseName(),input.getCourseDescription(),input.getApplicableObject(),input.getPrice(),input.getPrecautions(),input.getRemark());
         iCourseDao.delete(course);
     }
 }

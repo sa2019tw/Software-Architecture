@@ -5,7 +5,7 @@ public class EditCourseOutput {
         System.out.println("Edit course success!");
     }
     private String applicableObject;
-    private String price;
+    private int price;
     private String precautions;
     private String remark;
     private String courseDescription;
@@ -26,11 +26,11 @@ public class EditCourseOutput {
         this.applicableObject = applicableObject;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

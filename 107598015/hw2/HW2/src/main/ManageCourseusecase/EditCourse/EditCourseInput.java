@@ -4,7 +4,7 @@ public class EditCourseInput {
     private String courseName;
     private String courseDescription;
     private String applicableObject;
-    private String price;
+    private int price;
     private String precautions;
     private String remark;
 
@@ -32,11 +32,11 @@ public class EditCourseInput {
         this.applicableObject = applicableObject;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

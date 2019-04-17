@@ -26,7 +26,7 @@ CREATE TABLE `coursesys` (
 
 # 如何使用
 
-* IntelliJ > File > import > Software-Architecture/107598029/HW1
+* IntelliJ > File > import > Software-Architecture/107598029/HW2
 
 * Maven > Plugins > tomcat7 > `tomcat7:run`
 

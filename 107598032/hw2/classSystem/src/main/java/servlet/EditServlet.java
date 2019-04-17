@@ -2,6 +2,7 @@ package servlet;
 
 import dao.CourseDaoImpl;
 import model.Course;
+import useCase.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,26 +19,40 @@ import java.util.Map;
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
         Map<Integer, Course> courseMap = new HashMap<>();
         Map<String, Integer> memberOption = new HashMap<>();
         String[] option = {"大一", "大二", "大三", "大四", "碩一", "碩二"};
         for(String str: option){
             memberOption.put(str, 0);
         }
-        try {
-            List<Course> courseList = courseDaoImpl.getCourseList();
-            for(Course course : courseList){
-                courseMap.put(course.getId(), course);
-            }
-            request.setAttribute("courseList", courseList);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
+        listCourseUseCase.setCourseDao(new CourseDaoImpl());
+        UseCaseInput useCaseInput = new UseCaseInput(
+                -1,
+                "",
+                "",
+                "",
+                -1,
+                "",
+                ""
+        );
+        UseCaseOutput useCaseOutput = new UseCaseOutput();
+        listCourseUseCase.execute(useCaseInput, useCaseOutput);
+        if(useCaseOutput.isSuccess()) {
+            request.setAttribute("courseList", useCaseOutput.getCourses());
+        }
+        else {
+            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            System.out.println(useCaseOutput.getMessage());
         }
         if(request.getParameter("selectCourse") != null){
             int selectId = Integer.parseInt(request.getParameter("selectCourse"));
-            request.setAttribute("selectCourse", courseMap.get(selectId));
-            String[] memberString = courseMap.get(selectId).getMember().split("/");
+            FindCourseUseCase findCourseUseCase = new FindCourseUseCase();
+            findCourseUseCase.setCourseDao(new CourseDaoImpl());
+            useCaseInput.setId(selectId);
+            findCourseUseCase.execute(useCaseInput, useCaseOutput);
+            request.setAttribute("selectCourse", useCaseOutput.getCourse());
+            String[] memberString = useCaseOutput.getCourse().getMember().split("/");
             for(String member: memberString){
                 if(memberOption.get(member) != null){
                     memberOption.put(member, 1);
@@ -50,7 +65,7 @@ public class EditServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
@@ -72,13 +87,16 @@ public class EditServlet extends HttpServlet {
             price = Integer.parseInt(request.getParameter("price"));
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
-        Course course = new Course(id, name, content, memberString, price, notice, remark);
-        CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
-        try {
-            courseDaoImpl.updateCourse(course);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        EditCourseUseCase editCourseUseCase = new EditCourseUseCase();
+        editCourseUseCase.setCourseDao(new CourseDaoImpl());
+        UseCaseInput useCaseInput = new UseCaseInput(id, name, content, memberString, price, notice, remark);
+        UseCaseOutput useCaseOutput = new UseCaseOutput();
+        editCourseUseCase.execute(useCaseInput, useCaseOutput);
+        if(useCaseOutput.isSuccess())
+            response.sendRedirect("/Edit");
+        else {
+            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            System.out.println(useCaseOutput.getMessage());
         }
-        response.sendRedirect("/Edit");
     }
 }

@@ -2,6 +2,9 @@ package servlet;
 
 import dao.CourseDaoImpl;
 import model.Course;
+import useCase.InsertCourseUseCase;
+import useCase.UseCaseInput;
+import useCase.UseCaseOutput;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,13 +43,24 @@ public class InsertServlet extends HttpServlet {
             price = Integer.parseInt(request.getParameter("price"));
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
-        Course course = new Course(0, name, content, memberString, price, notice, remark);
-        CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
-        try {
-            courseDaoImpl.insertCourse(course);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
+        insertCourseUseCase.setCourseDao(new CourseDaoImpl());
+        UseCaseInput useCaseInput = new UseCaseInput(
+                -1,
+                name,
+                content,
+                memberString,
+                price,
+                notice,
+                remark
+        );
+        UseCaseOutput useCaseOutput = new UseCaseOutput();
+        insertCourseUseCase.execute(useCaseInput, useCaseOutput);
+        if(useCaseOutput.isSuccess())
+            request.getRequestDispatcher("/WEB-INF/jsp/insert.jsp").forward(request, response);
+        else {
+            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            System.out.println(useCaseOutput.getMessage());
         }
-        request.getRequestDispatcher("/WEB-INF/jsp/insert.jsp").forward(request, response);
     }
 }

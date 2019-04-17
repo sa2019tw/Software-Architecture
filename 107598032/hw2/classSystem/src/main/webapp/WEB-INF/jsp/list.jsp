@@ -43,7 +43,7 @@
                     </c:forEach>
                     <c:if test = "${fn:length(courseList) == 0}">
                         <tr class="text-center">
-                            <td colspan="2">查無課程</td>
+                            <td colspan="6">查無課程</td>
                         </tr>
                     </c:if>
                 </table>

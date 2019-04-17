@@ -2,6 +2,10 @@ package servlet;
 
 import dao.CourseDaoImpl;
 import model.Course;
+import useCase.DeleteCourseUseCase;
+import useCase.ListCourseUseCase;
+import useCase.UseCaseInput;
+import useCase.UseCaseOutput;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +20,19 @@ import java.util.List;
 public class DeleteServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
-        try {
-            List<Course> courseList = courseDaoImpl.getCourseList();
-            request.setAttribute("courseList", courseList);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
+        listCourseUseCase.setCourseDao(new CourseDaoImpl());
+        UseCaseInput useCaseInput = new UseCaseInput(-1, "", "", "", -1, "", "");
+        UseCaseOutput useCaseOutput = new UseCaseOutput();
+        listCourseUseCase.execute(useCaseInput, useCaseOutput);
+        if(useCaseOutput.isSuccess()) {
+            request.setAttribute("courseList", useCaseOutput.getCourses());
+            request.getRequestDispatcher("/WEB-INF/jsp/delete.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/jsp/delete.jsp").forward(request, response);
+        else {
+            request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            System.out.println(useCaseOutput.getMessage());
+        }
     }
 
     @Override
@@ -31,12 +40,17 @@ public class DeleteServlet extends HttpServlet{
         request.setCharacterEncoding("UTF-8");
         CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
         String[] deleteCourseId = request.getParameterValues("deleteId");
+        DeleteCourseUseCase deleteCourseUseCase = new DeleteCourseUseCase();
+        deleteCourseUseCase.setCourseDao(new CourseDaoImpl());
+        UseCaseInput useCaseInput = new UseCaseInput(-1, "", "", "", -1, "", "");
+        UseCaseOutput useCaseOutput = new UseCaseOutput();
         if(deleteCourseId != null){
             for(String id: deleteCourseId) {
-                try {
-                    courseDaoImpl.deleteCourse(Integer.parseInt(id));
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                useCaseInput.setId(Integer.parseInt(id));
+                deleteCourseUseCase.execute(useCaseInput, useCaseOutput);
+                if(!useCaseOutput.isSuccess()){
+                    request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+                    System.out.println(useCaseOutput.getMessage());
                 }
             }
         }

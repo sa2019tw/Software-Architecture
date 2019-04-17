@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CourseDaoImpl implements CourseDaoInterface{
     private final Connection pcon = DbConn.getConnection(DbConn.COURSE);
-
     public List<Course> getCourseList() throws SQLException {
         List<Course> courseList = new ArrayList<>();
         String sql = "SELECT * FROM course_system";

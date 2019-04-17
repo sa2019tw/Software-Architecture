@@ -28,6 +28,9 @@
                         <c:forEach items="${courseList}" var="course" varStatus="status">
                             <option value="${course.getId()}">${course.getName()}</option>
                         </c:forEach>
+                        <c:if test = "${fn:length(courseList) == 0}">
+                            <option disabled selected>查無課程</option>
+                        </c:if>
                     </select>
                     <br>
                     <input type="submit" class="btn btn-primary" data-toggle='modal' data-target='#update' value="確認">

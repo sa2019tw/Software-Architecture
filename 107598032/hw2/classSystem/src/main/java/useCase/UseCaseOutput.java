@@ -10,6 +10,10 @@ public class UseCaseOutput {
     private List<Course> courses = new ArrayList<>();
     private Course course;
 
+    public Course getCourse() {
+        return course;
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }

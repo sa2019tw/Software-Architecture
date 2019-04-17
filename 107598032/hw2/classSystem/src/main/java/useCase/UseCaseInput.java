@@ -32,4 +32,32 @@ public class UseCaseInput {
     public String getNotice() { return notice; }
 
     public String getRemark() { return remark; }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

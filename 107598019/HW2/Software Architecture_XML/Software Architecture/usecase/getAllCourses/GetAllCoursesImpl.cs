@@ -16,7 +16,9 @@ namespace Software_Architecture.usecase.getAllCourses
         }
 
         public void execute(GetAllCoursesInput input, GetAllCoursesOutput output) {
-             output.setCourseDataTable(courseRepository.getAllCourses());
+            output.setCourseDataTable(courseRepository.getAllCourses());
+            //output.setCourseDataSet(courseRepository.getAllCourses());
+            
 
         }
     }

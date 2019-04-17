@@ -11,6 +11,8 @@ namespace Software_Architecture.adapter.presenter
     public class GetAllCoursesPresenter : GetAllCoursesOutput
     {
         private DataTable dataTable;
+        //private DataSet dataSet;
+        private ViewModel vm = new ViewModel();
 
         public DataTable getCourseDataTable()
         {
@@ -20,6 +22,23 @@ namespace Software_Architecture.adapter.presenter
         public void setCourseDataTable(DataTable dt)
         {
             this.dataTable = dt;
+            vm.setDataTable(dt);
         }
+
+        public ViewModel getViewModel()
+        {
+            return vm;
+        }
+
+        /*public DataSet getCourseDataSet()
+        {
+            return dataSet;
+        }
+
+        public void setCourseDataSet(DataSet ds)
+        {
+            this.dataSet = ds;
+            vm.setDataSet(ds);
+        }*/
     }
 }

@@ -47,9 +47,9 @@ namespace Software_Architecture.adapter.controller.Tests
             DeleteCourseInput _input = (DeleteCourseInput)deleteCourse;
             DeleteCourseOutput deleteCoursePresneter = new DeleteCoursePresenter();
             _input.setTitle(title);
-
+            
             DeleteCourseOutput _output = deleteCoursePresneter;
-
+            
             deleteCourse.execute(_input, _output);
             Assert.AreEqual(_output.getMessage(), "SA is gone.");
         }

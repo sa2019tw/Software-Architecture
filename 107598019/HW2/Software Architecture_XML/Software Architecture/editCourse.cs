@@ -20,8 +20,7 @@ namespace Software_Architecture
         {
             InitializeComponent();
             GetCourseByTitleController getCourseByTitleController = new GetCourseByTitleController(title);
-            PresenterToViewModel presenterToViewModel = new PresenterToViewModel();
-            ViewModel vw = presenterToViewModel.getCourseByTitlePresenterToViewModel(getCourseByTitleController.getCourseByTitlePresenter);
+            ViewModel vw = getCourseByTitleController.getCourseByTitlePresenter.getViewModel();
             
             textBox1.Text = title;
             textBox2.Text = vw.getDescription();

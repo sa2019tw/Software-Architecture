@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Software_Architecture.adapter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace Software_Architecture.usecase.deleteCourse
         void setMessage(string title);
 
         string getMessage();
+
+        ViewModel getViewModel();
     }
 }

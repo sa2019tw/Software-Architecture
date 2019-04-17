@@ -54,8 +54,6 @@
     <Compile Include="adapter\CourseData.cs" />
     <Compile Include="adapter\CourseMapper.cs" />
     <Compile Include="adapter\CourseRepositoryImpl.cs" />
-    <Compile Include="adapter\DataHelper.cs" />
-    <Compile Include="adapter\PresenterToViewModel.cs" />
     <Compile Include="adapter\presenter\AddCoursePresenter.cs" />
     <Compile Include="adapter\presenter\DeleteCoursePresenter.cs" />
     <Compile Include="adapter\presenter\EditCoursePresenter.cs" />

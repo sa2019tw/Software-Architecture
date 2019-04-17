@@ -15,6 +15,7 @@ namespace Software_Architecture.adapter.presenter
         private string price;
         private string notice;
         private string other;
+        private ViewModel vm = new ViewModel();
 
         public GetCourseByTitlePresenter() { }
 
@@ -26,6 +27,7 @@ namespace Software_Architecture.adapter.presenter
         public void setTitle(string title)
         {
             this.title = title;
+            vm.setTitle(title);
         }
 
         public string getDescription()
@@ -36,6 +38,7 @@ namespace Software_Architecture.adapter.presenter
         public void setDescription(string description)
         {
             this.description = description;
+            vm.setDescription(description);
         }
 
         public string getSuitable()
@@ -46,6 +49,7 @@ namespace Software_Architecture.adapter.presenter
         public void setSuitable(string suitable)
         {
             this.suitable = suitable;
+            vm.setSuitable(suitable);
         }
 
         public string getPrice()
@@ -56,6 +60,7 @@ namespace Software_Architecture.adapter.presenter
         public void setPrice(string price)
         {
             this.price = price;
+            vm.setPrice(price);
         }
 
         public string getNotice()
@@ -66,6 +71,7 @@ namespace Software_Architecture.adapter.presenter
         public void setNotice(string notice)
         {
             this.notice = notice;
+            vm.setNotice(notice);
         }
 
         public string getOther()
@@ -76,7 +82,12 @@ namespace Software_Architecture.adapter.presenter
         public void setOther(string other)
         {
             this.other = other;
+            vm.setOther(other);
         }
 
+        public ViewModel getViewModel()
+        {
+            return vm;
+        }
     }
 }

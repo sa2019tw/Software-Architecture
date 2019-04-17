@@ -12,9 +12,26 @@ namespace Software_Architecture.adapter
 {
     public class CourseRepositoryImpl : CourseRepository
     {
-        private DataHelper dataHelper = DataHelper.getInstance();
         private CourseMapper courseMapper = new CourseMapper();
         string path = System.Environment.CurrentDirectory + "\\" + "course.xml";
+
+        public DataTable readAllCourse()
+        {
+            DataTable courseTable = new DataTable();
+            courseTable.Columns.Add("Title", typeof(System.String));
+            courseTable.Columns.Add("Description", typeof(System.String));
+            courseTable.Columns.Add("Suitable", typeof(System.String));
+            courseTable.Columns.Add("Price", typeof(System.String));
+            courseTable.Columns.Add("Notice", typeof(System.String));
+            courseTable.Columns.Add("Other", typeof(System.String));
+
+            DataSet ds = new DataSet("course");
+            ds.ReadXml(@path);
+            if(ds.Tables.Count!=0)
+                courseTable = ds.Tables[0];
+
+            return courseTable;
+        }
 
         public void create(Course course) {
             CourseData data = courseMapper.CourseTransformToCourseData(course);
@@ -27,38 +44,41 @@ namespace Software_Architecture.adapter
                 data.getNotice(),
                 data.getOther()
             };
-            DataHelper.courseTable.Rows.Add(_course);
+            DataTable dt = readAllCourse();
+            dt.Rows.Add(_course);
             DataSet ds = new DataSet("course");
-            ds.Tables.Add(DataHelper.courseTable.Copy());
+            ds.Tables.Add(dt.Copy());
             ds.WriteXml(@path);
         }
         
         public DataTable getAllCourses() {
-            return DataHelper.courseTable;
+            DataTable dt = readAllCourse();
+            return dt;
         }
 
         public void update(string oldTitle, Course course) {
             CourseData data = courseMapper.CourseTransformToCourseData(course);
-
-            DataRow[] _course = DataHelper.courseTable.Select("課程名稱 ='" + oldTitle + "'");
+            DataTable dt = readAllCourse();
+            DataRow[] _course = dt.Select("Title ='" + oldTitle + "'");
                 
             foreach (DataRow row in _course)
             {
-                row["課程名稱"] = data.getTitle(); 
-                row["課程說明"] = data.getDescription();
-                row["適合對象"] = data.getSuitable();
-                row["定價"] = data.getPrice();
-                row["注意事項"] = data.getNotice();
-                row["備註"] = data.getOther();
+                row["Title"] = data.getTitle(); 
+                row["Description"] = data.getDescription();
+                row["Suitable"] = data.getSuitable();
+                row["Price"] = data.getPrice();
+                row["Notice"] = data.getNotice();
+                row["Other"] = data.getOther();
             }
 
             DataSet ds = new DataSet("course");
-            ds.Tables.Add(DataHelper.courseTable.Copy());
+            ds.Tables.Add(dt.Copy());
             ds.WriteXml(@path);
         }
 
         public void delete(string title) {
-            DataRow[] _course = DataHelper.courseTable.Select("課程名稱 ='" + title + "'");
+            DataTable dt = readAllCourse();
+            DataRow[] _course = dt.Select("Title ='" + title + "'");
 
             foreach (DataRow row in _course)
             {
@@ -66,23 +86,24 @@ namespace Software_Architecture.adapter
             }
 
             DataSet ds = new DataSet("course");
-            ds.Tables.Add(DataHelper.courseTable.Copy());
+            ds.Tables.Add(dt.Copy());
             ds.WriteXml(@path);
         }
 
         public Course getCourseByTitle(string title) {
-            DataRow[] selectedCourse = DataHelper.courseTable.Select("課程名稱 ='" + title + "'");
+            DataTable dt = readAllCourse();
+            DataRow[] selectedCourse = dt.Select("Title ='" + title + "'");
             Course course = null;
             CourseData data = new CourseData();
            
             foreach (DataRow row in selectedCourse)
             {
-                data.setTitle(row["課程名稱"].ToString());
-                data.setDescription(row["課程說明"].ToString());
-                data.setSuitable(row["適合對象"].ToString());
-                data.setPrice(row["定價"].ToString());
-                data.setNotice(row["注意事項"].ToString());
-                data.setOther(row["備註"].ToString());
+                data.setTitle(row["Title"].ToString());
+                data.setDescription(row["Description"].ToString());
+                data.setSuitable(row["Suitable"].ToString());
+                data.setPrice(row["Price"].ToString());
+                data.setNotice(row["Notice"].ToString());
+                data.setOther(row["Other"].ToString());
             }
 
             course = courseMapper.CourseDataTransformToCourse(data);

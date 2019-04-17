@@ -31,17 +31,16 @@ namespace Software_Architecture
 
             else
             {
-                if (/*form1.getDataTable().Rows.Count > 0 && */form1.anyCoursesInXML() > 0)
-                {
-                    DataRow[] course = form1.getDataTable().Select("課程名稱 ='" + textBox1.Text + "'");
+                
+                DataRow[] course = form1.getDataTable().Select("Title ='" + textBox1.Text + "'");
 
-                    foreach (DataRow row in course)
-                    {
-                        MessageBox.Show("       *** 課程名稱重複 ***");
-                        textBox1.Text = "";
-                        return;
-                    }
+                foreach (DataRow row in course)
+                {
+                    MessageBox.Show("       *** 課程名稱重複 ***");
+                    textBox1.Text = "";
+                    return;
                 }
+                
                 
                 AddCourseController addCourseController = new AddCourseController(textBox1.Text,
                                                              textBox2.Text,
@@ -61,13 +60,6 @@ namespace Software_Architecture
         {
             this.Close();
         }
-
-        /*private void anyCoursesInXML() {
-            string path = System.Environment.CurrentDirectory + "\\" + "course.xml";
-            DataSet ds = new DataSet("course");
-            ds.ReadXml(@path);
-
-            coursesInXML = ds.Tables.Count;
-        }*/
+       
     }
 }

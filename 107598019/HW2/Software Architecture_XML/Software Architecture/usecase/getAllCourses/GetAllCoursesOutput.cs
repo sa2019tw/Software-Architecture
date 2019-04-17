@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Software_Architecture.adapter;
 
 namespace Software_Architecture.usecase.getAllCourses
 {
@@ -11,5 +12,8 @@ namespace Software_Architecture.usecase.getAllCourses
     {
         DataTable getCourseDataTable();
         void setCourseDataTable(DataTable dt);
+        //DataSet getCourseDataSet();
+        //void setCourseDataSet(DataSet ds);
+        ViewModel getViewModel();
     }
 }

@@ -3,6 +3,7 @@ using Software_Architecture.adapter.controller;
 using Software_Architecture.adapter.presenter;
 using Software_Architecture.usecase;
 using Software_Architecture.usecase.addCourse;
+using Software_Architecture.usecase.deleteCourse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,18 @@ namespace Software_Architecture.adapter.controller.Tests
 
             addCourse.execute(input, output);
             Assert.AreEqual(output.getTitle(), "SA");
+
+            DeleteCourse deleteCourse = new DeleteCourseImpl(courseRepository);
+
+            DeleteCourseInput _input = (DeleteCourseInput)deleteCourse;
+            DeleteCourseOutput deleteCoursePresneter = new DeleteCoursePresenter();
+            _input.setTitle(title);
+
+            DeleteCourseOutput _output = deleteCoursePresneter;
+
+            deleteCourse.execute(_input, _output);
         }
+        
         
     }
 }

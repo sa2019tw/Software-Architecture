@@ -15,12 +15,11 @@ namespace Software_Architecture
     public partial class Form1 : Form
     {
         private string cellValue;
-        public int coursesInXml;
         public Form1()
         {
             InitializeComponent();
-            if(anyCoursesInXML() > 0)
-                refresh();
+            //generateDefaultCourses();
+            refresh();
 
         }
         
@@ -51,25 +50,36 @@ namespace Software_Architecture
 
         public void refresh() {
             GetAllcoursesController getAllcoursesController = new GetAllcoursesController();
-            PresenterToViewModel presenterToViewModel = new PresenterToViewModel();
-            ViewModel vw = presenterToViewModel.getAllCoursesPresenterToViewModel(getAllcoursesController.getAllCoursesPresenter);
+            ViewModel vw = getAllcoursesController.getAllCoursesPresenter.getViewModel();
             dataGridView1.DataSource = vw.getDataTable();
         }
 
         public DataTable getDataTable() {
             GetAllcoursesController getAllcoursesController = new GetAllcoursesController();
-            PresenterToViewModel presenterToViewModel = new PresenterToViewModel();
-            ViewModel vw = presenterToViewModel.getAllCoursesPresenterToViewModel(getAllcoursesController.getAllCoursesPresenter);
+            ViewModel vw = getAllcoursesController.getAllCoursesPresenter.getViewModel();
             return vw.getDataTable();
         }
 
-        public int anyCoursesInXML() {
-            string path = System.Environment.CurrentDirectory + "\\" + "course.xml";
-            DataSet ds = new DataSet("course");
-            ds.ReadXml(@path);
-
-            int coursesInXml = ds.Tables.Count;
-            return coursesInXml;
+        public void generateDefaultCourses() {
+            AddCourseController addCourseController_1 = new AddCourseController("軟體架構",
+                                                             "軟體架構總覽",
+                                                             "資工所",
+                                                             "100000",
+                                                             "無",
+                                                             "無");
+            AddCourseController addCourseController_2 = new AddCourseController("物件導向分析與設計",
+                                                             "探討應用物件導向方法從事軟體設計的過程與步驟",
+                                                             "資工所",
+                                                             "200000",
+                                                             "無",
+                                                             "無");
+            AddCourseController addCourseController_3 = new AddCourseController("資訊檢索與應用",
+                                                             "探討如何有效的在大量文字及多媒體文件中搜尋使用者想要的資訊",
+                                                             "資工所",
+                                                             "300000",
+                                                             "無",
+                                                             "無");
+            refresh();
         }
         
     }

@@ -3,6 +3,7 @@ using Software_Architecture.adapter.controller;
 using Software_Architecture.adapter.presenter;
 using Software_Architecture.usecase;
 using Software_Architecture.usecase.addCourse;
+using Software_Architecture.usecase.deleteCourse;
 using Software_Architecture.usecase.getCourseByTitle;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,16 @@ namespace Software_Architecture.adapter.controller.Tests
 
             getCourseByTitle.execute(_input, _output);
             Assert.AreEqual(_output.getDescription(), "none");
+
+            DeleteCourse deleteCourse = new DeleteCourseImpl(courseRepository);
+
+            DeleteCourseInput __input = (DeleteCourseInput)deleteCourse;
+            DeleteCourseOutput deleteCoursePresneter = new DeleteCoursePresenter();
+            __input.setTitle(title);
+
+            DeleteCourseOutput __output = deleteCoursePresneter;
+
+            deleteCourse.execute(__input, __output);
         }
         
     }

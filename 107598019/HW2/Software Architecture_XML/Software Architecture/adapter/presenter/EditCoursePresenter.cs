@@ -12,6 +12,7 @@ namespace Software_Architecture.adapter.presenter
         public EditCoursePresenter() { }
 
         private string newTitle;
+        private ViewModel vm = new ViewModel();
 
         public string getNewTitle()
         {
@@ -21,6 +22,11 @@ namespace Software_Architecture.adapter.presenter
         public void setNewTitle(string newTitle)
         {
             this.newTitle = newTitle;
+        }
+
+        public ViewModel getViewModel()
+        {
+            return vm;
         }
     }
 }

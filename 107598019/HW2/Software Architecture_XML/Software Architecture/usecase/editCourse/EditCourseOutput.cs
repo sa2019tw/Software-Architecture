@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Software_Architecture.adapter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace Software_Architecture.usecase.editCourse
         void setNewTitle(string newTitle);
 
         string getNewTitle();
+
+        ViewModel getViewModel();
     }
 }

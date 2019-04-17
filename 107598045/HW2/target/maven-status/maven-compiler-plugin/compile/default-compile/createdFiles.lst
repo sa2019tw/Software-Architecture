@@ -1,0 +1,7 @@
+dao\impl\CourseDaoImpl.class
+servlet\NewCoursesServlet.class
+model\Course.class
+servlet\DeleteCoursesServlet.class
+dbconn\Dbcon.class
+servlet\ListAllCoursesServlet.class
+dao\CourseDao.class

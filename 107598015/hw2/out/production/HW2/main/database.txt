@@ -1,0 +1,6 @@
+3,gggg,ggggg,ggg,gggg,ggg
+s,e,e,e,e,e
+a,a,a,a,a,a
+1,1,11,1,NULL,NULL
+2,a,a,a,a,a
+100000,1,1,1,1,1

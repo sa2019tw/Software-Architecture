@@ -1,0 +1,172 @@
+# depslib dependency file v1.0
+1555517102 source:d:\users\eden\documents\code\hw2\db\db.cpp
+	"db.h"
+
+1555517102 d:\users\eden\documents\code\hw2\db\db.h
+	<stdio.h>
+	<stdlib.h>
+	"sqlite3.h"
+
+1553535598 d:\users\eden\documents\code\hw2\db\sqlite3.h
+	<stdarg.h>
+
+1553535598 source:d:\users\eden\documents\code\hw2\db\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
+
+1555517114 source:d:\users\eden\documents\code\hw2\function\add_class.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"add_class.h"
+	"../usecase/add_class_usecase.h"
+
+1555517102 d:\users\eden\documents\code\hw2\function\add_class.h
+
+1555517185 source:d:\users\eden\documents\code\hw2\function\delete_class.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"delete_class.h"
+	"../usecase/delete_class_usecase.h"
+	"../usecase/search_class_usecase.h"
+
+1555515366 d:\users\eden\documents\code\hw2\function\delete_class.h
+
+1555517141 source:d:\users\eden\documents\code\hw2\function\modify_class.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"modify_class.h"
+	"../usecase/modify_class_usecase.h"
+	"../usecase/search_class_usecase.h"
+
+1555515366 d:\users\eden\documents\code\hw2\function\modify_class.h
+
+1555515430 source:d:\users\eden\documents\code\hw2\function\search_class.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"search_class.h"
+	"../usecase/search_class_usecase.h"
+
+1555515366 d:\users\eden\documents\code\hw2\function\search_class.h
+
+1555516119 source:d:\users\eden\documents\code\hw2\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"./function/search_class.h"
+	"./function/add_class.h"
+	"./function/delete_class.h"
+	"./function/modify_class.h"
+
+1555517102 d:\users\eden\documents\code\hw2\usecase\search_class_usecase.h
+
+1555515054 d:\users\eden\documents\code\hw2\usecase\add_class_usecase.h
+
+1555515055 d:\users\eden\documents\code\hw2\usecase\delete_class_usecase.h
+
+1555515054 d:\users\eden\documents\code\hw2\usecase\modify_class_usecase.h
+
+1555517102 source:d:\users\eden\documents\code\hw2\usecase\search_class_usecase.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"search_class_usecase.h"
+	"../db/db.h"
+
+1555515046 source:d:\users\eden\documents\code\hw2\usecase\add_class_usecase.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"add_class_usecase.h"
+	"../db/db.h"
+
+1555515047 source:d:\users\eden\documents\code\hw2\usecase\delete_class_usecase.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"delete_class_usecase.h"
+	"../db/db.h"
+
+1555515048 source:d:\users\eden\documents\code\hw2\usecase\modify_class_usecase.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"modify_class_usecase.h"
+	"../db/db.h"
+

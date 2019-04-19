@@ -1,7 +1,9 @@
-package useCase;
+package usecase;
 
 import dao.CourseDaoInterface;
 import model.Course;
+import usecase.input.UseCaseInput;
+import usecase.output.UseCaseOutput;
 
 import java.sql.SQLException;
 
@@ -23,7 +25,7 @@ public class InsertCourseUseCase {
                 useCaseInput.getRemark());
         try {
             courseDao.insertCourse(course);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             useCaseOutput.reportError(e.getMessage());
         }

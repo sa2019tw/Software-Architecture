@@ -1,8 +1,10 @@
 package servlet;
 
-import dao.CourseDaoImpl;
+import dao.MySQLCourseDaoImplement;
 import model.Course;
-import useCase.*;
+import usecase.*;
+import usecase.input.UseCaseInput;
+import usecase.output.UseCaseOutput;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet("/Edit")
@@ -26,7 +26,7 @@ public class EditServlet extends HttpServlet {
             memberOption.put(str, 0);
         }
         ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
-        listCourseUseCase.setCourseDao(new CourseDaoImpl());
+        listCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
         UseCaseInput useCaseInput = new UseCaseInput(
                 -1,
                 "",
@@ -48,7 +48,7 @@ public class EditServlet extends HttpServlet {
         if(request.getParameter("selectCourse") != null){
             int selectId = Integer.parseInt(request.getParameter("selectCourse"));
             FindCourseUseCase findCourseUseCase = new FindCourseUseCase();
-            findCourseUseCase.setCourseDao(new CourseDaoImpl());
+            findCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
             useCaseInput.setId(selectId);
             findCourseUseCase.execute(useCaseInput, useCaseOutput);
             request.setAttribute("selectCourse", useCaseOutput.getCourse());
@@ -88,7 +88,7 @@ public class EditServlet extends HttpServlet {
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
         EditCourseUseCase editCourseUseCase = new EditCourseUseCase();
-        editCourseUseCase.setCourseDao(new CourseDaoImpl());
+        editCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
         UseCaseInput useCaseInput = new UseCaseInput(id, name, content, memberString, price, notice, remark);
         UseCaseOutput useCaseOutput = new UseCaseOutput();
         editCourseUseCase.execute(useCaseInput, useCaseOutput);

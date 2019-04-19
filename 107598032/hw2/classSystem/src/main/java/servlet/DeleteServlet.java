@@ -1,11 +1,10 @@
 package servlet;
 
-import dao.CourseDaoImpl;
-import model.Course;
-import useCase.DeleteCourseUseCase;
-import useCase.ListCourseUseCase;
-import useCase.UseCaseInput;
-import useCase.UseCaseOutput;
+import dao.MySQLCourseDaoImplement;
+import usecase.DeleteCourseUseCase;
+import usecase.ListCourseUseCase;
+import usecase.input.UseCaseInput;
+import usecase.output.UseCaseOutput;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,15 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet("/Delete")
 public class DeleteServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
-        listCourseUseCase.setCourseDao(new CourseDaoImpl());
+        listCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
         UseCaseInput useCaseInput = new UseCaseInput(-1, "", "", "", -1, "", "");
         UseCaseOutput useCaseOutput = new UseCaseOutput();
         listCourseUseCase.execute(useCaseInput, useCaseOutput);
@@ -38,10 +35,10 @@ public class DeleteServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        CourseDaoImpl courseDaoImpl = new CourseDaoImpl();
+        MySQLCourseDaoImplement mySQLCourseDaoImplement = new MySQLCourseDaoImplement();
         String[] deleteCourseId = request.getParameterValues("deleteId");
         DeleteCourseUseCase deleteCourseUseCase = new DeleteCourseUseCase();
-        deleteCourseUseCase.setCourseDao(new CourseDaoImpl());
+        deleteCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
         UseCaseInput useCaseInput = new UseCaseInput(-1, "", "", "", -1, "", "");
         UseCaseOutput useCaseOutput = new UseCaseOutput();
         if(deleteCourseId != null){

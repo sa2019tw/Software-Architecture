@@ -1,10 +1,9 @@
 package servlet;
 
-import dao.CourseDaoImpl;
-import model.Course;
-import useCase.InsertCourseUseCase;
-import useCase.UseCaseInput;
-import useCase.UseCaseOutput;
+import dao.MySQLCourseDaoImplement;
+import usecase.InsertCourseUseCase;
+import usecase.input.UseCaseInput;
+import usecase.output.UseCaseOutput;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/Insert")
 public class InsertServlet extends HttpServlet {
@@ -44,7 +42,7 @@ public class InsertServlet extends HttpServlet {
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
         InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
-        insertCourseUseCase.setCourseDao(new CourseDaoImpl());
+        insertCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
         UseCaseInput useCaseInput = new UseCaseInput(
                 -1,
                 name,

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CourseDaoInterface {
-    List<Course> getCourseList() throws SQLException;
-    void insertCourse(Course course) throws SQLException;
-    void deleteCourse(int id) throws SQLException;
-    void updateCourse(Course course) throws SQLException;
-    Course getCourseById(int id) throws SQLException;
+    List<Course> getCourseList() throws Exception;
+    void insertCourse(Course course) throws Exception;
+    void deleteCourse(int id) throws Exception;
+    void updateCourse(Course course) throws Exception;
+    Course getCourseById(int id) throws Exception;
 }

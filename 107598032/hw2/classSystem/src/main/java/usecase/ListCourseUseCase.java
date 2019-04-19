@@ -1,10 +1,12 @@
-package useCase;
+package usecase;
 
 import dao.CourseDaoInterface;
+import usecase.input.UseCaseInput;
+import usecase.output.UseCaseOutput;
 
 import java.sql.SQLException;
 
-public class DeleteCourseUseCase {
+public class ListCourseUseCase {
     CourseDaoInterface courseDao = null;
 
     public void setCourseDao(CourseDaoInterface courseDao) {
@@ -13,8 +15,8 @@ public class DeleteCourseUseCase {
 
     public void execute(UseCaseInput useCaseInput, UseCaseOutput useCaseOutput) {
         try {
-            courseDao.deleteCourse(useCaseInput.getId());
-        } catch (SQLException e) {
+            useCaseOutput.setCourses(courseDao.getCourseList());
+        } catch (Exception e) {
             e.printStackTrace();
             useCaseOutput.reportError(e.getMessage());
         }

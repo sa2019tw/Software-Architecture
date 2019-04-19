@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <string name="button_read">列出所有課程</string>
+    <string name="button_create">新增課程</string>
+    <string name="button_update">編輯課程</string>
+    <string name="button_delete">刪除課程</string>
+    <string name="text_view_id">請輸入課程ID</string>
+    <string name="editTextId"></string>
+
+    <string name="courseName">課程名稱</string>
+    <string name="courseIntro">課程說明</string>
+    <string name="courseSuitable">適合對象</string>
+    <string name="coursePrice">定價</string>
+    <string name="courseNotice">注意事項</string>
+    <string name="courseRemark">備註</string>
+    <string name="buttonFinishCreate">完成</string>
+    <string name="buttonDiscardCreate">捨棄</string>
+
+    <string name="updateCourseName">課程名稱</string>
+    <string name="updateCourseIntro">課程說明</string>
+    <string name="updateCourseSuitable">適合對象</string>
+    <string name="updateCoursePrice">0</string>
+    <string name="updateCourseNotice">注意事項</string>
+    <string name="updateCourseRemark">備註</string>
+    <string name="buttonFinishUpdate">完成</string>
+    <string name="buttonDiscardUpdate">捨棄</string>
+
+    <string name="dataId"></string>
+    <string name="dataName"></string>
+    <string name="dataIntro"></string>
+    <string name="dataSuitable"></string>
+    <string name="dataPrice"></string>
+    <string name="dataNotice"></string>
+    <string name="dataRemark"></string>
+
+</resources>

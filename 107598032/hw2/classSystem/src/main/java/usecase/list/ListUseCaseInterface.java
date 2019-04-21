@@ -1,9 +1,9 @@
 package usecase.list;
 
 import usecase.UseCaseInterface;
-import usecase.input.list.ListInputImplement;
-import usecase.output.list.ListOutputImplement;
+import usecase.input.list.ListInputInterface;
+import usecase.output.list.ListOutputInterface;
 
-public interface ListUseCaseInterface extends UseCaseInterface<ListInputImplement, ListOutputImplement> {
-    void execute(ListInputImplement input, ListOutputImplement output);
+public interface ListUseCaseInterface extends UseCaseInterface<ListInputInterface, ListOutputInterface> {
+    void execute(ListInputInterface input, ListOutputInterface output);
 }

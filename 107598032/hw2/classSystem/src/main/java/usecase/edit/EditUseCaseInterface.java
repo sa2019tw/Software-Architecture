@@ -1,9 +1,9 @@
 package usecase.edit;
 
 import usecase.UseCaseInterface;
-import usecase.input.edit.EditInputImplement;
-import usecase.output.edit.EditOutputImplement;
+import usecase.input.edit.EditInputInterface;
+import usecase.output.edit.EditOutputInterface;
 
-public interface EditUseCaseInterface extends UseCaseInterface<EditInputImplement, EditOutputImplement> {
-    void execute(EditInputImplement input, EditOutputImplement output);
+public interface EditUseCaseInterface extends UseCaseInterface<EditInputInterface, EditOutputInterface> {
+    void execute(EditInputInterface input, EditOutputInterface output);
 }

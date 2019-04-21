@@ -1,10 +1,8 @@
 package usecase.list;
 
 import dao.CourseDaoInterface;
-import usecase.input.list.ListInputImplement;
-import usecase.output.list.ListOutputImplement;
-
-import java.sql.SQLException;
+import usecase.input.list.ListInputInterface;
+import usecase.output.list.ListOutputInterface;
 
 public class ListUseCaseImplement implements ListUseCaseInterface {
     private CourseDaoInterface courseDao;
@@ -15,7 +13,7 @@ public class ListUseCaseImplement implements ListUseCaseInterface {
 
 
     @Override
-    public void execute(ListInputImplement input, ListOutputImplement output) {
+    public void execute(ListInputInterface input, ListOutputInterface output) {
         try {
             output.setCourses(courseDao.getCourseList());
         } catch (Exception e) {

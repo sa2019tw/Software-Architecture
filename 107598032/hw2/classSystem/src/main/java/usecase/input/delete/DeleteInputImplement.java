@@ -1,11 +1,16 @@
 package usecase.input.delete;
 
-public class DeleteInputImplement implements DeleteInputInterface {
-    private int id;
+import java.util.List;
 
-    public DeleteInputImplement(int id){
+public class DeleteInputImplement implements DeleteInputInterface {
+    private List<Integer> id;
+
+    public DeleteInputImplement(List<Integer> id){
         this.id = id;
     }
 
-    public int getId() { return id; }
+    @Override
+    public List<Integer> getIdList() {
+        return id;
+    }
 }

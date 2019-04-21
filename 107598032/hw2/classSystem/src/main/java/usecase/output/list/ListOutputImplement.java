@@ -18,6 +18,15 @@ public class ListOutputImplement implements ListOutputInterface {
     }
 
     @Override
+    public Course getCourseById(int id) {
+        for(Course temp: courseList){
+            if(temp.getId() == id)
+                return temp;
+        }
+        throw new NullPointerException("Not found!");
+    }
+
+    @Override
     public void reportError(String message) {
 
     }

@@ -1,8 +1,8 @@
 package usecase.delete;
 
 import dao.CourseDaoInterface;
-import usecase.input.delete.DeleteInputImplement;
-import usecase.output.delete.DeleteOutputImplement;
+import usecase.input.delete.DeleteInputInterface;
+import usecase.output.delete.DeleteOutputInterface;
 
 public class DeleteUseCaseImplement implements DeleteUseCaseInterface {
     private CourseDaoInterface courseDao;
@@ -12,9 +12,11 @@ public class DeleteUseCaseImplement implements DeleteUseCaseInterface {
     }
 
     @Override
-    public void execute(DeleteInputImplement input, DeleteOutputImplement output) {
+    public void execute(DeleteInputInterface input, DeleteOutputInterface output) {
         try {
-            courseDao.deleteCourse(input.getId());
+            for(int id: input.getIdList()){
+                courseDao.deleteCourse(id);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             output.reportError(e.getMessage());

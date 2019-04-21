@@ -13,12 +13,11 @@ public class InMemoryCourseDaoImplement implements CourseDaoInterface{
     }
 
     public Course getCourseById(int id) {
-        int i = 0;
         for (Course temp: courses){
+            System.out.println(temp.getId());
             if(temp.getId() == id){
                 return temp;
             }
-            i++;
         }
         throw new NullPointerException("Not found!");
     }

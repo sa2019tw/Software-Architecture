@@ -1,8 +1,11 @@
 package servlet;
 import dao.MySQLCourseDaoImplement;
-import usecase.ListCourseUseCase;
-import usecase.input.UseCaseInput;
-import usecase.output.UseCaseOutput;
+import usecase.input.list.ListInputImplement;
+import usecase.input.list.ListInputInterface;
+import usecase.list.ListUseCaseImplement;
+import usecase.list.ListUseCaseInterface;
+import usecase.output.list.ListOutputImplement;
+import usecase.output.list.ListOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,26 +18,18 @@ import java.io.IOException;
 public class ListServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
-        listCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
-        UseCaseInput useCaseInput = new UseCaseInput(
-                -1,
-                "",
-                "",
-                "",
-                -1,
-                "",
-                ""
-        );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        listCourseUseCase.execute(useCaseInput, useCaseOutput);
-        if(useCaseOutput.isSuccess()) {
-            request.setAttribute("courseList", useCaseOutput.getCourses());
+        ListUseCaseInterface listUseCase = new ListUseCaseImplement();
+        listUseCase.setRepository(new MySQLCourseDaoImplement());
+        ListInputInterface input = new ListInputImplement();
+        ListOutputInterface output = new ListOutputImplement();
+        listUseCase.execute(input, output);
+        if(output.isSuccess()) {
+            request.setAttribute("courseList", output.getCourses());
             request.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(request, response);
         }
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(useCaseOutput.getMessage());
+            System.out.println(output.getMessage());
         }
     }
 }

@@ -17,8 +17,8 @@
 <div class="container">
     <jsp:include page="buttons.jsp"></jsp:include>
     <div class="col-md-15">
-        <div class="panel panel-info">
-            <div class="panel-heading"><span class="glyphicon glyphicon-exclamation-sign">　</span>課程</div>
+        <div class="panel panel-danger">
+            <div class="panel-heading"><span class="glyphicon glyphicon-exclamation-sign">　</span>錯誤</div>
             <div class="panel-body">
                 <h1>Error</h1>
             </div>

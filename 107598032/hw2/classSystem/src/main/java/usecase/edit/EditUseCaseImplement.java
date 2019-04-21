@@ -2,10 +2,8 @@ package usecase.edit;
 
 import dao.CourseDaoInterface;
 import model.Course;
-import usecase.input.InputInterface;
-import usecase.input.edit.EditInputImplement;
-import usecase.output.OutputInterface;
-import usecase.output.edit.EditOutputImplement;
+import usecase.input.edit.EditInputInterface;
+import usecase.output.edit.EditOutputInterface;
 
 public class EditUseCaseImplement implements EditUseCaseInterface {
     private CourseDaoInterface courseDao;
@@ -15,7 +13,7 @@ public class EditUseCaseImplement implements EditUseCaseInterface {
     }
 
     @Override
-    public void execute(EditInputImplement input, EditOutputImplement output) {
+    public void execute(EditInputInterface input, EditOutputInterface output) {
         Course course = new Course(
                 input.getId(),
                 input.getName(),

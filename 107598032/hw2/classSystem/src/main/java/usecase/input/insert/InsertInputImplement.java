@@ -1,7 +1,5 @@
 package usecase.input.insert;
 
-import usecase.input.InputInterface;
-
 public class InsertInputImplement implements InsertInputInterface {
     private int id;
     private String name;

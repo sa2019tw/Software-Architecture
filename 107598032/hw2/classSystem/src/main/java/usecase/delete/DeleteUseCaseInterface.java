@@ -1,9 +1,9 @@
 package usecase.delete;
 
 import usecase.UseCaseInterface;
-import usecase.input.delete.DeleteInputImplement;
-import usecase.output.delete.DeleteOutputImplement;
+import usecase.input.delete.DeleteInputInterface;
+import usecase.output.delete.DeleteOutputInterface;
 
-public interface DeleteUseCaseInterface extends UseCaseInterface<DeleteInputImplement, DeleteOutputImplement> {
-    void execute(DeleteInputImplement input, DeleteOutputImplement output);
+public interface DeleteUseCaseInterface extends UseCaseInterface<DeleteInputInterface, DeleteOutputInterface> {
+    void execute(DeleteInputInterface input, DeleteOutputInterface output);
 }

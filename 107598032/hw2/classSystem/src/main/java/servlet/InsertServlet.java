@@ -1,9 +1,12 @@
 package servlet;
 
 import dao.MySQLCourseDaoImplement;
-import usecase.InsertCourseUseCase;
-import usecase.input.UseCaseInput;
-import usecase.output.UseCaseOutput;
+import usecase.input.insert.InsertInputImplement;
+import usecase.input.insert.InsertInputInterface;
+import usecase.insert.InsertUseCaseImplement;
+import usecase.insert.InsertUseCaseInterface;
+import usecase.output.insert.InsertOutputImplement;
+import usecase.output.insert.InsertOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,9 +44,9 @@ public class InsertServlet extends HttpServlet {
             price = Integer.parseInt(request.getParameter("price"));
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
-        InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
-        insertCourseUseCase.setCourseDao(new MySQLCourseDaoImplement());
-        UseCaseInput useCaseInput = new UseCaseInput(
+        InsertUseCaseInterface insertUseCase = new InsertUseCaseImplement();
+        insertUseCase.setRepository(new MySQLCourseDaoImplement());
+        InsertInputInterface input = new InsertInputImplement(
                 -1,
                 name,
                 content,
@@ -52,13 +55,13 @@ public class InsertServlet extends HttpServlet {
                 notice,
                 remark
         );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        insertCourseUseCase.execute(useCaseInput, useCaseOutput);
-        if(useCaseOutput.isSuccess())
+        InsertOutputInterface output = new InsertOutputImplement();
+        insertUseCase.execute(input, output);
+        if(output.isSuccess())
             request.getRequestDispatcher("/WEB-INF/jsp/insert.jsp").forward(request, response);
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(useCaseOutput.getMessage());
+            System.out.println(output.getMessage());
         }
     }
 }

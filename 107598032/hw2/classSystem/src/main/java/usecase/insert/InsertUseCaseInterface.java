@@ -1,9 +1,9 @@
 package usecase.insert;
 
 import usecase.UseCaseInterface;
-import usecase.input.insert.InsertInputImplement;
-import usecase.output.insert.InsertOutputImplement;
+import usecase.input.insert.InsertInputInterface;
+import usecase.output.insert.InsertOutputInterface;
 
-public interface InsertUseCaseInterface extends UseCaseInterface<InsertInputImplement, InsertOutputImplement> {
-    void execute(InsertInputImplement input, InsertOutputImplement output);
+public interface InsertUseCaseInterface extends UseCaseInterface<InsertInputInterface, InsertOutputInterface> {
+    void execute(InsertInputInterface input, InsertOutputInterface output);
 }

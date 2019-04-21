@@ -19,7 +19,7 @@ public class InsertUseCaseImplement implements InsertUseCaseInterface {
     }
 
     @Override
-    public void execute(InsertInputImplement input, InsertOutputImplement output) {
+    public void execute(InsertInputInterface input, InsertOutputInterface output) {
         Course course = new Course(
                 input.getId(),
                 input.getName(),

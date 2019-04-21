@@ -1,18 +1,14 @@
 package servlet;
 
 import dao.MySQLCourseDaoImplement;
-import model.Course;
-import usecase.*;
 import usecase.edit.EditUseCaseImplement;
 import usecase.edit.EditUseCaseInterface;
-import usecase.input.UseCaseInput;
 import usecase.input.edit.EditInputImplement;
 import usecase.input.edit.EditInputInterface;
 import usecase.input.list.ListInputImplement;
 import usecase.input.list.ListInputInterface;
 import usecase.list.ListUseCaseImplement;
 import usecase.list.ListUseCaseInterface;
-import usecase.output.UseCaseOutput;
 import usecase.output.edit.EditOutputImplement;
 import usecase.output.edit.EditOutputInterface;
 import usecase.output.list.ListOutputImplement;

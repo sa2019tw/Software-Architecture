@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DbConn {
-    public final static String  SA = "";
+    public final static String  SA = "sa";
 
     public static Connection getConnection(String dbName) {
         return getConnection(dbName, "", "");

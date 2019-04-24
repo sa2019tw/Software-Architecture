@@ -37,9 +37,9 @@
                 <tbody>
                 <c:forEach items="${list}" var="course" >
                     <tr>
-                        <td>${course.getName()}</td>
+                        <td>${course.getCourseName()}</td>
                         <td>${course.getDescription()}</td>
-                        <td>${course.getLevel()}</td>
+                        <td>${course.getCourseLevel()}</td>
                         <td>${course.getPrice()}</td>
                         <td>${course.getPrecautions()}</td>
                         <td>${course.getRemarks()}</td>

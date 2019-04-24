@@ -1,9 +1,14 @@
 package servlet;
 
 import dao.MySqlCourseDao;
-import io.UseCaseInput;
-import io.UseCaseError;
+import usecase.DeleteCourseUseCaseInterface;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
 import usecase.DeleteCourseUseCase;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseError;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseErrorInterface;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseInput;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseInputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +27,8 @@ public class DeleteCourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        DeleteCourseUseCase deletecourse = new DeleteCourseUseCase(new MySqlCourseDao());
-        UseCaseInput input = new UseCaseInput(
+        DeleteCourseUseCaseInterface deletecourse = new DeleteCourseUseCase(new MySqlCourseDao());
+        DeleteUseCaseInputInterface input = new DeleteUseCaseInput(
                 id,
                 null,
                 null,
@@ -32,7 +37,7 @@ public class DeleteCourseServlet extends HttpServlet {
                 null,
                 null
         );
-        UseCaseError error = new UseCaseError();
+        DeleteUseCaseErrorInterface error = new DeleteUseCaseError();
 
         deletecourse.deleteCourse(input, error);
         

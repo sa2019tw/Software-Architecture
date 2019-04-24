@@ -1,27 +1,29 @@
 package usecase;
 
+import Dto.CourseDto;
 import dao.CourseDaoInterface;
-import io.UseCaseOutput;
 import model.Course;
-import io.UseCaseInput;
-import io.UseCaseError;
+import usecase.io.UpdateUseCaseIO.UpdateUseCaseErrorInterface;
+import usecase.io.UpdateUseCaseIO.UpdateUseCaseInputInterface;
+import usecase.io.UpdateUseCaseIO.UpdateUseCaseOutputInterface;
 
-public class UpdateCourseUseCase {
+
+public class UpdateCourseUseCase implements UpdateCourseUseCaseInterface{
     private CourseDaoInterface coursedao;
 
     public UpdateCourseUseCase(CourseDaoInterface coursedao) {
         this.coursedao = coursedao;
     }
 
-    public void update(UseCaseInput useCaseInput, UseCaseError error){
+    public void update(UpdateUseCaseInputInterface input, UpdateUseCaseErrorInterface error){
         Course course = new Course(
-                useCaseInput.getId(),
-                useCaseInput.getCoursename(),
-                useCaseInput.getCourselevel(),
-                useCaseInput.getPrice(),
-                useCaseInput.getDescription(),
-                useCaseInput.getPrecautions(),
-                useCaseInput.getRemarks()
+            input.getId(),
+            input.getCourseName(),
+            input.getCourseLevel(),
+            input.getPrice(),
+            input.getDescription(),
+            input.getPrecautions(),
+            input.getRemarks()
         );
 
         try{
@@ -33,7 +35,7 @@ public class UpdateCourseUseCase {
 
     }
 
-    public UseCaseOutput getcourse(UseCaseInput input, UseCaseError error){
+    public void getcourse(UpdateUseCaseInputInterface input, UpdateUseCaseOutputInterface output, UpdateUseCaseErrorInterface error){
         Course course = new Course();
         try{
             course = coursedao.getcourseinfo(input.getId());
@@ -41,14 +43,14 @@ public class UpdateCourseUseCase {
 //            e.printStackTrace();
             error.reportError(e.getMessage());
         }
-
-        return new UseCaseOutput(course.getId(),
+        output.setCourseDto(new CourseDto(
+                course.getId(),
                 course.getName(),
                 course.getLevel(),
                 course.getPrice(),
                 course.getDescription(),
                 course.getPrecautions(),
-                course.getRemarks());
+                course.getRemarks()));
     }
 
 }

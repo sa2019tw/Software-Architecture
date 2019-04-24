@@ -1,10 +1,10 @@
 package servlet;
 
 import dao.MySqlCourseDao;
-import io.UseCaseOutput;
-import io.UseCaseInput;
-import io.UseCaseError;
+import usecase.UpdateCourseUseCaseInterface;
+import usecase.io.CreatUseCaseIO.*;
 import usecase.UpdateCourseUseCase;
+import usecase.io.UpdateUseCaseIO.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +21,7 @@ public class UpdateCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         id = Integer.parseInt(request.getParameter("id"));
-        UseCaseInput input = new UseCaseInput(
+        UpdateUseCaseInputInterface input = new UpdateUseCaseInput(
                 id,
                 null,
                 null,
@@ -30,17 +30,19 @@ public class UpdateCourseServlet extends HttpServlet {
                 null,
                 null
         );
-        UseCaseError error = new UseCaseError();
+        UpdateUseCaseErrorInterface error = new UpdateUseCaseError();
 
-        UpdateCourseUseCase updateCourseUseCase = new UpdateCourseUseCase(new MySqlCourseDao());
+        UpdateCourseUseCaseInterface updateCourseUseCase = new UpdateCourseUseCase(new MySqlCourseDao());
 
-        UseCaseOutput output = updateCourseUseCase.getcourse(input, error);
+        UpdateUseCaseOutputInterface output = new UpdateUseCaseOutput();
+
+        updateCourseUseCase.getcourse(input,output, error);
 
         if(error.hasError()){
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
             log(error.getErrorMessage());
         } else {
-            request.setAttribute("course", output);
+            request.setAttribute("course", output.getCourseDto());
             request.getRequestDispatcher("/WEB-INF/jsp/update.jsp").forward(request, response);
         }
     }
@@ -61,7 +63,7 @@ public class UpdateCourseServlet extends HttpServlet {
         String precautions = request.getParameter("precautions");
         String remarks = request.getParameter("remarks");
 
-        UseCaseInput input = new UseCaseInput(
+        UpdateUseCaseInputInterface input = new UpdateUseCaseInput(
                 id,
                 coursename,
                 level,
@@ -70,9 +72,8 @@ public class UpdateCourseServlet extends HttpServlet {
                 precautions,
                 remarks
         );
-        UseCaseError error = new UseCaseError();
-
-        UpdateCourseUseCase updatecourse = new UpdateCourseUseCase(new MySqlCourseDao());
+        UpdateUseCaseErrorInterface error = new UpdateUseCaseError();
+        UpdateCourseUseCaseInterface updatecourse = new UpdateCourseUseCase(new MySqlCourseDao());
         updatecourse.update(input, error);
 
         if (error.hasError()){

@@ -1,24 +1,30 @@
 package usecase;
 
+import Dto.CourseDto;
 import dao.CourseDaoInterface;
-import io.UseCaseOutput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseOutput;
 import model.Course;
-import io.UseCaseError;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseErrorInterface;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutput;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutputInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAllCourseUseCase {
+public class ReadAllCourseUseCase implements ReadAllCourseUseCaseInterface{
     private CourseDaoInterface coursedao;
 
     public ReadAllCourseUseCase(CourseDaoInterface coursedao) {
         this.coursedao = coursedao;
     }
 
-    public void ReadAllCourse(List<UseCaseOutput> outputs, UseCaseError error){
+    public void ReadAllCourse(ReadAllUseCaseOutputInterface outputs, ReadAllUseCaseErrorInterface error){
+        List<CourseDto> listDto = new ArrayList<>();
         try{
             List<Course> list = coursedao.readallcourse();
             for(Course course : list) {
-                UseCaseOutput tmp = new UseCaseOutput(
+                CourseDto courseDto = new CourseDto(
                         course.getId(),
                         course.getName(),
                         course.getLevel(),
@@ -26,8 +32,10 @@ public class ReadAllCourseUseCase {
                         course.getDescription(),
                         course.getPrecautions(),
                         course.getRemarks());
-                outputs.add(tmp);
+                listDto.add(courseDto);
             }
+
+            outputs.setCourseDto(listDto);
         } catch (Exception e){
             error.reportError(e.getMessage());
         }

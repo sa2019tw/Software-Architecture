@@ -2,13 +2,15 @@ package usecasetest;
 
 import dao.CourseDaoInterface;
 import dao.InMemoryCourseDao;
-import io.UseCaseError;
-import io.UseCaseInput;
-import io.UseCaseOutput;
+import usecase.io.CreatUseCaseIO.*;
 import model.Course;
 import org.junit.Before;
 import usecase.CreateCourseUseCase;
 import usecase.ReadAllCourseUseCase;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseError;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseErrorInterface;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutput;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutputInterface;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class ReadAllCourseUseCaseTest {
 
     @org.junit.Test
     public void ReadAllCourseUseCaseTest() throws SQLException {
-        UseCaseInput useCaseInput = new UseCaseInput(
+        CreatUseCaseInputInterface creatUseCaseInputInterface = new CreatUseCaseInput(
                 1,
                 "CleanArchitercture",
                 "大一",
@@ -38,12 +40,12 @@ public class ReadAllCourseUseCaseTest {
                 "",
                 "remark"
         );
-        UseCaseError useCaseError = new UseCaseError();
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        CreatUseCaseErrorInterface creatUseCaseErrorInterface = new CreatUseCaseError();
+        createCourseUseCase.creat(creatUseCaseInputInterface, creatUseCaseErrorInterface);
         Course actual = dao.getcourseinfo(1);
         assertEquals("CleanArchitercture", actual.getName());
 
-        useCaseInput = new UseCaseInput(
+        creatUseCaseInputInterface = new CreatUseCaseInput(
                 1,
                 "C1",
                 "大一",
@@ -52,10 +54,11 @@ public class ReadAllCourseUseCaseTest {
                 "",
                 "remark"
         );
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        createCourseUseCase.creat(creatUseCaseInputInterface, creatUseCaseErrorInterface);
 
-        List<UseCaseOutput> useCaseOutput = new ArrayList<>();
-        readAllCourseUseCase.ReadAllCourse(useCaseOutput, useCaseError);
-        assertEquals(2, useCaseOutput.size());
+        ReadAllUseCaseOutputInterface readAllUseCaseOutputInterfaces = new ReadAllUseCaseOutput();
+        ReadAllUseCaseErrorInterface readAllUseCaseErrorInterface = new ReadAllUseCaseError();
+        readAllCourseUseCase.ReadAllCourse(readAllUseCaseOutputInterfaces, readAllUseCaseErrorInterface);
+        assertEquals(2, readAllUseCaseOutputInterfaces.getCourseDto().size());
     }
 }

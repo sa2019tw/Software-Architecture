@@ -1,9 +1,12 @@
 package servlet;
 
 import dao.MySqlCourseDao;
-import io.UseCaseInput;
-import io.UseCaseError;
+import usecase.CreateCourseUseCaseInterface;
+import usecase.io.CreatUseCaseIO.CreatUseCaseErrorInterface;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
 import usecase.CreateCourseUseCase;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +32,7 @@ public class CreatCourseServlet extends HttpServlet {
         String precautions = request.getParameter("precautions");
         String remarks = request.getParameter("remarks");
 
-        UseCaseInput input = new UseCaseInput(
+        CreatUseCaseInputInterface input = new CreatUseCaseInput(
                 0,
                 coursename,
                 level,
@@ -39,8 +42,8 @@ public class CreatCourseServlet extends HttpServlet {
                 remarks
         );
 
-        UseCaseError error = new UseCaseError();
-        CreateCourseUseCase createCourseUseCase = new CreateCourseUseCase(new MySqlCourseDao());
+        CreatUseCaseErrorInterface error = new CreatUseCaseError();
+        CreateCourseUseCaseInterface createCourseUseCase = new CreateCourseUseCase(new MySqlCourseDao());
         createCourseUseCase.creat(input, error);
 
         if(error.hasError()){

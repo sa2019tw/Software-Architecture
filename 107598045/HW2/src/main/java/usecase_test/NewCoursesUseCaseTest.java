@@ -4,9 +4,12 @@ import dao.CourseDao;
 import dao.impl.InMemoryCourseDao;
 import model.Course;
 import org.junit.Test;
-import usecase.CourseInput;
-import usecase.CourseOutput;
-import usecase.NewCoursesUseCase;
+import usecase.create.NewCoursesUseCase;
+import usecase.create.NewCoursesUseCaseImplement;
+import usecase.create.input.CreateInput;
+import usecase.create.input.CreateInputImplement;
+import usecase.create.output.CreateOutput;
+import usecase.create.output.CreateOutputImplement;
 
 import java.sql.SQLException;
 
@@ -19,12 +22,12 @@ public class NewCoursesUseCaseTest {
     @org.junit.Before
     public void setUp() throws Exception {
         dao = new InMemoryCourseDao();
-        useCase = new NewCoursesUseCase(dao);
+        useCase = new NewCoursesUseCaseImplement();
     }
 
     @Test
     public void insertCourseUseCase(){
-        CourseInput input = new CourseInput(
+        CreateInput input = new CreateInputImplement(
                 "clean architecture",
                 "detail",
                 "people",
@@ -32,8 +35,9 @@ public class NewCoursesUseCaseTest {
                 "note",
                 "remark"
         );
-        CourseOutput output = new CourseOutput();
+        CreateOutput output = new CreateOutputImplement();
 
+        useCase.setRepository(dao);
         useCase.execute(input, output);
         Course actual = null;
 

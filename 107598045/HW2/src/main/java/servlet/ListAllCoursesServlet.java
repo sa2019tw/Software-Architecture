@@ -2,22 +2,19 @@ package servlet;
 
 
 import dao.impl.CourseDaoImpl;
-import dao.CourseDao;
-import model.Course;
-import usecase.CourseInput;
-import usecase.CourseOutput;
-import usecase.ListAllCoursesUseCase;
+import usecase.read.ListAllCoursesUseCase;
+import usecase.read.ListAllCoursesUseCaseImplement;
+import usecase.read.input.ListAllInput;
+import usecase.read.input.ListAllInputImplement;
+import usecase.read.output.ListAllOutput;
+import usecase.read.output.ListAllOutputImplement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by David on 2019 / 02 / 23.
@@ -27,11 +24,12 @@ public class ListAllCoursesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        CourseInput input = new CourseInput();
-        CourseOutput output = new CourseOutput();
+        ListAllInput input = new ListAllInputImplement();
+        ListAllOutput output = new ListAllOutputImplement();
 
-        ListAllCoursesUseCase listAllCoursesUseCase = new ListAllCoursesUseCase(new CourseDaoImpl());
-        listAllCoursesUseCase.execute(input, output);
+        ListAllCoursesUseCase UseCase = new ListAllCoursesUseCaseImplement();
+        UseCase.setRepository(new CourseDaoImpl());
+        UseCase.execute(input, output);
 
         if(output.hasErrorOccur()){
             System.out.println(output.getErrorMessage());

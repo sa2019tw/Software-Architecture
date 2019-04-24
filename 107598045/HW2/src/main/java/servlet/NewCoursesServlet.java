@@ -1,9 +1,11 @@
 package servlet;
 
 import dao.impl.CourseDaoImpl;
-import usecase.CourseInput;
-import usecase.CourseOutput;
-import usecase.NewCoursesUseCase;
+import usecase.create.NewCoursesUseCaseImplement;
+import usecase.create.input.CreateInput;
+import usecase.create.input.CreateInputImplement;
+import usecase.create.output.CreateOutput;
+import usecase.create.output.CreateOutputImplement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +35,7 @@ public class NewCoursesServlet extends HttpServlet {
         String course_notes = request.getParameter("course_notes");
         String course_remark = request.getParameter("course_remark");
 
-        CourseInput input = new CourseInput(
+        CreateInput input = new CreateInputImplement(
                 course_name,
                 course_detail,
                 course_suit_people,
@@ -41,9 +43,10 @@ public class NewCoursesServlet extends HttpServlet {
                 course_notes,
                 course_remark
         );
-        CourseOutput output = new CourseOutput();
+        CreateOutput output = new CreateOutputImplement();
 
-        NewCoursesUseCase insert = new NewCoursesUseCase(new CourseDaoImpl());
+        NewCoursesUseCaseImplement insert = new NewCoursesUseCaseImplement();
+        insert.setRepository(new CourseDaoImpl());
         insert.execute(input, output);
 
         if(output.hasErrorOccur()){

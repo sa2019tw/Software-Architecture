@@ -1,18 +1,23 @@
-package usecase;
+package usecase.create;
 
 import dao.CourseDao;
 import model.Course;
+import usecase.create.input.CreateInput;
+import usecase.create.output.CreateOutput;
 
 import java.sql.SQLException;
 
-public class NewCoursesUseCase {
+public class NewCoursesUseCaseImplement implements NewCoursesUseCase {
     private CourseDao courseDao;
 
-    public NewCoursesUseCase(CourseDao courseDao) {
+    public NewCoursesUseCaseImplement(){}
+
+    public void setRepository(CourseDao courseDao) {
         this.courseDao = courseDao;
     }
 
-    public void execute(CourseInput input, CourseOutput output){
+    @Override
+    public void execute(CreateInput input, CreateOutput output){
         int courseId = 0;
         try {
             courseId = courseDao.getMaxCourseId();

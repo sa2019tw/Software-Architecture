@@ -1,35 +1,39 @@
 package servlet;
 
-import dao.CourseDao;
 import dao.impl.CourseDaoImpl;
-import model.Course;
-import usecase.CourseInput;
-import usecase.CourseOutput;
-import usecase.DeleteCoursesUseCase;
-import usecase.ListAllCoursesUseCase;
+import usecase.delete.DeleteCoursesUseCase;
+import usecase.delete.DeleteCoursesUseCaseImplement;
+import usecase.delete.input.DeleteInput;
+import usecase.delete.input.DeleteInputImplement;
+import usecase.delete.output.DeleteOutput;
+import usecase.delete.output.DeleteOutputImplement;
+import usecase.read.ListAllCoursesUseCase;
+import usecase.read.ListAllCoursesUseCaseImplement;
+import usecase.read.input.ListAllInput;
+import usecase.read.input.ListAllInputImplement;
+import usecase.read.output.ListAllOutput;
+import usecase.read.output.ListAllOutputImplement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 /**
- * Created by David on 2019 / 03 / 01.
+ * Created by WHM on 2019 / 03 / 01.
  */
 @WebServlet("/deleteCourses")
 public class DeleteCoursesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        CourseInput input = new CourseInput();
-        CourseOutput output = new CourseOutput();
+        ListAllInput input = new ListAllInputImplement();
+        ListAllOutput output = new ListAllOutputImplement();
 
-        ListAllCoursesUseCase listAllCoursesUseCase = new ListAllCoursesUseCase(new CourseDaoImpl());  //使用 列出所有課程列表的use case
+        ListAllCoursesUseCase listAllCoursesUseCase = new ListAllCoursesUseCaseImplement();  //使用 列出所有課程列表的use case
+        listAllCoursesUseCase.setRepository(new CourseDaoImpl());
         listAllCoursesUseCase.execute(input, output);
 
         if(output.hasErrorOccur()){
@@ -45,9 +49,11 @@ public class DeleteCoursesServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String[] deleteCourseId = request.getParameterValues("deleteId");
 
-        DeleteCoursesUseCase deleteUseCase = new DeleteCoursesUseCase(new CourseDaoImpl());
-        CourseInput input = new CourseInput(deleteCourseId);
-        CourseOutput output = new CourseOutput();
+        DeleteCoursesUseCase deleteUseCase = new DeleteCoursesUseCaseImplement();
+        deleteUseCase.setRepository(new CourseDaoImpl());
+
+        DeleteInput input = new DeleteInputImplement(deleteCourseId);
+        DeleteOutput output = new DeleteOutputImplement();
 
         deleteUseCase.execute(input, output);
 

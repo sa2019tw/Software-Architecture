@@ -34,10 +34,18 @@ public class InMemoryCourseDao implements CourseDao {
 
     @Override
     public void deleteCourseToDB(int courseId) throws SQLException {
+//        courses.forEach(each -> {
+//            if (each.getCourseId() == courseId)
+//                courses.remove(each);
+//        });
+        final List<Course> test = new ArrayList<>();
         courses.forEach(each -> {
             if (each.getCourseId() == courseId)
-                courses.remove(each);
+                test.add(each);
         });
+        for(int i=0; i< test.size(); i++){
+            courses.remove(test.get(i));
+        }
     }
 
     @Override

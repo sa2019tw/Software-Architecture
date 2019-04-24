@@ -3,7 +3,7 @@ package servlet;
 import dao.impl.CourseDaoImpl;
 import usecase.CourseInput;
 import usecase.CourseOutput;
-import usecase.EditCoursesUseCase;
+import usecase.update.EditCoursesUseCase;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

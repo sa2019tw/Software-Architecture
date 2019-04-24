@@ -1,19 +1,25 @@
-package usecase;
+package usecase.delete;
 
 import dao.CourseDao;
 import model.Course;
+import org.junit.Test;
+import usecase.delete.input.DeleteInput;
+import usecase.delete.output.DeleteOutput;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class DeleteCoursesUseCase {
+public class DeleteCoursesUseCaseImplement implements DeleteCoursesUseCase{
     private CourseDao courseDao;
 
-    public DeleteCoursesUseCase(CourseDao courseDao) {
+    public DeleteCoursesUseCaseImplement(){}
+
+    @Override
+    public void setRepository(CourseDao courseDao){
         this.courseDao = courseDao;
     }
 
-    public void execute(CourseInput input, CourseOutput output) {
+    public void execute(DeleteInput input, DeleteOutput output) {
         String[] choiceCourseId = input.getChoiceCourseId();
         if(choiceCourseId != null){
             for(String courseid: choiceCourseId) {

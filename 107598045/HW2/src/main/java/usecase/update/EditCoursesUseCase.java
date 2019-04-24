@@ -1,7 +1,9 @@
-package usecase;
+package usecase.update;
 
 import dao.CourseDao;
 import model.Course;
+import usecase.CourseInput;
+import usecase.CourseOutput;
 
 import java.sql.SQLException;
 

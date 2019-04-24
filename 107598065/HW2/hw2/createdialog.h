@@ -31,6 +31,9 @@ public:
     void setLeAttention(QString qstr);
     void setLeNote(QString qstr);
 
+    QString readLabel(int no);
+    void setLabel(int no,QString qstr);
+
 private:
     Ui::CreateDialog *ui;
     void closeEvent(QCloseEvent *event);

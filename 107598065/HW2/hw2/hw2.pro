@@ -36,7 +36,8 @@ HEADERS += \
     data_access/data_access_interface.h \
     data_access/data_access_txt.h \
     data_access/data_access_inmemory.h \
-    createdialog.h
+    createdialog.h \
+    controller/controller.h
 
 FORMS += \
         mainwindow.ui \

@@ -1,4 +1,4 @@
-package usecase.output.insert;
+package usecase.output;
 
 import usecase.output.OutputInterface;
 

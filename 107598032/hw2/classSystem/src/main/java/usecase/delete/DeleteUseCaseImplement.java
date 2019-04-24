@@ -2,7 +2,7 @@ package usecase.delete;
 
 import dao.CourseDaoInterface;
 import usecase.input.delete.DeleteInputInterface;
-import usecase.output.delete.DeleteOutputInterface;
+import usecase.output.DeleteOutputInterface;
 
 public class DeleteUseCaseImplement implements DeleteUseCaseInterface {
     private CourseDaoInterface courseDao;

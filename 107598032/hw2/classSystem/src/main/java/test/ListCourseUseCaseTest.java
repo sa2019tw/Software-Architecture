@@ -5,6 +5,8 @@ import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import presenter.InsertPresenter;
+import presenter.ListPresenter;
 import usecase.input.insert.InsertInputImplement;
 import usecase.input.insert.InsertInputInterface;
 import usecase.input.list.ListInputImplement;
@@ -13,10 +15,6 @@ import usecase.insert.InsertUseCaseImplement;
 import usecase.insert.InsertUseCaseInterface;
 import usecase.list.ListUseCaseImplement;
 import usecase.list.ListUseCaseInterface;
-import usecase.output.insert.InsertOutputImplement;
-import usecase.output.insert.InsertOutputInterface;
-import usecase.output.list.ListOutputImplement;
-import usecase.output.list.ListOutputInterface;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,8 +34,8 @@ public class ListCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        InsertOutputInterface output = new InsertOutputImplement();
-        insertUseCase.execute(input, output);
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
     }
 
     @After
@@ -50,8 +48,8 @@ public class ListCourseUseCaseTest {
         ListUseCaseInterface listUseCase = new ListUseCaseImplement();
         listUseCase.setRepository(inMemoryCourseDao);
         ListInputInterface input = new ListInputImplement();
-        ListOutputInterface output = new ListOutputImplement();
-        listUseCase.execute(input, output);
-        assertEquals(1, output.getCourses().size());
+        ListPresenter presenter = new ListPresenter();
+        listUseCase.execute(input, presenter);
+        assertEquals(1, presenter.getCourses().size());
     }
 }

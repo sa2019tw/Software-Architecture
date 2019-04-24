@@ -1,18 +1,15 @@
 package servlet;
 
 import dao.MySQLCourseDaoImplement;
+import presenter.EditPresenter;
+import presenter.ListPresenter;
 import usecase.edit.EditUseCaseImplement;
 import usecase.edit.EditUseCaseInterface;
 import usecase.input.edit.EditInputImplement;
 import usecase.input.edit.EditInputInterface;
 import usecase.input.list.ListInputImplement;
-import usecase.input.list.ListInputInterface;
 import usecase.list.ListUseCaseImplement;
 import usecase.list.ListUseCaseInterface;
-import usecase.output.edit.EditOutputImplement;
-import usecase.output.edit.EditOutputInterface;
-import usecase.output.list.ListOutputImplement;
-import usecase.output.list.ListOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,40 +17,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @WebServlet("/Edit")
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, Integer> memberOption = new HashMap<>();
-        String[] option = {"大一", "大二", "大三", "大四", "碩一", "碩二"};
-        for(String str: option){
-            memberOption.put(str, 0);
-        }
         ListUseCaseInterface listUseCase = new ListUseCaseImplement();
         listUseCase.setRepository(new MySQLCourseDaoImplement());
-        ListInputInterface input = new ListInputImplement();
-        ListOutputInterface output = new ListOutputImplement();
-        listUseCase.execute(input, output);
-        if(output.isSuccess()) {
-            request.setAttribute("courseList", output.getCourses());
+        ListPresenter presenter = new ListPresenter();
+        listUseCase.execute(new ListInputImplement(), presenter);
+        if(presenter.isSuccess()) {
+            request.setAttribute("courseList", presenter.buildViewModel().getCourses());
         }
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(output.getMessage());
+            System.out.println(presenter.getMessage());
         }
         if(request.getParameter("selectCourse") != null){
             int selectId = Integer.parseInt(request.getParameter("selectCourse"));
-            request.setAttribute("selectCourse", output.getCourseById(selectId));
-            String[] memberString = output.getCourseById(selectId).getMember().split("/");
-            for(String member: memberString){
-                if(memberOption.get(member) != null){
-                    memberOption.put(member, 1);
-                }
-            }
-            request.setAttribute("memberOption", memberOption);
+            request.setAttribute("selectCourse", presenter.getCourseById(selectId));
             request.setAttribute("id", selectId);
         }
         request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp").forward(request, response);
@@ -65,17 +47,7 @@ public class EditServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String content = request.getParameter("content");
-        String[] memberList = request.getParameterValues("member");
-        String memberString = "";
-        if(memberList != null && memberList.length > 1){
-            for(int i = 0; i < memberList.length; i++){
-                if(i != 0) memberString += "/";
-                memberString += memberList[i];
-            }
-        }
-        else if(memberList != null && memberList.length == 1){
-            memberString = memberList[0];
-        }
+        String member = request.getParameter("member");
         String priceTemp = request.getParameter("price");
         int price = 0;
         if(priceTemp.length() > 0)
@@ -88,14 +60,14 @@ public class EditServlet extends HttpServlet {
                 id,
                 name,
                 content,
-                memberString,
+                member,
                 price,
                 notice,
                 remark
         );
-        EditOutputInterface output = new EditOutputImplement();
-        editUseCase.execute(input, output);
-        if(output.isSuccess())
+        EditPresenter presenter = new EditPresenter();
+        editUseCase.execute(input, presenter);
+        if(presenter.isSuccess())
             response.sendRedirect("/Edit");
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);

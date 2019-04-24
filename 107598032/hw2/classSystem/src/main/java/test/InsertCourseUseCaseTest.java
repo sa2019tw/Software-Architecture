@@ -4,12 +4,11 @@ import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import presenter.InsertPresenter;
 import usecase.input.insert.InsertInputImplement;
 import usecase.input.insert.InsertInputInterface;
 import usecase.insert.InsertUseCaseImplement;
 import usecase.insert.InsertUseCaseInterface;
-import usecase.output.insert.InsertOutputImplement;
-import usecase.output.insert.InsertOutputInterface;
 
 import static org.junit.Assert.*;
 
@@ -38,8 +37,8 @@ public class InsertCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        InsertOutputInterface output = new InsertOutputImplement();
-        insertUseCase.execute(input, output);
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
         assertEquals(1, inMemoryCourseDao.getCoursesSize());
     }
 

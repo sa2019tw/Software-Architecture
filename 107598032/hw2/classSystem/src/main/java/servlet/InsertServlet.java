@@ -1,12 +1,11 @@
 package servlet;
 
 import dao.MySQLCourseDaoImplement;
+import presenter.InsertPresenter;
 import usecase.input.insert.InsertInputImplement;
 import usecase.input.insert.InsertInputInterface;
 import usecase.insert.InsertUseCaseImplement;
 import usecase.insert.InsertUseCaseInterface;
-import usecase.output.insert.InsertOutputImplement;
-import usecase.output.insert.InsertOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,17 +26,7 @@ public class InsertServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String content = request.getParameter("content");
-        String[] memberList = request.getParameterValues("member");
-        String memberString = "";
-        if(memberList != null && memberList.length > 1){
-            for(int i = 0; i < memberList.length; i++){
-                if(i != 0) memberString += "/";
-                memberString += memberList[i];
-            }
-        }
-        else if(memberList != null && memberList.length == 1){
-            memberString = memberList[0];
-        }
+        String member = request.getParameter("member");
         String priceTemp = request.getParameter("price");
         int price = 0;
         if(priceTemp.length() > 0)
@@ -50,18 +39,18 @@ public class InsertServlet extends HttpServlet {
                 -1,
                 name,
                 content,
-                memberString,
+                member,
                 price,
                 notice,
                 remark
         );
-        InsertOutputInterface output = new InsertOutputImplement();
-        insertUseCase.execute(input, output);
-        if(output.isSuccess())
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
+        if(presenter.isSuccess())
             request.getRequestDispatcher("/WEB-INF/jsp/insert.jsp").forward(request, response);
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(output.getMessage());
+            System.out.println(presenter.getMessage());
         }
     }
 }

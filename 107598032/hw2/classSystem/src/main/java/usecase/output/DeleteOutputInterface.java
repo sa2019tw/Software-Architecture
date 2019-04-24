@@ -1,4 +1,4 @@
-package usecase.output.delete;
+package usecase.output;
 
 import usecase.output.OutputInterface;
 

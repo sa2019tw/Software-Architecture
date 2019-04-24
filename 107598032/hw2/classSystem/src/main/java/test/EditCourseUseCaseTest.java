@@ -4,6 +4,8 @@ import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import presenter.EditPresenter;
+import presenter.InsertPresenter;
 import usecase.edit.EditUseCaseImplement;
 import usecase.edit.EditUseCaseInterface;
 import usecase.input.edit.EditInputImplement;
@@ -12,10 +14,6 @@ import usecase.input.insert.InsertInputImplement;
 import usecase.input.insert.InsertInputInterface;
 import usecase.insert.InsertUseCaseImplement;
 import usecase.insert.InsertUseCaseInterface;
-import usecase.output.edit.EditOutputImplement;
-import usecase.output.edit.EditOutputInterface;
-import usecase.output.insert.InsertOutputImplement;
-import usecase.output.insert.InsertOutputInterface;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,8 +33,8 @@ public class EditCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        InsertOutputInterface output = new InsertOutputImplement();
-        insertUseCase.execute(input, output);
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
         assertEquals(1, inMemoryCourseDao.getCoursesSize());
     }
 
@@ -58,8 +56,8 @@ public class EditCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        EditOutputInterface output = new EditOutputImplement();
-        editUseCase.execute(input, output);
+        EditPresenter presenter = new EditPresenter();
+        editUseCase.execute(input, presenter);
         assertEquals(8000, inMemoryCourseDao.getCourseById(0).getPrice());
     }
 }

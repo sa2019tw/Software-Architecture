@@ -2,14 +2,8 @@ package usecase.insert;
 
 import dao.CourseDaoInterface;
 import model.Course;
-import usecase.input.InputInterface;
-import usecase.input.insert.InsertInputImplement;
 import usecase.input.insert.InsertInputInterface;
-import usecase.output.OutputInterface;
-import usecase.output.insert.InsertOutputImplement;
-import usecase.output.insert.InsertOutputInterface;
-
-import java.sql.SQLException;
+import usecase.output.InsertOutputInterface;
 
 public class InsertUseCaseImplement implements InsertUseCaseInterface {
     private CourseDaoInterface courseDao;

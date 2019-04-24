@@ -15,51 +15,8 @@
             <input type="text" id="name" name="name" class="form-control" value="${selectCourse.getName()}" required>
             <label for="content" class="col-form-label">課程說明</label>
             <input type="text" id="content" name="content" class="form-control" value="${selectCourse.getContent()}">
-            <label for="one" class="col-form-label">適合對象</label>
-            <br>
-            <c:if test = "${memberOption.get('大一') == 1}">
-                <input type="checkbox" id="one" name="member" class="form-checkbox-input" value="大一" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('大一') == 0}">
-                <input type="checkbox" id="one" name="member" class="form-checkbox-input" value="大一">
-            </c:if>
-            <label class="form-checkbox-label">大一</label>
-            <c:if test = "${memberOption.get('大二') == 1}">
-                <input type="checkbox" id="two" name="member" class="form-checkbox-input" value="大二" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('大二') == 0}">
-                <input type="checkbox" id="two" name="member" class="form-checkbox-input" value="大二">
-            </c:if>
-            <label class="form-checkbox-label">大二</label>
-            <c:if test = "${memberOption.get('大三') == 1}">
-                <input type="checkbox" id="three" name="member" class="form-checkbox-input" value="大三" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('大三') == 0}">
-                <input type="checkbox" id="three" name="member" class="form-checkbox-input" value="大三">
-            </c:if>
-            <label class="form-checkbox-label">大三</label>
-            <c:if test = "${memberOption.get('大四') == 1}">
-                <input type="checkbox" id="four" name="member" class="form-checkbox-input" value="大四" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('大四') == 0}">
-                <input type="checkbox" id="four" name="member" class="form-checkbox-input" value="大四">
-            </c:if>
-            <label class="form-checkbox-label">大四</label>
-            <c:if test = "${memberOption.get('碩一') == 1}">
-                <input type="checkbox" id="five" name="member" class="form-checkbox-input" value="碩一" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('碩一') == 0}">
-                <input type="checkbox" id="five" name="member" class="form-checkbox-input" value="碩一">
-            </c:if>
-            <label class="form-checkbox-label">碩一</label>
-            <c:if test = "${memberOption.get('碩二') == 1}">
-                <input type="checkbox" id="six" name="member" class="form-checkbox-input" value="碩二" checked>
-            </c:if>
-            <c:if test = "${memberOption.get('碩二') == 0}">
-                <input type="checkbox" id="six" name="member" class="form-checkbox-input" value="碩二">
-            </c:if>
-            <label class="form-checkbox-label">碩二</label>
-            <br>
+            <label for="member" class="col-form-label">適合對象</label>
+            <input type="text" id="member" name="member" class="form-control" value="${selectCourse.getMember()}">
             <label for="price" class="col-form-label">定價</label>
             <input type="text" id="price" name="price" class="form-control" value="${selectCourse.getPrice()}">
             <label for="notice" class="col-form-label">注意事項</label>

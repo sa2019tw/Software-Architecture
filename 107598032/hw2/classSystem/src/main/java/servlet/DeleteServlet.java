@@ -1,18 +1,15 @@
 package servlet;
 
 import dao.MySQLCourseDaoImplement;
+import presenter.DeletePresenter;
+import presenter.ListPresenter;
 import usecase.delete.DeleteUseCaseImplement;
 import usecase.delete.DeleteUseCaseInterface;
 import usecase.input.delete.DeleteInputImplement;
 import usecase.input.delete.DeleteInputInterface;
 import usecase.input.list.ListInputImplement;
-import usecase.input.list.ListInputInterface;
 import usecase.list.ListUseCaseImplement;
 import usecase.list.ListUseCaseInterface;
-import usecase.output.delete.DeleteOutputImplement;
-import usecase.output.delete.DeleteOutputInterface;
-import usecase.output.list.ListOutputImplement;
-import usecase.output.list.ListOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,15 +26,15 @@ public class DeleteServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ListUseCaseInterface listUseCase = new ListUseCaseImplement();
         listUseCase.setRepository(new MySQLCourseDaoImplement());
-        ListInputInterface input = new ListInputImplement();
-        ListOutputInterface output = new ListOutputImplement();
-        listUseCase.execute(input, output);
-        if(output.isSuccess()) {
-            request.setAttribute("courseList", output.getCourses());
+        ListPresenter presenter = new ListPresenter();
+        listUseCase.execute(new ListInputImplement(), presenter);
+        if(presenter.isSuccess()) {
+            request.setAttribute("courseList", presenter.buildViewModel().getCourses());
             request.getRequestDispatcher("/WEB-INF/jsp/delete.jsp").forward(request, response);
         }
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+            System.out.println(presenter.getMessage());
         }
     }
 
@@ -53,9 +50,9 @@ public class DeleteServlet extends HttpServlet{
             DeleteUseCaseInterface deleteUseCase = new DeleteUseCaseImplement();
             deleteUseCase.setRepository(new MySQLCourseDaoImplement());
             DeleteInputInterface input = new DeleteInputImplement(ids);
-            DeleteOutputInterface output = new DeleteOutputImplement();
-            deleteUseCase.execute(input, output);
-            if(output.isSuccess())
+            DeletePresenter presenter = new DeletePresenter();
+            deleteUseCase.execute(input, presenter);
+            if(presenter.isSuccess())
                 response.sendRedirect("/Delete");
             else
                 request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);

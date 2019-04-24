@@ -3,7 +3,7 @@ package usecase.edit;
 import dao.CourseDaoInterface;
 import model.Course;
 import usecase.input.edit.EditInputInterface;
-import usecase.output.edit.EditOutputInterface;
+import usecase.output.EditOutputInterface;
 
 public class EditUseCaseImplement implements EditUseCaseInterface {
     private CourseDaoInterface courseDao;

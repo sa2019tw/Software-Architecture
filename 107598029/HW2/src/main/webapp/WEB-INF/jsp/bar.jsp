@@ -19,10 +19,10 @@
                 <a class="nav-link" href="/creat" role="button">新增課程</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="find">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="cname">
-            <input type="submit" class="btn btn-outline-success my-2 my-sm-0" role="button"></input>
-        </form>
+        <%--form class="form-inline my-2 my-lg-0" action="find">--%>
+        <%--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="cname">--%>
+        <%--<input type="submit" class="btn btn-outline-success my-2 my-sm-0" role="button"></input>--%>
+        <%--</form><--%>
     </div>
 
 </nav>

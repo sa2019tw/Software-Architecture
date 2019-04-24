@@ -1,161 +1,46 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
 #include <windows.h>
 #include "modify_class_usecase.h"
-#include "../db/db.h"
+#include "../dao/class_dao.h"
 
 using namespace std;
 
+void ModifySelectClassName(){
+    SelectClassNameDao();
+}
+
+int ModifySelectCheckClassName(const string& sName){
+    return SelectCheckClassNameDao(sName);
+}
+
+void ModifySelectClassOne(const string& sName){
+    SelectClassOneDao(sName);
+}
+
 void ModifyClassName(const string& sName, const string& sNewName){
-    string strSql = "";
-
-    strSql += "update class set name ='";
-    strSql += sNewName;
-    strSql += "' where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{¦WºÙ¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{¦WºÙ¦¨¥\\: %s\n\n", sName.c_str(), sNewName.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassNameDao(sName, sNewName);
 }
 
 void ModifyClassDescription(const string& sName, const string& sNewDescription){
-    string strSql = "";
-
-    strSql += "update class set description ='";
-    strSql += sNewDescription;
-    strSql += "' where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{»¡©ú¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{»¡©ú¦¨¥\\: %s\n\n", sName.c_str(), sNewDescription.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassDescriptionDao(sName, sNewDescription);
 }
 
 void ModifyClassTarget(const string& sName, const string& sNewTarget){
-    string strSql = "";
-
-    strSql += "update class set target ='";
-    strSql += sNewTarget;
-    strSql += "' where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{¾A¥Î¹ï¶H¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{¾A¥Î¹ï¶H¦¨¥\\: %s\n\n", sName.c_str(), sNewTarget.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassTargetDao(sName, sNewTarget);
 }
 
 void ModifyClassPrice(const string& sName, const string& sNewPrice){
-    string strSql = "";
-
-    strSql += "update class set price =";
-    strSql += sNewPrice;
-    strSql += " where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{©w»ù¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{©w»ù¦¨¥\\: %s\n\n", sName.c_str(), sNewPrice.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassPriceDao(sName, sNewPrice);
 }
 
 void ModifyClassAttention(const string& sName, const string& sNewAttention){
-    string strSql = "";
-
-    strSql += "update class set attention ='";
-    strSql += sNewAttention;
-    strSql += "' where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{ª`·N¨Æ¶µ¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{ª`·N¨Æ¶µ¦¨¥\\: %s\n\n", sName.c_str(), sNewAttention.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassAttentionDao(sName, sNewAttention);
 }
 
 void ModifyClassNote(const string& sName, const string& sNewNote){
-    string strSql = "";
-
-    strSql += "update class set note ='";
-    strSql += sNewNote;
-    strSql += "' where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("­×§ï½Òµ{³Æµù¥¢±Ñ\: %s\n\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("­×§ï¡m%s¡n½Òµ{³Æµù¦¨¥\\: %s\n\n", sName.c_str(), sNewNote.c_str());
-        SetTextToNormal();
-    }
-    //return true;
+    ModifyClassNoteDao(sName, sNewNote);
 }
-
 

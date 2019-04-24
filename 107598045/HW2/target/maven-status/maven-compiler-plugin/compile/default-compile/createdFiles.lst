@@ -1,7 +1,9 @@
-dao\impl\CourseDaoImpl.class
-servlet\NewCoursesServlet.class
+usecase\delete\DeleteCoursesUseCase.class
 model\Course.class
-servlet\DeleteCoursesServlet.class
+dao\impl\CourseDaoImpl.class
+usecase\read\ListAllCoursesUseCase.class
+servlet\NewCoursesServlet.class
+usecase\create\NewCoursesUseCase.class
 dbconn\Dbcon.class
 servlet\ListAllCoursesServlet.class
 dao\CourseDao.class

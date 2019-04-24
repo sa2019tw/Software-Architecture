@@ -1,24 +1,30 @@
 package test;
 
-import dao.InMemoryCourseDaoImpl;
+import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import useCase.EditCourseUseCase;
-import useCase.InsertCourseUseCase;
-import useCase.UseCaseInput;
-import useCase.UseCaseOutput;
+import presenter.EditPresenter;
+import presenter.InsertPresenter;
+import usecase.edit.EditUseCaseImplement;
+import usecase.edit.EditUseCaseInterface;
+import usecase.input.edit.EditInputImplement;
+import usecase.input.edit.EditInputInterface;
+import usecase.input.insert.InsertInputImplement;
+import usecase.input.insert.InsertInputInterface;
+import usecase.insert.InsertUseCaseImplement;
+import usecase.insert.InsertUseCaseInterface;
 
 import static org.junit.Assert.assertEquals;
 
 public class EditCourseUseCaseTest {
-    InMemoryCourseDaoImpl inMemoryCourseDao;
+    InMemoryCourseDaoImplement inMemoryCourseDao;
     @Before
     public void setUp() throws Exception{
-        inMemoryCourseDao = new InMemoryCourseDaoImpl();
-        InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
-        insertCourseUseCase.setCourseDao(inMemoryCourseDao);
-        UseCaseInput useCaseInput = new UseCaseInput(
+        inMemoryCourseDao = new InMemoryCourseDaoImplement();
+        InsertUseCaseInterface insertUseCase = new InsertUseCaseImplement();
+        insertUseCase.setRepository(inMemoryCourseDao);
+        InsertInputInterface input = new InsertInputImplement(
                 0,
                 "軟體架構",
                 "clean architecture",
@@ -27,8 +33,9 @@ public class EditCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        insertCourseUseCase.execute(useCaseInput, useCaseOutput);
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
+        assertEquals(1, inMemoryCourseDao.getCoursesSize());
     }
 
     @After
@@ -38,9 +45,9 @@ public class EditCourseUseCaseTest {
 
     @Test
     public void editCourseTest(){
-        EditCourseUseCase editCourseUseCase = new EditCourseUseCase();
-        editCourseUseCase.setCourseDao(inMemoryCourseDao);
-        UseCaseInput useCaseInput = new UseCaseInput(
+        EditUseCaseInterface editUseCase = new EditUseCaseImplement();
+        editUseCase.setRepository(inMemoryCourseDao);
+        EditInputInterface input = new EditInputImplement(
                 0,
                 "軟體架構",
                 "clean architecture",
@@ -49,8 +56,8 @@ public class EditCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        editCourseUseCase.execute(useCaseInput, useCaseOutput);
+        EditPresenter presenter = new EditPresenter();
+        editUseCase.execute(input, presenter);
         assertEquals(8000, inMemoryCourseDao.getCourseById(0).getPrice());
     }
 }

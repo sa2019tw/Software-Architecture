@@ -35,6 +35,57 @@ void CreateDialog::closeEvent(QCloseEvent *event)
     }
 }
 
+QString CreateDialog::readLabel(int no)
+{
+    QString qstr;
+    switch (no) {
+        case 0:
+            qstr = ui->leClassName->text();
+            return qstr;
+        case 1:
+            qstr = ui->leClassDetail->text();
+            return qstr;
+        case 2:
+            qstr = ui->leForWho->text();
+            return qstr;
+        case 3:
+            qstr = ui->lePrice->text();
+            return qstr;
+        case 4:
+            qstr = ui->leAttention->text();
+            return qstr;
+        case 5:
+            qstr = ui->leNote->text();
+            return qstr;
+        default:
+            break;
+    }
+}
+
+void CreateDialog::setLabel(int no, QString qstr)
+{
+    switch (no) {
+        case 0:
+            ui->leClassName->setText(qstr);
+            break;
+        case 1:
+            ui->leClassDetail->setText(qstr);
+            break;
+        case 2:
+            ui->leForWho->setText(qstr);
+            break;
+        case 3:
+            ui->lePrice->setText(qstr);
+            break;
+        case 4:
+            ui->leAttention->setText(qstr);
+            break;
+        case 5:
+            ui->leNote->setText(qstr);
+            break;
+    }
+}
+
 QString CreateDialog::readLeClassName()
 {
     QString qstr = ui->leClassName->text();
@@ -91,40 +142,5 @@ void CreateDialog::setLeNote(QString qstr)
     ui->leNote->setText(qstr);
 }
 
-//string CreateDialog::readLeClassName()
-//{
-//    QString qstr = ui->leClassName->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
-//string CreateDialog::readLeClassDetail()
-//{
-//    QString qstr = ui->leClassDetail->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
-//string CreateDialog::readLeForWho()
-//{
-//    QString qstr = ui->leForWho->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
-//string CreateDialog::readLePrice()
-//{
-//    QString qstr = ui->lePrice->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
-//string CreateDialog::readLeAttention()
-//{
-//    QString qstr = ui->leAttention->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
-//string CreateDialog::readLeNote()
-//{
-//    QString qstr = ui->leNote->text();
-//    string str = string((const char *)qstr.toLocal8Bit());
-//    return str;
-//}
+
 

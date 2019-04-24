@@ -1,9 +1,14 @@
 package servlet;
 
 import dao.MySqlCourseDao;
-import io.UseCaseOutput;
-import io.UseCaseError;
+import usecase.ReadAllCourseUseCaseInterface;
+import usecase.io.CreatUseCaseIO.CreatUseCaseOutput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
 import usecase.ReadAllCourseUseCase;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseError;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseErrorInterface;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutput;
+import usecase.io.ReadAllUseCaseIO.ReadAllUseCaseOutputInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,10 +33,10 @@ public class ReadAllCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        List<UseCaseOutput> outputs = new ArrayList<>();
-        UseCaseError error = new UseCaseError();
+        ReadAllUseCaseOutputInterface outputs = new ReadAllUseCaseOutput();
+        ReadAllUseCaseErrorInterface error = new ReadAllUseCaseError();
 
-        ReadAllCourseUseCase readAllCourseUseCase = new ReadAllCourseUseCase(new MySqlCourseDao());
+        ReadAllCourseUseCaseInterface readAllCourseUseCase = new ReadAllCourseUseCase(new MySqlCourseDao());
 
         readAllCourseUseCase.ReadAllCourse(outputs, error);
 
@@ -39,7 +44,7 @@ public class ReadAllCourseServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
             log(error.getErrorMessage());
         } else {
-            request.setAttribute("list", outputs);
+            request.setAttribute("list", outputs.getCourseDto());
             request.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(request, response);
         }
     }

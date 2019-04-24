@@ -2,12 +2,18 @@ package usecasetest;
 
 import dao.CourseDaoInterface;
 import dao.InMemoryCourseDao;
-import io.UseCaseError;
-import io.UseCaseInput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
+import usecase.io.CreatUseCaseIO.CreatUseCaseErrorInterface;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInput;
 import model.Course;
 import org.junit.Before;
 import usecase.CreateCourseUseCase;
 import usecase.DeleteCourseUseCase;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInputInterface;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseError;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseErrorInterface;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseInput;
+import usecase.io.DeleteUseCaseIO.DeleteUseCaseInputInterface;
 
 import java.sql.SQLException;
 
@@ -28,7 +34,7 @@ public class DeleteCourseUseCaseTest {
 
     @org.junit.Test
     public void DeleteCourseUseCaseTest() throws SQLException {
-        UseCaseInput useCaseInput = new UseCaseInput(
+        CreatUseCaseInputInterface creatUseCaseInput = new CreatUseCaseInput(
                 1,
                 "CleanArchitercture",
                 "大一",
@@ -37,12 +43,12 @@ public class DeleteCourseUseCaseTest {
                 "",
                 "remark"
         );
-        UseCaseError useCaseError = new UseCaseError();
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        CreatUseCaseErrorInterface creatUseCaseError = new CreatUseCaseError();
+        createCourseUseCase.creat(creatUseCaseInput, creatUseCaseError);
         Course actual = dao.getcourseinfo(1);
         assertEquals("CleanArchitercture", actual.getName());
 
-        useCaseInput = new UseCaseInput(
+        creatUseCaseInput = new CreatUseCaseInput(
                 2,
                 "C2",
                 "大二",
@@ -51,16 +57,28 @@ public class DeleteCourseUseCaseTest {
                 "",
                 "remark"
         );
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        createCourseUseCase.creat(creatUseCaseInput, creatUseCaseError);
         actual = dao.getcourseinfo(2);
         assertEquals("C2", actual.getName());
 
-        deleteCourseUseCase.deleteCourse(useCaseInput, useCaseError);
+        DeleteUseCaseInputInterface deleteUseCaseInputInterface = new DeleteUseCaseInput(
+                2,
+                "C2",
+                "大二",
+                1000,
+                "A",
+                "",
+                "remark"
+        );
+
+        DeleteUseCaseErrorInterface deleteUseCaseErrorInterface = new DeleteUseCaseError();
+
+        deleteCourseUseCase.deleteCourse(deleteUseCaseInputInterface, deleteUseCaseErrorInterface);
     }
 
     @org.junit.Test(expected = NullPointerException.class)
     public void DeleteCourseUseCaseTestNullPointerException() throws SQLException {
-        UseCaseInput useCaseInput = new UseCaseInput(
+        CreatUseCaseInputInterface creatUseCaseInputInterface = new CreatUseCaseInput(
                 1,
                 "CleanArchitercture",
                 "大一",
@@ -69,12 +87,12 @@ public class DeleteCourseUseCaseTest {
                 "",
                 "remark"
         );
-        UseCaseError useCaseError = new UseCaseError();
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        CreatUseCaseErrorInterface creatUseCaseErrorInterface = new CreatUseCaseError();
+        createCourseUseCase.creat(creatUseCaseInputInterface, creatUseCaseErrorInterface);
         Course actual = dao.getcourseinfo(1);
         assertEquals("CleanArchitercture", actual.getName());
 
-        useCaseInput = new UseCaseInput(
+        creatUseCaseInputInterface = new CreatUseCaseInput(
                 2,
                 "C2",
                 "大二",
@@ -83,12 +101,24 @@ public class DeleteCourseUseCaseTest {
                 "",
                 "remark"
         );
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        createCourseUseCase.creat(creatUseCaseInputInterface, creatUseCaseErrorInterface);
         actual = dao.getcourseinfo(2);
         assertEquals("C2", actual.getName());
 
-        deleteCourseUseCase.deleteCourse(useCaseInput, useCaseError);
-        if(!useCaseError.hasError()){
+        DeleteUseCaseInputInterface deleteUseCaseInputInterface = new DeleteUseCaseInput(
+                2,
+                "C2",
+                "大二",
+                1000,
+                "A",
+                "",
+                "remark"
+        );
+
+        DeleteUseCaseErrorInterface deleteUseCaseErrorInterface = new DeleteUseCaseError();
+
+        deleteCourseUseCase.deleteCourse(deleteUseCaseInputInterface, deleteUseCaseErrorInterface);
+        if(!deleteUseCaseErrorInterface.hasError()){
             dao.getcourseinfo(2);
         }
     }

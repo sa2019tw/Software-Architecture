@@ -1,8 +1,15 @@
 package servlet;
 
-import dao.CourseDaoImpl;
-import model.Course;
-import useCase.*;
+import dao.MySQLCourseDaoImplement;
+import presenter.EditPresenter;
+import presenter.ListPresenter;
+import usecase.edit.EditUseCaseImplement;
+import usecase.edit.EditUseCaseInterface;
+import usecase.input.edit.EditInputImplement;
+import usecase.input.edit.EditInputInterface;
+import usecase.input.list.ListInputImplement;
+import usecase.list.ListUseCaseImplement;
+import usecase.list.ListUseCaseInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,55 +17,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @WebServlet("/Edit")
 public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<Integer, Course> courseMap = new HashMap<>();
-        Map<String, Integer> memberOption = new HashMap<>();
-        String[] option = {"大一", "大二", "大三", "大四", "碩一", "碩二"};
-        for(String str: option){
-            memberOption.put(str, 0);
-        }
-        ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
-        listCourseUseCase.setCourseDao(new CourseDaoImpl());
-        UseCaseInput useCaseInput = new UseCaseInput(
-                -1,
-                "",
-                "",
-                "",
-                -1,
-                "",
-                ""
-        );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        listCourseUseCase.execute(useCaseInput, useCaseOutput);
-        if(useCaseOutput.isSuccess()) {
-            request.setAttribute("courseList", useCaseOutput.getCourses());
+        ListUseCaseInterface listUseCase = new ListUseCaseImplement();
+        listUseCase.setRepository(new MySQLCourseDaoImplement());
+        ListPresenter presenter = new ListPresenter();
+        listUseCase.execute(new ListInputImplement(), presenter);
+        if(presenter.isSuccess()) {
+            request.setAttribute("courseList", presenter.buildViewModel().getCourses());
         }
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(useCaseOutput.getMessage());
+            System.out.println(presenter.getMessage());
         }
         if(request.getParameter("selectCourse") != null){
             int selectId = Integer.parseInt(request.getParameter("selectCourse"));
-            FindCourseUseCase findCourseUseCase = new FindCourseUseCase();
-            findCourseUseCase.setCourseDao(new CourseDaoImpl());
-            useCaseInput.setId(selectId);
-            findCourseUseCase.execute(useCaseInput, useCaseOutput);
-            request.setAttribute("selectCourse", useCaseOutput.getCourse());
-            String[] memberString = useCaseOutput.getCourse().getMember().split("/");
-            for(String member: memberString){
-                if(memberOption.get(member) != null){
-                    memberOption.put(member, 1);
-                }
-            }
-            request.setAttribute("memberOption", memberOption);
+            request.setAttribute("selectCourse", presenter.getCourseById(selectId));
             request.setAttribute("id", selectId);
         }
         request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp").forward(request, response);
@@ -70,33 +47,30 @@ public class EditServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String content = request.getParameter("content");
-        String[] memberList = request.getParameterValues("member");
-        String memberString = "";
-        if(memberList != null && memberList.length > 1){
-            for(int i = 0; i < memberList.length; i++){
-                if(i != 0) memberString += "/";
-                memberString += memberList[i];
-            }
-        }
-        else if(memberList != null && memberList.length == 1){
-            memberString = memberList[0];
-        }
+        String member = request.getParameter("member");
         String priceTemp = request.getParameter("price");
         int price = 0;
         if(priceTemp.length() > 0)
             price = Integer.parseInt(request.getParameter("price"));
         String notice = request.getParameter("notice");
         String remark = request.getParameter("remark");
-        EditCourseUseCase editCourseUseCase = new EditCourseUseCase();
-        editCourseUseCase.setCourseDao(new CourseDaoImpl());
-        UseCaseInput useCaseInput = new UseCaseInput(id, name, content, memberString, price, notice, remark);
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        editCourseUseCase.execute(useCaseInput, useCaseOutput);
-        if(useCaseOutput.isSuccess())
+        EditUseCaseInterface editUseCase = new EditUseCaseImplement();
+        editUseCase.setRepository(new MySQLCourseDaoImplement());
+        EditInputInterface input = new EditInputImplement(
+                id,
+                name,
+                content,
+                member,
+                price,
+                notice,
+                remark
+        );
+        EditPresenter presenter = new EditPresenter();
+        editUseCase.execute(input, presenter);
+        if(presenter.isSuccess())
             response.sendRedirect("/Edit");
         else {
             request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
-            System.out.println(useCaseOutput.getMessage());
         }
     }
 }

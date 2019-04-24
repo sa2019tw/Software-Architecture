@@ -1,24 +1,31 @@
 package test;
 
-import dao.InMemoryCourseDaoImpl;
+import dao.CourseDaoInterface;
+import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import useCase.InsertCourseUseCase;
-import useCase.ListCourseUseCase;
-import useCase.UseCaseInput;
-import useCase.UseCaseOutput;
+import presenter.InsertPresenter;
+import presenter.ListPresenter;
+import usecase.input.insert.InsertInputImplement;
+import usecase.input.insert.InsertInputInterface;
+import usecase.input.list.ListInputImplement;
+import usecase.input.list.ListInputInterface;
+import usecase.insert.InsertUseCaseImplement;
+import usecase.insert.InsertUseCaseInterface;
+import usecase.list.ListUseCaseImplement;
+import usecase.list.ListUseCaseInterface;
 
 import static org.junit.Assert.assertEquals;
 
 public class ListCourseUseCaseTest {
-    InMemoryCourseDaoImpl inMemoryCourseDao;
+    CourseDaoInterface inMemoryCourseDao;
     @Before
     public void setUp() throws Exception{
-        inMemoryCourseDao = new InMemoryCourseDaoImpl();
-        InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
-        insertCourseUseCase.setCourseDao(inMemoryCourseDao);
-        UseCaseInput useCaseInput = new UseCaseInput(
+        inMemoryCourseDao = new InMemoryCourseDaoImplement();
+        InsertUseCaseInterface insertUseCase = new InsertUseCaseImplement();
+        insertUseCase.setRepository(inMemoryCourseDao);
+        InsertInputInterface input = new InsertInputImplement(
                 0,
                 "軟體架構",
                 "clean architecture",
@@ -27,8 +34,8 @@ public class ListCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        insertCourseUseCase.execute(useCaseInput, useCaseOutput);
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
     }
 
     @After
@@ -38,19 +45,11 @@ public class ListCourseUseCaseTest {
 
     @Test
     public void listCourseTest(){
-        ListCourseUseCase listCourseUseCase = new ListCourseUseCase();
-        listCourseUseCase.setCourseDao(inMemoryCourseDao);
-        UseCaseInput useCaseInput = new UseCaseInput(
-                -1,
-                "",
-                "",
-                "",
-                -1,
-                "",
-                ""
-        );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        listCourseUseCase.execute(useCaseInput, useCaseOutput);
-        assertEquals(1, useCaseOutput.getCourses().size());
+        ListUseCaseInterface listUseCase = new ListUseCaseImplement();
+        listUseCase.setRepository(inMemoryCourseDao);
+        ListInputInterface input = new ListInputImplement();
+        ListPresenter presenter = new ListPresenter();
+        listUseCase.execute(input, presenter);
+        assertEquals(1, presenter.getCourses().size());
     }
 }

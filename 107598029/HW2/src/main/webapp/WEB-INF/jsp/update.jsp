@@ -10,7 +10,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="coursename">課程名稱</label>
-                <input type="text" class="form-control" id="coursename" name="coursename" placeholder="Course Name" value="${course.getName()}" required>
+                <input type="text" class="form-control" id="coursename" name="coursename" placeholder="Course Name" value="${course.getCourseName()}" required>
             </div>
             <div class="form-group col-md-4">
                 <label for="level">適合對象</label>

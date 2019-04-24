@@ -1,12 +1,15 @@
 package test;
 
-import dao.InMemoryCourseDaoImpl;
+import dao.InMemoryCourseDaoImplement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import useCase.InsertCourseUseCase;
-import useCase.UseCaseInput;
-import useCase.UseCaseOutput;
+import presenter.InsertPresenter;
+import usecase.input.insert.InsertInputImplement;
+import usecase.input.insert.InsertInputInterface;
+import usecase.insert.InsertUseCaseImplement;
+import usecase.insert.InsertUseCaseInterface;
+
 import static org.junit.Assert.*;
 
 public class InsertCourseUseCaseTest {
@@ -22,10 +25,10 @@ public class InsertCourseUseCaseTest {
 
     @Test
     public void insertCourseTest(){
-        InMemoryCourseDaoImpl inMemoryCourseDao = new InMemoryCourseDaoImpl();
-        InsertCourseUseCase insertCourseUseCase = new InsertCourseUseCase();
-        insertCourseUseCase.setCourseDao(inMemoryCourseDao);
-        UseCaseInput useCaseInput = new UseCaseInput(
+        InMemoryCourseDaoImplement inMemoryCourseDao = new InMemoryCourseDaoImplement();
+        InsertUseCaseInterface insertUseCase = new InsertUseCaseImplement();
+        insertUseCase.setRepository(inMemoryCourseDao);
+        InsertInputInterface input = new InsertInputImplement(
                 0,
                 "軟體架構",
                 "clean architecture",
@@ -34,9 +37,9 @@ public class InsertCourseUseCaseTest {
                 "先修POSD、OOAD",
                 "不要遲到"
         );
-        UseCaseOutput useCaseOutput = new UseCaseOutput();
-        insertCourseUseCase.execute(useCaseInput, useCaseOutput);
-        assertEquals(1, inMemoryCourseDao.getCourseList().size());
+        InsertPresenter presenter = new InsertPresenter();
+        insertUseCase.execute(input, presenter);
+        assertEquals(1, inMemoryCourseDao.getCoursesSize());
     }
 
 }

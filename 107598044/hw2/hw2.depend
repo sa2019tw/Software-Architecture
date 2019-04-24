@@ -170,3 +170,328 @@
 	"modify_class_usecase.h"
 	"../db/db.h"
 
+1555517102 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\db\db.cpp
+	"db.h"
+
+1555517102 c:\users\eden\dropbox\研究所\_軟體架構\hw2\db\db.h
+	<stdio.h>
+	<stdlib.h>
+	"sqlite3.h"
+
+1553535598 c:\users\eden\dropbox\研究所\_軟體架構\hw2\db\sqlite3.h
+	<stdarg.h>
+
+1553535598 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\db\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
+
+1555658958 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\add_class.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"add_class.h"
+	"../usecase/add_class_usecase.h"
+
+1555517102 c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\add_class.h
+
+1555515054 c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\add_class_usecase.h
+
+1555657375 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\delete_class.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"delete_class.h"
+	"../usecase/delete_class_usecase.h"
+	"../usecase/search_class_usecase.h"
+
+1555515366 c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\delete_class.h
+
+1555515055 c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\delete_class_usecase.h
+
+1555517102 c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\search_class_usecase.h
+
+1555657847 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\modify_class.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"modify_class.h"
+	"../usecase/modify_class_usecase.h"
+	"../usecase/search_class_usecase.h"
+
+1555657087 c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\modify_class.h
+
+1555515054 c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\modify_class_usecase.h
+
+1555657375 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\search_class.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"search_class.h"
+	"../usecase/search_class_usecase.h"
+
+1555515366 c:\users\eden\dropbox\研究所\_軟體架構\hw2\function\search_class.h
+
+1555662215 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\main.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"./function/search_class.h"
+	"./function/add_class.h"
+	"./function/delete_class.h"
+	"./function/modify_class.h"
+	"./view.h"
+
+1555567386 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\add_class_usecase.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"add_class_usecase.h"
+	"../db/db.h"
+
+1555567399 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\delete_class_usecase.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"delete_class_usecase.h"
+	"../db/db.h"
+
+1555569756 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\modify_class_usecase.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"modify_class_usecase.h"
+	"../db/db.h"
+
+1555663222 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\search_class_usecase.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"search_class_usecase.h"
+	"../db/db.h"
+
+1555663198 source:c:\users\eden\dropbox\研究所\_軟體架構\hw2\view.cpp
+	"view.h"
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+
+1555663326 c:\users\eden\dropbox\研究所\_軟體架構\hw2\view.h
+
+1555832323 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\db\db.cpp
+	<stdio.h>
+	"db.h"
+
+1555832291 d:\users\eden\dropbox\研究所\_軟體架構\hw2\db\db.h
+	"sqlite3.h"
+
+1553535598 d:\users\eden\dropbox\研究所\_軟體架構\hw2\db\sqlite3.h
+	<stdarg.h>
+
+1553535598 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\db\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
+
+1556108804 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\add_class.cpp
+	"../usecase/add_class_usecase.h"
+
+1556108804 d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\add_class.h
+	<string>
+
+1556106816 d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\add_class_usecase.h
+	<string>
+
+1556108882 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\delete_class.cpp
+	"../usecase/delete_class_usecase.h"
+
+1556108875 d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\delete_class.h
+	<string>
+
+1556108236 d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\delete_class_usecase.h
+	<string>
+
+1556105839 d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\search_class_usecase.h
+
+1555833870 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\modify_class.cpp
+	"../usecase/modify_class_usecase.h"
+
+1556110212 d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\modify_class.h
+	<string>
+
+1556110126 d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\modify_class_usecase.h
+	<string>
+
+1555826040 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\search_class.cpp
+	"../usecase/search_class_usecase.h"
+
+1555826162 d:\users\eden\dropbox\研究所\_軟體架構\hw2\function\search_class.h
+
+1555832370 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\main.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"./view.h"
+
+1556108875 d:\users\eden\dropbox\研究所\_軟體架構\hw2\view.h
+	<string>
+
+1556108805 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\add_class_usecase.cpp
+	"../dao/class_dao.h"
+
+1556108906 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\delete_class_usecase.cpp
+	"../dao/class_dao.h"
+
+1556110170 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\modify_class_usecase.cpp
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"modify_class_usecase.h"
+	"../dao/class_dao.h"
+
+1556105698 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\usecase\search_class_usecase.cpp
+	"../dao/class_dao.h"
+
+1556110212 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\view.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string>
+	<windows.h>
+	"./function/search_class.h"
+	"./function/add_class.h"
+	"./function/delete_class.h"
+	"./function/modify_class.h"
+
+1556110843 source:d:\users\eden\dropbox\研究所\_軟體架構\hw2\dao\class_dao.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<windows.h>
+	"class_dao.h"
+	"../db/db.h"
+
+1556110898 d:\users\eden\dropbox\研究所\_軟體架構\hw2\dao\class_dao.h
+

@@ -19,10 +19,9 @@ public:
     }
 
 
-    /*
+
     void createCourse(string className,string classDetail,string forWho,
                       int price,string attention,string note,bool &outputResult){
-
         vector<string> input;
         input.push_back(className);
         input.push_back(classDetail);
@@ -30,9 +29,9 @@ public:
         input.push_back(std::to_string(price));
         input.push_back(attention);
         input.push_back(note);
+        course.createCourse(input);
         outputResult = _dao->createCourse(input);
-
-    }*/
+    }
 
     void deleteCourse(int id,bool &deleteResult){
         course.deleteCourse(id);

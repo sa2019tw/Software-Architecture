@@ -1,32 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "delete_class_usecase.h"
-#include "../db/db.h"
+ï»¿#include "delete_class_usecase.h"
+#include "../dao/class_dao.h"
 
 using namespace std;
 
-void DeleteClass(const string& sName){
-    string strSql = "";
-    strSql += "delete from class where name='";
-    strSql += sName;
-    strSql += "';";
-
-    char* cErrMsg;
-    int nRes = sqlite3_exec(pDB , strSql.c_str() ,0 ,0, &cErrMsg);
-    if (nRes != SQLITE_OK){
-        SetTextToRed();
-        printf("§R°£½Òµ{¥¢±Ñ\: %s\n", cErrMsg);
-        SetTextToNormal();
-        //return false;
-    }
-    else{
-        SetTextToGreen();
-        printf("§R°£¡m%s¡n½Òµ{¦¨¥\\\n\n", sName.c_str());
-        SetTextToNormal();
-    }
-
-    //return true;
+void DelSelectClassName(){
+    SelectClassNameDao();
 }
+
+int DelSelectCheckClassName(const string& sName){
+    return SelectCheckClassNameDao(sName);
+}
+
+void DeleteClass(const string& sName){
+    DeleteClassDao(sName);
+}
+
+void DelSelectClassOne(const string& sName){
+    SelectClassOneDao(sName);
+}
+
+
+
+
+

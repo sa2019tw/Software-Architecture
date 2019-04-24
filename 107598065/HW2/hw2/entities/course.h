@@ -42,9 +42,6 @@ public:
         vector<vector<string>>::iterator itData;
         vector<string>::iterator it;
         for(itData = _courseData.begin();itData != _courseData.end();++itData){
-//            for(it = (*itData).begin();it != (*itData).end();++it){
-//                cout<<"it = "<<(*it)<<endl;
-//            }
             allCourseName.push_back((*itData)[0]);
         }
         return allCourseName;

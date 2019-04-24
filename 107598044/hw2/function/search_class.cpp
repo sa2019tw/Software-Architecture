@@ -1,16 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "search_class.h"
+ï»¿#include "search_class.h"
 #include "../usecase/search_class_usecase.h"
 
-using namespace std;
-
-
-void search_class()
-{
-    printf("©Ò¦³½Òµ{¦p¤U:\n\n");
+void function_SelectClass(){
     SelectClass();
 }

@@ -2,8 +2,8 @@ package usecasetest;
 
 import dao.CourseDaoInterface;
 import dao.InMemoryCourseDao;
-import io.UseCaseError;
-import io.UseCaseInput;
+import usecase.io.CreatUseCaseIO.CreatUseCaseError;
+import usecase.io.CreatUseCaseIO.CreatUseCaseInput;
 import model.Course;
 import usecase.CreateCourseUseCase;
 
@@ -22,7 +22,7 @@ public class CreateCourseUseCaseTest {
 
     @org.junit.Test
     public void CreateCourseUseCaseTest() throws SQLException {
-        UseCaseInput useCaseInput = new UseCaseInput(
+        CreatUseCaseInput creatUseCaseInput = new CreatUseCaseInput(
                 1,
                 "CleanArchitercture",
                 "大一",
@@ -31,8 +31,8 @@ public class CreateCourseUseCaseTest {
                 "",
                 "remark"
         );
-        UseCaseError useCaseError = new UseCaseError();
-        createCourseUseCase.creat(useCaseInput, useCaseError);
+        CreatUseCaseError creatUseCaseError = new CreatUseCaseError();
+        createCourseUseCase.creat(creatUseCaseInput, creatUseCaseError);
         Course actual = dao.getcourseinfo(1);
         assertEquals("CleanArchitercture", actual.getName());
     }

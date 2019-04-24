@@ -1,74 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "add_class.h"
+ï»¿#include "add_class.h"
 #include "../usecase/add_class_usecase.h"
 
 using namespace std;
 
-void add_class()
-{
-    char name[100], description[100], target[100], price[100], attention[100], note[100], newname[100], minus_one[5]="-1", empty_class[5]="";
-    printf("-----·s¼W½Òµ{-----\n\n");
-    SetTextToBlue();
-    printf("¿é¤J½Òµ{¦WºÙ: ");
-    gets(name);
-    SetTextToNormal();
-    SelectCheckClassName(name);
-    if (check_class_exist == 1)
-    {
-        RedMessage("¤w¦s¦b¬Û¦P¦WºÙ¤§½Òµ{¡I");
-        printf("\n");
-    }
-    else if (check_class_exist == 0 && strcmp (name, empty_class) == 0)
-    {
-        RedMessage("½Òµ{¤£±o¯dªÅ¡I");
-        printf("\n");
-    }
-    else
-    {
-        SetTextToBlue();
-        printf("¿é¤J½Òµ{»¡©ú: ");
-        gets(description);
-        printf("¿é¤J½Òµ{¾A¦Xªº¹ï¶H: ");
-        gets(target);
-        printf("¿é¤J½Òµ{©w»ù: ");
-        gets(price);
-        printf("¿é¤J½Òµ{ª`·N¨Æ¶µ: ");
-        gets(attention);
-        printf("¿é¤J½Òµ{³Æµù: ");
-        gets(note);
-        SetTextToNormal();
-        printf("\n[        ½Òµ{¦WºÙ        ][        ½Òµ{»¡©ú        ][        ½Òµ{¹ï¶H        ][        ½Òµ{©w»ù        ][        ª`·N¨Æ¶µ        ][        ½Òµ{³Æµù        ]\n");
-        printf(" ------------------------  ------------------------  ------------------------  ------------------------  ------------------------  ------------------------ \n");
-        printf("%26s%26s%26s%26s%26s%26s\n", name, description, target, price, attention, note);
-        SetTextToBlue();
-        printf("\n­Y½T©w­n·s¼W¡A½Ð¦A¿é¤J¤@¦¸½Ò¦W¡A§_«h¿é¤J-1¸õ¥X: ");
-        while(1)
-        {
-            gets(newname);
-            if (strcmp (name, newname) == 0)
-            {
-                system("cls");
-                AddClass(name, description, target, price, attention, note);
-                SetTextToNormal();
-                break;
-            }
-            else if (strcmp (minus_one, newname) == 0)
-            {
-                system("cls");
-                SetTextToNormal();
-                break;
-            }
-            else
-            {
-                RedMessage("¿é¤J¿ù»~¡I");
-                SetTextToBlue();
-                printf("­Y½T©w­n·s¼W¡A½Ð¦A¿é¤J¤@¦¸½Ò¦W¡A§_«h¿é¤J-1¸õ¥X: ");
-            }
-        }
-    }
+int function_AddSelectCheckClassName(const string& sName){
+    return AddSelectCheckClassName(sName);
+}
 
+void function_AddClass(const string& sName, const string& sDescription, const string& sTarget, const string& sPrice, const string& sAttention, const string& sNote){
+    AddClass(sName, sDescription, sTarget, sPrice, sAttention, sNote);
 }

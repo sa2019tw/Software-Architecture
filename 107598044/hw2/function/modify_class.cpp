@@ -1,100 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "modify_class.h"
+ï»¿#include "modify_class.h"
 #include "../usecase/modify_class_usecase.h"
-#include "../usecase/search_class_usecase.h"
 
 using namespace std;
 
-void modify_class()
-{
-    int modify;
-    char name[100], aa[50], description[100], target[100], price[100], attention[100], note[100], newname[100], empty_class[5]="";
-    printf("-----½Òµ{½s¿è-----\n\n");
-    SelectClassName();
-    SetTextToBlue();
-    printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{: ");
-    gets(name);
-    SetTextToNormal();
-    SelectCheckClassName(name);
-    if (check_class_exist == 0)
-    {
-        RedMessage("½Òµ{¤£¦s¦b¡I");
-        printf("\n");
-    }
-    else
-    {
-        modify = 0;
-        while(modify!=7)
-        {
-            SelectClassOne(name);
-            printf("1. ­×§ï¡m%s¡n½Òµ{¦WºÙ\n", name);
-            printf("2. ­×§ï¡m%s¡n½Òµ{»¡©ú\n", name);
-            printf("3. ­×§ï¡m%s¡n½Òµ{¾A¦Xªº¹ï¶H\n", name);
-            printf("4. ­×§ï¡m%s¡n½Òµ{©w»ù\n", name);
-            printf("5. ­×§ï¡m%s¡n½Òµ{ª`·N¨Æ¶µ\n", name);
-            printf("6. ­×§ï¡m%s¡n½Òµ{³Æµù\n", name);
-            printf("7. Â÷¶}½s¿è¼Ò¦¡\n");
-            SetTextToBlue();
-            printf("½Ð¿é¤J¤W­±©Ò¹ïÀ³ªº¼Æ¦r: ");
-            scanf("%d", &modify);
-            gets(aa);
-            switch (modify)
-            {
-            case 1:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·s¦WºÙ: ");
-                gets(newname);
-                if(strcmp (newname, empty_class) == 0)
-                {
-                    system("cls");
-                    RedMessage("¿ù»~¡A½Òµ{¤£±o¯dªÅ¡I");
-                    break;
-                }
-                system("cls");
-                ModifyClassName(name, newname);
-                strcpy(name, newname);
-                break;
-            case 2:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·s»¡©ú: ");
-                gets(description);
-                system("cls");
-                ModifyClassDescription(name, description);
-                break;
-            case 3:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·s¾A¦Xªº¹ï¶H: ");
-                gets(target);
-                system("cls");
-                ModifyClassTarget(name, target);
-                break;
-            case 4:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·s©w»ù: ");
-                gets(price);
-                system("cls");
-                ModifyClassPrice(name, price);
-                break;
-            case 5:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·sª`·N¨Æ¶µ: ");
-                gets(attention);
-                system("cls");
-                ModifyClassAttention(name, attention);
-                break;
-            case 6:
-                printf("½Ð¿é¤J±ý­×§ï¤§½Òµ{·s³Æµù: ");
-                gets(note);
-                system("cls");
-                ModifyClassNote(name, note);
-                break;
-            case 7:
-                SetTextToNormal();
-                break;
-            default:
-                RedMessage("¿é¤J¿ù»~¡A½Ð­«·s¿é¤J¡I");
-            }
-        }
-        system("cls");
-    }
+void function_ModifySelectClassName(){
+    ModifySelectClassName();
+}
 
+int function_ModifySelectCheckClassName(const string& sName){
+    return ModifySelectCheckClassName(sName);
+}
+
+void function_ModifySelectClassOne(const string& sName){
+    ModifySelectClassOne(sName);
+}
+
+void function_ModifyClassName(const string& sName, const string& sNewName){
+    ModifyClassName(sName, sNewName);
+}
+
+void function_ModifyClassDescription(const string& sName, const string& sNewDescription){
+    ModifyClassDescription(sName, sNewDescription);
+}
+
+void function_ModifyClassTarget(const string& sName, const string& sNewTarget){
+    ModifyClassTarget(sName, sNewTarget);
+}
+
+void function_ModifyClassPrice(const string& sName, const string& sNewPrice){
+    ModifyClassPrice(sName, sNewPrice);
+}
+
+void function_ModifyClassAttention(const string& sName, const string& sNewAttention){
+    ModifyClassAttention(sName, sNewAttention);
+}
+
+void function_ModifyClassNote(const string& sName, const string& sNewNote){
+    ModifyClassNote(sName, sNewNote);
 }

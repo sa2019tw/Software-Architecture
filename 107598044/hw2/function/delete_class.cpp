@@ -1,56 +1,20 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "delete_class.h"
+ï»¿#include "delete_class.h"
 #include "../usecase/delete_class_usecase.h"
-#include "../usecase/search_class_usecase.h"
 
 using namespace std;
 
-void delete_class()
-{
-    char name[100], newname[100], minus_one[5]="-1";
-    printf("-----§R°£½Òµ{-----\n\n");
-    SelectClassName();
-    SetTextToBlue();
-    printf("½Ð¿é¤J­n§R°£ªº½Òµ{: ");
-    gets(name);
-    SetTextToNormal();
-    SelectCheckClassName(name);
-    if (check_class_exist == 0)
-    {
-        RedMessage("½Òµ{¤£¦s¦b¡I");
-        printf("\n");
-    }
-    else if (check_class_exist == 1)
-    {
-        SelectClassOne(name);
-        SetTextToBlue();
-        printf("­Y½T©w­n§R°£¡A½Ð¦A¿é¤J¤@¦¸½Ò¦W¡A§_«h¿é¤J-1¸õ¥X: ");
-        while (1)
-        {
-            gets(newname);
-            if (strcmp (name, newname) == 0)
-            {
-                system("cls");
-                DeleteClass(name);
-                SetTextToNormal();
-                break;
-            }
-            else if (strcmp (minus_one, newname) == 0)
-            {
-                system("cls");
-                SetTextToNormal();
-                break;
-            }
-            else
-            {
-                RedMessage("¿é¤J¿ù»~¡I");
-                SetTextToBlue();
-                printf("­Y½T©w­n§R°£¡A½Ð¦A¿é¤J¤@¦¸½Ò¦W¡A§_«h¿é¤J-1¸õ¥X: ");
-            }
-        }
-    }
+void function_DelSelectClassName(){
+    DelSelectClassName();
+}
+
+int function_DelSelectCheckClassName(const string& sName){
+    return DelSelectCheckClassName(sName);
+}
+
+void function_DeleteClass(const string& sName){
+    DeleteClass(sName);
+}
+
+void function_DelSelectClassOne(const string& sName){
+    DelSelectClassOne(sName);
 }

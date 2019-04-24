@@ -25,21 +25,8 @@
                     <input type="text" id="name" name="name" class="form-control" required>
                     <label for="content" class="col-form-label">課程說明</label>
                     <input type="text" id="content" name="content" class="form-control">
-                    <label for="one" class="col-form-label">適合對象</label>
-                    <br>
-                    <input type="checkbox" id="one" name="member" class="form-checkbox-input" value="大一">
-                    <label class="form-checkbox-label">大一</label>
-                    <input type="checkbox" id="two" name="member" class="form-checkbox-input" value="大二">
-                    <label class="form-checkbox-label">大二</label>
-                    <input type="checkbox" id="three" name="member" class="form-checkbox-input" value="大三">
-                    <label class="form-checkbox-label">大三</label>
-                    <input type="checkbox" id="four" name="member" class="form-checkbox-input" value="大四">
-                    <label class="form-checkbox-label">大四</label>
-                    <input type="checkbox" id="five" name="member" class="form-checkbox-input" value="碩一">
-                    <label class="form-checkbox-label">碩一</label>
-                    <input type="checkbox" id="six" name="member" class="form-checkbox-input" value="碩二">
-                    <label class="form-checkbox-label">碩二</label>
-                    <br>
+                    <label for="member" class="col-form-label">適合對象</label>
+                    <input type="text" id="member" name="member" class="form-control">
                     <label for="price" class="col-form-label">定價</label>
                     <input type="text" id="price" name="price" class="form-control">
                     <label for="notice" class="col-form-label">注意事項</label>

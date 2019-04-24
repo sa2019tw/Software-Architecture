@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<course>
+  <Table1>
+    <Title>軟體架構</Title>
+    <Description>軟體架構總覽</Description>
+    <Suitable>資工所</Suitable>
+    <Price>100000</Price>
+    <Notice>無</Notice>
+    <Other>無</Other>
+  </Table1>
+  <Table1>
+    <Title>物件導向分析與設計</Title>
+    <Description>探討應用物件導向方法從事軟體設計的過程與步驟</Description>
+    <Suitable>資工所</Suitable>
+    <Price>200000</Price>
+    <Notice>無</Notice>
+    <Other>無</Other>
+  </Table1>
+  <Table1>
+    <Title>資訊檢索與應用</Title>
+    <Description>探討如何有效的在大量文字及多媒體文件中搜尋使用者想要的資訊</Description>
+    <Suitable>資工所</Suitable>
+    <Price>300000</Price>
+    <Notice>無</Notice>
+    <Other>無</Other>
+  </Table1>
+</course>

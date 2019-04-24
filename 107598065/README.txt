@@ -28,4 +28,6 @@
 1.開啟Qt Creator
 2.選取File->Open File or Project...
 3.找到hw1專案的地方，選取副檔名為.pro檔的，並開啟
-4.先(Ctrl+B)建置專案，再(Ctrl+R)執行專案
+4.第一次開啟因為是從其他地方來的專案，要先設定configure，所以請按下configure的按鈕
+5.先(Ctrl+B)建置專案，再(Ctrl+R)執行專案
+

@@ -1,4 +1,33 @@
-ï»¿# å¦‚ä½•ä½¿ç”¨
-* IntelliJ > Import Project > Software-Architecture/107598029/HW1
-* `Maven` > tomcat7 > tomcat7:run
-* Open URLï¼šhttp://localhost:8080
+# ±ø¥ó
+* IDE¡GIntlliJ IDEA 2018.3.5 x64
+* DataBase¡GMySQL
+
+# ª`·N¨Æ¶µ
+
+* ­º¥ý¶·©ó MySQL «Ø¥ß¸ê®Æ®w
+* ±µµÛ¦¹¸ê®Æ®w¤U«Ø¥ß¦¹ªí®æ
+
+* DataBase Schema
+```
+CREATE TABLE `coursesys` (
+  `courseid` int(11) NOT NULL AUTO_INCREMENT,
+  `coursename` varchar(45) NOT NULL,
+  `courselevel` varchar(45) DEFAULT NULL,
+  `courseprice` int(11) DEFAULT NULL,
+  `coursedescription` varchar(45) DEFAULT NULL,
+  `precautions` varchar(45) DEFAULT NULL,
+  `remarks` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`courseid`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+
+```
+
+* ±µµÛ¦b Dbconn.java > ³]©w¸ê®Æ®w`¦WºÙ`¥H¤Î`±b¸¹»P±K½X`
+
+# ¦p¦ó¨Ï¥Î
+
+* IntelliJ > File > import > Software-Architecture/107598029/HW1
+
+* Maven > Plugins > tomcat7 > `tomcat7:run`
+
+* Open URL¡Ghttp://localhost:8080

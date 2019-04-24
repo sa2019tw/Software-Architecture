@@ -1,16 +1,11 @@
 #ifndef DELETE_CLASS_H
 #define DELETE_CLASS_H
 
-void RedMessage(std::string message);
-void SetTextToGreen();
-void SetTextToRed();
-void SetTextToBlue();
-void SetTextToNormal();
+#include <string>
 
-void SelectClassName();
-void SelectCheckClassName(const std::string& sName);
-void SelectClassOne(const std::string& sName);
-void delete_class();
+void DelSelectClassName();
+int DelSelectCheckClassName(const std::string& sName);
 void DeleteClass(const std::string& sName);
+void DelSelectClassOne(const std::string& sName);
 
 #endif

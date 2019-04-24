@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="dao/class_dao.cpp" />
+		<Unit filename="dao/class_dao.h" />
 		<Unit filename="db/db.cpp" />
 		<Unit filename="db/db.h" />
 		<Unit filename="db/sqlite3.c">
@@ -57,6 +59,8 @@
 		<Unit filename="usecase/modify_class_usecase.h" />
 		<Unit filename="usecase/search_class_usecase.cpp" />
 		<Unit filename="usecase/search_class_usecase.h" />
+		<Unit filename="view.cpp" />
+		<Unit filename="view.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -1,8 +1,6 @@
 import Controller.Controller;
 import Dao.MockCourseDao;
-import Presenter.Presenter;
-import Presenter.ViewModel;
-import UseCase.UseCaseDistributor;
+import UseCase.UseCaseFactory;
 import View.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +16,8 @@ public class main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
             Parent root = loader.load();
             View view = loader.getController();
-            loader.setController(new Controller(new UseCaseDistributor(new MockCourseDao()), new Presenter(new ViewModel())));
+//            loader.setController(new Controller(new UseCaseDistributor(new MockCourseDao()), new Presenter(new ViewModel())));
+            loader.setController(new Controller(new UseCaseFactory(new MockCourseDao())));
             view.initialize(loader.getController());
 
             primaryStage.setTitle("Course Management System");

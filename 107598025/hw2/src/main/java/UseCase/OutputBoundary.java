@@ -1,17 +1,12 @@
 package UseCase;
 
-import Output.Output;
+import Output.OutputData;
 
 import java.util.List;
 
 public interface OutputBoundary {
-    Output getOutput();
 
-    List<Output> getOutputList();
+    void setOutputData(OutputData outputData);
+    void setOutputDataList(List<OutputData> outputDataList);
 
-    void setOutputList(List<Output> outputList);
-
-    void setOutput(Output output);
-
-    boolean stateSuccess(boolean success);
 }

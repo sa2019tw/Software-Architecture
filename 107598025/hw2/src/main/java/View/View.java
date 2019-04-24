@@ -1,16 +1,12 @@
 package View;
 
 import Controller.Controller;
-import Output.Output;
-import UseCase.OutputBoundary;
+import Controller.InputModel;
 import Presenter.ViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class View {
@@ -46,28 +42,27 @@ public class View {
     public Button deleteButton = new Button();
 
     @FXML
-    public TableView<Output> courseListTable = new TableView<>();;
+    public TableView<ViewModel> courseListTable = new TableView<>();;
 
     @FXML
-    public TableColumn<Output, String> courseNameColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> courseNameColumn = new TableColumn<>();
 
     @FXML
-    public TableColumn<Output, String> courseDescriptionColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> courseDescriptionColumn = new TableColumn<>();
 
     @FXML
-    public TableColumn<Output, String> courseTargetColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> courseTargetColumn = new TableColumn<>();
 
     @FXML
-    public TableColumn<Output, String> coursePriceColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> coursePriceColumn = new TableColumn<>();
 
     @FXML
-    public TableColumn<Output, String> courseAttentionColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> courseAttentionColumn = new TableColumn<>();
 
     @FXML
-    public TableColumn<Output, String> courseRemarkColumn = new TableColumn<>();
+    public TableColumn<ViewModel, String> courseRemarkColumn = new TableColumn<>();
 
     private Controller controller;
-    private OutputBoundary presenter;
     private ViewModel viewModel;
 
     public void initialize(Controller controller) {
@@ -76,32 +71,58 @@ public class View {
     }
 
     public void addButtonClicked () {
-        checkPriceEmpty();
-        controller.addCourse(courseName.getText(), courseDescription.getText(), courseTarget.getText(), Integer.parseInt(coursePrice.getText()), courseAttention.getText(), courseRemark.getText());
-        refresh();
-        clearInputBox();
+        if(!courseName.getText().isEmpty()) {
+            checkPriceEmpty();
+            InputModel inputModel = collectData();
+
+            viewModel = controller.addCourse(inputModel);
+
+            alertDialogBox(viewModel.getIsSuccess());
+
+            refresh();
+            clearInputBox();
+        }
+    }
+
+    private void alertDialogBox(boolean isSuccess){
+        Alert alert;
+        if(isSuccess){
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Success!");
+        }
+        else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Failed!");
+        }
+        alert.showAndWait();
     }
 
     public void retrieveButtonClicked () {
         if(!courseName.getText().isEmpty()){
             checkPriceEmpty();
-            controller.retrieveOneCourse(courseName.getText(), courseDescription.getText(), courseTarget.getText(), Integer.parseInt(coursePrice.getText()), courseAttention.getText(), courseRemark.getText());
-            presenter = controller.getPresenter();
-            Output output = presenter.getOutput();
+            InputModel inputModel = collectData();
+            viewModel = controller.retrieveOneCourse(inputModel);
 
-            courseName.setText(output.getCourseName());
-            courseDescription.setText(output.getCourseDescription());
-            courseTarget.setText(output.getCourseTarget());
-            coursePrice.setText(String.valueOf(output.getCoursePrice()));
-            courseAttention.setText(output.getCourseAttention());
-            courseRemark.setText(output.getCourseRemark());
+            courseName.setText(viewModel.getCourseName());
+            courseDescription.setText(viewModel.getCourseDescription());
+            courseTarget.setText(viewModel.getCourseTarget());
+            coursePrice.setText(viewModel.getCoursePrice());
+            courseAttention.setText(viewModel.getCourseAttention());
+            courseRemark.setText(viewModel.getCourseRemark());
         }
     }
 
     public void updateButtonClicked () {
         if(!courseName.getText().isEmpty()) {
             checkPriceEmpty();
-            controller.updateCourse(courseName.getText(), courseDescription.getText(), courseTarget.getText(), Integer.parseInt(coursePrice.getText()), courseAttention.getText(), courseRemark.getText());
+            InputModel inputModel = collectData();
+            viewModel = controller.updateCourse(inputModel);
+
+            alertDialogBox(viewModel.getIsSuccess());
 
             refresh();
             clearInputBox();
@@ -111,14 +132,24 @@ public class View {
     public void deleteButtonClicked () {
         if(!courseName.getText().isEmpty()) {
             checkPriceEmpty();
-            controller.deleteCourse(courseName.getText(), courseDescription.getText(), courseTarget.getText(), Integer.parseInt(coursePrice.getText()), courseAttention.getText(), courseRemark.getText());
+            InputModel inputModel = collectData();
+            viewModel = controller.deleteCourse(inputModel);
+            alertDialogBox(viewModel.getIsSuccess());
             refresh();
             clearInputBox();
         }
     }
 
-    private void refresh () {
+    private InputModel collectData(){
+        return new InputModel(courseName.getText(),
+                                courseDescription.getText(),
+                                courseTarget.getText(),
+                                coursePrice.getText(),
+                                courseAttention.getText(),
+                                courseRemark.getText());
+    }
 
+    private void refresh () {
         courseListTable.setItems(getCourseList());
 
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -129,12 +160,10 @@ public class View {
         courseRemarkColumn.setCellValueFactory(new PropertyValueFactory<>("courseRemark"));
     }
 
-    private ObservableList<Output> getCourseList() {
-        ObservableList<Output> courseList = FXCollections.observableArrayList();
-
-        controller.retrieveAllCourse();
-        presenter = controller.getPresenter();
-        courseList.addAll(presenter.getOutputList());
+    private ObservableList<ViewModel> getCourseList() {
+        ObservableList<ViewModel> courseList = FXCollections.observableArrayList();
+        viewModel = controller.retrieveAllCourse();
+        courseList.addAll(viewModel.getViewModelList());
 
         return courseList;
     }

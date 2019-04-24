@@ -39,9 +39,9 @@ public class CourseDao implements ICourseDao {
         return true;
     }
 
-    public Course retrieveOneCourse(Course course) {
+    public Course retrieveOneCourse(String courseName) {
         connectToDatabase();
-        String sql = "SELECT * FROM course WHERE course_name_PK = '" + course.getCourseName() + "'";
+        String sql = "SELECT * FROM course WHERE course_name_PK = '" + courseName + "'";
         System.out.println(sql);
         Statement statement;
         Course courseTemp = new Course();
@@ -103,7 +103,7 @@ public class CourseDao implements ICourseDao {
         return course;
     }
 
-    public void updateCourse(Course course) {
+    public boolean updateCourse(Course course) {
         connectToDatabase();
         try {
             String sql = "UPDATE course SET course_name_PK = '" + course.getCourseName() + "', course_description = '" + course.getCourseDescription() + "', course_target = '" + course.getCourseTarget() + "', course_price = " + course.getCoursePrice() + ", course_attention = '" + course.getCourseAttention() + "', course_remark = '" + course.getCourseRemark() + "' WHERE course_name_PK = '" + course.getCourseName() + "'";
@@ -111,17 +111,19 @@ public class CourseDao implements ICourseDao {
             Statement statement= connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("Updated");
+            return true;
         } catch (Exception e){
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
         }
+        return false;
     }
 
-    public void deleteCourse(Course course) {
+    public boolean deleteCourse(String courseName) {
         connectToDatabase();
         try {
-            String sql = "DELETE FROM course WHERE course_name_PK = '" + course.getCourseName() + "'";
+            String sql = "DELETE FROM course WHERE course_name_PK = '" + courseName + "'";
             System.out.println(sql);
             Statement statement= connection.createStatement();
             statement.executeUpdate(sql);
@@ -131,5 +133,6 @@ public class CourseDao implements ICourseDao {
         } finally {
             closeDatabase();
         }
+        return true;
     }
 }

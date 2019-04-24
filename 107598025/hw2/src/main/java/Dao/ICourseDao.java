@@ -7,11 +7,11 @@ public interface ICourseDao {
 
     boolean addCourse(Course course);
 
-    Course retrieveOneCourse(Course course);
+    Course retrieveOneCourse(String courseName);
 
     List<Course> retrieveAllCourse();
 
-    void updateCourse(Course course);
+    boolean updateCourse(Course course);
 
-    void deleteCourse(Course course);
+    boolean deleteCourse(String courseName);
 }

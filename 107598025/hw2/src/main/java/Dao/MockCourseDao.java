@@ -10,13 +10,19 @@ public class MockCourseDao implements ICourseDao {
     private List<Course> courses = new ArrayList<>();
 
     public boolean addCourse(Course course) {
-        courses.add(course);
-        return courses.size() > 0;
+        try{
+            courses.add(course);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        System.out.println("added");
+        return true;
     }
 
-    public Course retrieveOneCourse(Course course) {
+    public Course retrieveOneCourse(String courseName) {
         for (int i = 0; i < courses.size(); i++) {
-            if (courses.get(i).getCourseName().equals(course.getCourseName())) {
+            if (courses.get(i).getCourseName().equals(courseName)) {
                 return courses.get(i);
             }
         }
@@ -27,20 +33,24 @@ public class MockCourseDao implements ICourseDao {
         return courses;
     }
 
-    public void updateCourse(Course course) {
+    public boolean updateCourse(Course course) {
         for (Course temp_course : courses) {
             if (temp_course.getCourseName().equals(course.getCourseName())) {
                 Course c = new Course(course.getCourseName(), course.getCourseDescription(), course.getCourseTarget(), course.getCoursePrice(), course.getCourseAttention(), course.getCourseRemark());
                 courses.set(courses.indexOf(temp_course), c);
+                return true;
             }
         }
+        return false;
     }
 
-    public void deleteCourse(Course course) {
+    public boolean deleteCourse(String courseName) {
         for (int i = 0; i < courses.size(); i++) {
-            if (courses.get(i).getCourseName().equals(course.getCourseName())) {
+            if (courses.get(i).getCourseName().equals(courseName)) {
                 courses.remove(i);
+                return true;
             }
         }
+        return false;
     }
 }

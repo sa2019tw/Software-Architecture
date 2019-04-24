@@ -1,45 +1,86 @@
 package Controller;
 
-import Input.Input;
-import UseCase.OutputBoundary;
+import Output.RetrieveOneCourseOutputData;
+import Presenter.*;
+import UseCase.AddCourseUseCase.AddCourseInput;
+import UseCase.DeleteCourseUseCase.DeleteCourseInput;
+import UseCase.RetrieveAllCourseUseCase.RetrieveAllCourseInput;
+import UseCase.RetrieveOneCourseUseCase.RetrieveOneCourseInput;
+import UseCase.UpdateCourseUseCase.UpdateCourseInput;
+import UseCase.UseCase;
+import UseCase.UseCaseFactory;
 
 public class Controller {
 
-    private InputBoundary useCaseDistributor;
-    private OutputBoundary presenter;
-    private Input input;
+    private UseCaseFactory useCaseFactory;
 
-    public Controller(InputBoundary useCaseInteractor, OutputBoundary presenter){
-        this.useCaseDistributor = useCaseInteractor;
-        this.presenter = presenter;
+    public Controller(UseCaseFactory useCaseFactory){
+        this.useCaseFactory = useCaseFactory;
     }
 
-    public void addCourse(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
-        input = new Input(courseName, courseDescription, courseTarget, coursePrice, courseAttention, courseRemark);
-        useCaseDistributor.executeAddCourseUseCase(input, presenter);
+    public ViewModel addCourse(InputModel inputModel){
+        AddCourseInput addCourseInput = new AddCourseInput(inputModel.getCourseName(),
+                                        inputModel.getCourseDescription(),
+                                        inputModel.getCourseTarget(),
+                                        Integer.parseInt(inputModel.getCoursePrice()),
+                                        inputModel.getCourseAttention(),
+                                        inputModel.getCourseRemark());
+
+        AddCoursePresenter addCoursePresenter = new AddCoursePresenter();
+
+        UseCase addCourseUseCase = useCaseFactory.createAddCourseUseCase();
+        addCourseUseCase.execute(addCourseInput, addCoursePresenter);
+
+        addCoursePresenter.buildViewModel();
+        return addCoursePresenter.getViewModel();
     }
 
-    public void retrieveOneCourse(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
-        input = new Input(courseName, courseDescription, courseTarget, coursePrice, courseAttention, courseRemark);
-        useCaseDistributor.executeRetrieveOneCourseUseCase(input, presenter);
+    public ViewModel retrieveOneCourse(InputModel inputModel){
+        RetrieveOneCourseInput retrieveOneCourseInput = new RetrieveOneCourseInput(inputModel.getCourseName());
+
+        RetrieveOneCoursePresenter retrieveOneCoursePresenter = new RetrieveOneCoursePresenter();
+        UseCase retrieveOneCourseUseCase = useCaseFactory.createRetrieveOneCourseUseCase();
+
+        retrieveOneCourseUseCase.execute(retrieveOneCourseInput, retrieveOneCoursePresenter);
+
+        retrieveOneCoursePresenter.buildViewModel();
+        return retrieveOneCoursePresenter.getViewModel();
     }
 
-    public void retrieveAllCourse(){
-        useCaseDistributor.executeRetrieveAllCourseUseCase(input, presenter);
+    public ViewModel retrieveAllCourse(){
+        RetrieveAllCourseInput retrieveAllCourseInput = new RetrieveAllCourseInput();
+        UseCase retrieveAllCourseUseCase = useCaseFactory.createRetrieveAllCourseUseCase();
+        RetrieveAllCoursePresenter retrieveAllCoursePresenter = new RetrieveAllCoursePresenter();
+        retrieveAllCourseUseCase.execute(retrieveAllCourseInput, retrieveAllCoursePresenter);
+
+        retrieveAllCoursePresenter.buildViewModel();
+        return retrieveAllCoursePresenter.getViewModel();
     }
 
-    public void updateCourse(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
-        input = new Input(courseName, courseDescription, courseTarget, coursePrice, courseAttention, courseRemark);
-        useCaseDistributor.executeUpdateCourseUseCase(input, presenter);
+    public ViewModel updateCourse(InputModel inputModel){
+        UpdateCourseInput updateCourseInput = new UpdateCourseInput(inputModel.getCourseName(),
+                                                        inputModel.getCourseDescription(),
+                                                        inputModel.getCourseTarget(),
+                                                        Integer.parseInt(inputModel.getCoursePrice()),
+                                                        inputModel.getCourseAttention(),
+                                                        inputModel.getCourseRemark());
+
+        UseCase updateCourseUseCase = useCaseFactory.createUpdateCourseUseCase();
+        UpdateCoursePresenter updateCoursePresenter = new UpdateCoursePresenter();
+        updateCourseUseCase.execute(updateCourseInput, updateCoursePresenter);
+
+        updateCoursePresenter.buildViewModel();
+        return updateCoursePresenter.getViewModel();
     }
 
-    public void deleteCourse(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
-        input = new Input(courseName, courseDescription, courseTarget, coursePrice, courseAttention, courseRemark);
-        useCaseDistributor.executeDeleteCourseUseCase(input, presenter);
-    }
+    public ViewModel deleteCourse(InputModel inputModel){
+        DeleteCourseInput deleteCourseInput = new DeleteCourseInput(inputModel.getCourseName());
+        UseCase deleteCourseUseCase = useCaseFactory.createDeleteOneCourseUseCase();
+        DeleteCoursePresenter deleteCoursePresenter = new DeleteCoursePresenter();
+        deleteCourseUseCase.execute(deleteCourseInput, deleteCoursePresenter);
 
-    public OutputBoundary getPresenter(){
-    return presenter;
+        deleteCoursePresenter.buildViewModel();
+        return deleteCoursePresenter.getViewModel();
     }
 
 }

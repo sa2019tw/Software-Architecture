@@ -2,7 +2,7 @@
 資料庫:
   1.使用mysql資料庫
   2.用SQL輸入以下語法
-  CREATE DATABASE `test` DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+  CREATE DATABASE `course` DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
   CREATE TABLE `course_system` (
   	`id` int(10) NOT NULL AUTO_INCREMENT,
   	`name` varchar(30) NOT NULL,

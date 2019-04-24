@@ -36,7 +36,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Main.fxml"));
         Parent root = loader.load();
 
-        Database database = new MemoryDatabase();
+        Database database = new SqliteDatabase();
         UseCaseFactory useCaseFactory =new UseCaseFactory(database);
         controller =new Controller(useCaseFactory);
 

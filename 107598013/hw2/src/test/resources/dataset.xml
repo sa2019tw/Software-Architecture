@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <course id="1"
+            title="database"
+            description="database description"
+            suitable_people="database suitable_people"
+            price="10000"
+            announcement="database announcement"
+            remark="database remark"/>
+    <course id="2"
+            title="system architecture"
+            description="system architecture description"
+            suitable_people="system architecture suitable_people"
+            price="20000"
+            announcement="system architecture announcement"
+            remark="system architecture remark"/>
+    <course id="3"
+            title="algorithm"/>
+</dataset>

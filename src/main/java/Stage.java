@@ -30,4 +30,12 @@ public class Stage {
     public void addMiniStage(MiniStage miniStage) {
         miniStages.add(miniStage);
     }
+
+    public MiniStage getMiniStage(String miniStageId) {
+        for(int i=0;i<miniStages.size();i++){
+            if(miniStages.get(i).getMinStageId().equals(miniStageId))
+                return miniStages.get(i);
+        }
+        throw new RuntimeException("MiniStage not found");
+    }
 }

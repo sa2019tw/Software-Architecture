@@ -11,11 +11,11 @@ import UseCase.UseCase;
 public class UpdateCourseUseCase implements UseCase {
     private ICourseDao courseDao;
 
-    public UpdateCourseUseCase(ICourseDao courseDao){
+    public UpdateCourseUseCase(ICourseDao courseDao) {
         this.courseDao = courseDao;
     }
 
-    public void execute(Input updateCourseInput, OutputBoundary updateCourseOutput){
+    public void execute(Input updateCourseInput, OutputBoundary updateCourseOutput) {
         Course course = new Course(updateCourseInput.getCourseName(),
                 updateCourseInput.getCourseDescription(),
                 updateCourseInput.getCourseTarget(),

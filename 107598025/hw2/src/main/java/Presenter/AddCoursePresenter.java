@@ -11,7 +11,7 @@ public class AddCoursePresenter implements OutputBoundary {
     private ViewModel viewModel;
     private boolean isSuccess;
 
-    public AddCoursePresenter(){
+    public AddCoursePresenter() {
         this.viewModel = new ViewModel();
     }
 

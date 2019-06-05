@@ -10,7 +10,7 @@ public class AddCourseInput implements Input {
     private String courseAttention;
     private String courseRemark;
 
-    public AddCourseInput(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
+    public AddCourseInput(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
         this.courseTarget = courseTarget;

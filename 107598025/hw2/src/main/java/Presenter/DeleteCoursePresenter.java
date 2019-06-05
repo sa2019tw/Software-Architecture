@@ -9,7 +9,7 @@ public class DeleteCoursePresenter implements OutputBoundary {
     private ViewModel viewModel;
     private boolean isSuccess;
 
-    public DeleteCoursePresenter(){
+    public DeleteCoursePresenter() {
         this.viewModel = new ViewModel();
     }
 

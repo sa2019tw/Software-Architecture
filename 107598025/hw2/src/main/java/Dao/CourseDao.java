@@ -12,7 +12,8 @@ import java.util.List;
 
 public class CourseDao implements ICourseDao {
 
-    private DBConnector dbConnector = new DBConnector();;
+    private DBConnector dbConnector = new DBConnector();
+    ;
     private Connection connection;
 
     private void connectToDatabase() {
@@ -31,7 +32,7 @@ public class CourseDao implements ICourseDao {
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("Added");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
@@ -48,10 +49,10 @@ public class CourseDao implements ICourseDao {
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 courseTemp = getData(resultSet);
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
@@ -70,12 +71,12 @@ public class CourseDao implements ICourseDao {
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Course course = getData(resultSet);
                 courseList.add(course);
                 System.out.println("pushed");
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
@@ -95,7 +96,7 @@ public class CourseDao implements ICourseDao {
                     resultSet.getInt(4),
                     resultSet.getString(5),
                     resultSet.getString(6));
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
@@ -108,11 +109,11 @@ public class CourseDao implements ICourseDao {
         try {
             String sql = "UPDATE course SET course_name_PK = '" + course.getCourseName() + "', course_description = '" + course.getCourseDescription() + "', course_target = '" + course.getCourseTarget() + "', course_price = " + course.getCoursePrice() + ", course_attention = '" + course.getCourseAttention() + "', course_remark = '" + course.getCourseRemark() + "' WHERE course_name_PK = '" + course.getCourseName() + "'";
             System.out.println(sql);
-            Statement statement= connection.createStatement();
+            Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("Updated");
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();
@@ -125,10 +126,10 @@ public class CourseDao implements ICourseDao {
         try {
             String sql = "DELETE FROM course WHERE course_name_PK = '" + courseName + "'";
             System.out.println(sql);
-            Statement statement= connection.createStatement();
+            Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("Deleted");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
         } finally {
             closeDatabase();

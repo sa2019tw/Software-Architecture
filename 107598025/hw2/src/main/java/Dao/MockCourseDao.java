@@ -10,9 +10,9 @@ public class MockCourseDao implements ICourseDao {
     private List<Course> courses = new ArrayList<>();
 
     public boolean addCourse(Course course) {
-        try{
+        try {
             courses.add(course);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

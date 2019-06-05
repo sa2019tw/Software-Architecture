@@ -15,11 +15,11 @@ public class ViewModel {
 
     private List<ViewModel> viewModelList;
 
-    public ViewModel(){
+    public ViewModel() {
         this.viewModelList = new ArrayList<>();
     }
 
-    public ViewModel(String courseName, String courseDescription, String courseTarget, String coursePrice, String courseAttention, String courseRemark){
+    public ViewModel(String courseName, String courseDescription, String courseTarget, String coursePrice, String courseAttention, String courseRemark) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
         this.courseTarget = courseTarget;
@@ -28,9 +28,13 @@ public class ViewModel {
         this.courseRemark = courseRemark;
     }
 
-    public List<ViewModel> getViewModelList(){return this.viewModelList;}
+    public List<ViewModel> getViewModelList() {
+        return this.viewModelList;
+    }
 
-    public void setViewModelList(List<ViewModel> viewModelList){this.viewModelList = viewModelList;}
+    public void setViewModelList(List<ViewModel> viewModelList) {
+        this.viewModelList = viewModelList;
+    }
 
     public boolean getIsSuccess() {
         return isSuccess;

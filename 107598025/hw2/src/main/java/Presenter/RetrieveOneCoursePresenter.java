@@ -9,7 +9,7 @@ public class RetrieveOneCoursePresenter implements OutputBoundary {
     private ViewModel viewModel;
     private OutputData outputData;
 
-    public RetrieveOneCoursePresenter(){
+    public RetrieveOneCoursePresenter() {
         this.viewModel = new ViewModel();
     }
 

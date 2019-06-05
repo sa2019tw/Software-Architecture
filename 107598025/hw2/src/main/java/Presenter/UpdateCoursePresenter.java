@@ -9,7 +9,7 @@ public class UpdateCoursePresenter implements OutputBoundary {
     private ViewModel viewModel;
     private boolean isSuccess;
 
-    public UpdateCoursePresenter(){
+    public UpdateCoursePresenter() {
         this.viewModel = new ViewModel();
     }
 

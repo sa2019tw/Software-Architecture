@@ -42,7 +42,8 @@ public class View {
     public Button deleteButton = new Button();
 
     @FXML
-    public TableView<ViewModel> courseListTable = new TableView<>();;
+    public TableView<ViewModel> courseListTable = new TableView<>();
+    ;
 
     @FXML
     public TableColumn<ViewModel, String> courseNameColumn = new TableColumn<>();
@@ -70,8 +71,8 @@ public class View {
         refresh();
     }
 
-    public void addButtonClicked () {
-        if(!courseName.getText().isEmpty()) {
+    public void addButtonClicked() {
+        if (!courseName.getText().isEmpty()) {
             checkPriceEmpty();
             InputModel inputModel = collectData();
 
@@ -84,15 +85,14 @@ public class View {
         }
     }
 
-    private void alertDialogBox(boolean isSuccess){
+    private void alertDialogBox(boolean isSuccess) {
         Alert alert;
-        if(isSuccess){
+        if (isSuccess) {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
             alert.setContentText("Success!");
-        }
-        else{
+        } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -101,8 +101,8 @@ public class View {
         alert.showAndWait();
     }
 
-    public void retrieveButtonClicked () {
-        if(!courseName.getText().isEmpty()){
+    public void retrieveButtonClicked() {
+        if (!courseName.getText().isEmpty()) {
             checkPriceEmpty();
             InputModel inputModel = collectData();
             viewModel = controller.retrieveOneCourse(inputModel);
@@ -116,8 +116,8 @@ public class View {
         }
     }
 
-    public void updateButtonClicked () {
-        if(!courseName.getText().isEmpty()) {
+    public void updateButtonClicked() {
+        if (!courseName.getText().isEmpty()) {
             checkPriceEmpty();
             InputModel inputModel = collectData();
             viewModel = controller.updateCourse(inputModel);
@@ -129,8 +129,8 @@ public class View {
         }
     }
 
-    public void deleteButtonClicked () {
-        if(!courseName.getText().isEmpty()) {
+    public void deleteButtonClicked() {
+        if (!courseName.getText().isEmpty()) {
             checkPriceEmpty();
             InputModel inputModel = collectData();
             viewModel = controller.deleteCourse(inputModel);
@@ -140,16 +140,16 @@ public class View {
         }
     }
 
-    private InputModel collectData(){
+    private InputModel collectData() {
         return new InputModel(courseName.getText(),
-                                courseDescription.getText(),
-                                courseTarget.getText(),
-                                coursePrice.getText(),
-                                courseAttention.getText(),
-                                courseRemark.getText());
+                courseDescription.getText(),
+                courseTarget.getText(),
+                coursePrice.getText(),
+                courseAttention.getText(),
+                courseRemark.getText());
     }
 
-    private void refresh () {
+    private void refresh() {
         courseListTable.setItems(getCourseList());
 
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -168,12 +168,12 @@ public class View {
         return courseList;
     }
 
-    private void checkPriceEmpty(){
-        if(coursePrice.getText().isEmpty())
+    private void checkPriceEmpty() {
+        if (coursePrice.getText().isEmpty())
             coursePrice.setText("0");
     }
 
-    private void clearInputBox(){
+    private void clearInputBox() {
         courseName.setText("");
         courseDescription.setText("");
         courseTarget.setText("");

@@ -10,27 +10,27 @@ import UseCase.UpdateCourseUseCase.UpdateCourseUseCase;
 public class UseCaseFactory {
     private ICourseDao courseDao;
 
-    public UseCaseFactory(ICourseDao courseDao){
+    public UseCaseFactory(ICourseDao courseDao) {
         this.courseDao = courseDao;
     }
 
-    public UseCase createAddCourseUseCase(){
+    public UseCase createAddCourseUseCase() {
         return new AddCourseUseCase(courseDao);
     }
 
-    public UseCase createRetrieveAllCourseUseCase(){
+    public UseCase createRetrieveAllCourseUseCase() {
         return new RetrieveAllCourseUseCase(courseDao);
     }
 
-    public UseCase createRetrieveOneCourseUseCase(){
+    public UseCase createRetrieveOneCourseUseCase() {
         return new RetrieveOneCourseUseCase(courseDao);
     }
 
-    public UseCase createUpdateCourseUseCase(){
+    public UseCase createUpdateCourseUseCase() {
         return new UpdateCourseUseCase(courseDao);
     }
 
-    public UseCase createDeleteOneCourseUseCase(){
+    public UseCase createDeleteOneCourseUseCase() {
         return new DeleteCourseUseCase(courseDao);
     }
 

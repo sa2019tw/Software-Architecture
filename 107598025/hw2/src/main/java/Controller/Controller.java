@@ -14,17 +14,17 @@ public class Controller {
 
     private UseCaseFactory useCaseFactory;
 
-    public Controller(UseCaseFactory useCaseFactory){
+    public Controller(UseCaseFactory useCaseFactory) {
         this.useCaseFactory = useCaseFactory;
     }
 
-    public ViewModel addCourse(InputModel inputModel){
+    public ViewModel addCourse(InputModel inputModel) {
         AddCourseInput addCourseInput = new AddCourseInput(inputModel.getCourseName(),
-                                        inputModel.getCourseDescription(),
-                                        inputModel.getCourseTarget(),
-                                        Integer.parseInt(inputModel.getCoursePrice()),
-                                        inputModel.getCourseAttention(),
-                                        inputModel.getCourseRemark());
+                inputModel.getCourseDescription(),
+                inputModel.getCourseTarget(),
+                Integer.parseInt(inputModel.getCoursePrice()),
+                inputModel.getCourseAttention(),
+                inputModel.getCourseRemark());
 
         AddCoursePresenter addCoursePresenter = new AddCoursePresenter();
 
@@ -35,7 +35,7 @@ public class Controller {
         return addCoursePresenter.getViewModel();
     }
 
-    public ViewModel retrieveOneCourse(InputModel inputModel){
+    public ViewModel retrieveOneCourse(InputModel inputModel) {
         RetrieveOneCourseInput retrieveOneCourseInput = new RetrieveOneCourseInput(inputModel.getCourseName());
 
         RetrieveOneCoursePresenter retrieveOneCoursePresenter = new RetrieveOneCoursePresenter();
@@ -47,7 +47,7 @@ public class Controller {
         return retrieveOneCoursePresenter.getViewModel();
     }
 
-    public ViewModel retrieveAllCourse(){
+    public ViewModel retrieveAllCourse() {
         RetrieveAllCourseInput retrieveAllCourseInput = new RetrieveAllCourseInput();
         UseCase retrieveAllCourseUseCase = useCaseFactory.createRetrieveAllCourseUseCase();
         RetrieveAllCoursePresenter retrieveAllCoursePresenter = new RetrieveAllCoursePresenter();
@@ -57,13 +57,13 @@ public class Controller {
         return retrieveAllCoursePresenter.getViewModel();
     }
 
-    public ViewModel updateCourse(InputModel inputModel){
+    public ViewModel updateCourse(InputModel inputModel) {
         UpdateCourseInput updateCourseInput = new UpdateCourseInput(inputModel.getCourseName(),
-                                                        inputModel.getCourseDescription(),
-                                                        inputModel.getCourseTarget(),
-                                                        Integer.parseInt(inputModel.getCoursePrice()),
-                                                        inputModel.getCourseAttention(),
-                                                        inputModel.getCourseRemark());
+                inputModel.getCourseDescription(),
+                inputModel.getCourseTarget(),
+                Integer.parseInt(inputModel.getCoursePrice()),
+                inputModel.getCourseAttention(),
+                inputModel.getCourseRemark());
 
         UseCase updateCourseUseCase = useCaseFactory.createUpdateCourseUseCase();
         UpdateCoursePresenter updateCoursePresenter = new UpdateCoursePresenter();
@@ -73,7 +73,7 @@ public class Controller {
         return updateCoursePresenter.getViewModel();
     }
 
-    public ViewModel deleteCourse(InputModel inputModel){
+    public ViewModel deleteCourse(InputModel inputModel) {
         DeleteCourseInput deleteCourseInput = new DeleteCourseInput(inputModel.getCourseName());
         UseCase deleteCourseUseCase = useCaseFactory.createDeleteOneCourseUseCase();
         DeleteCoursePresenter deleteCoursePresenter = new DeleteCoursePresenter();

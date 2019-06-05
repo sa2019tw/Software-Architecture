@@ -11,12 +11,11 @@ import javafx.stage.Stage;
 public class main extends Application {
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
             Parent root = loader.load();
             View view = loader.getController();
-//            loader.setController(new Controller(new UseCaseDistributor(new MockCourseDao()), new Presenter(new ViewModel())));
             loader.setController(new Controller(new UseCaseFactory(new MockCourseDao())));
             view.initialize(loader.getController());
 
@@ -25,7 +24,7 @@ public class main extends Application {
             primaryStage.setX(50);
             primaryStage.setY(100);
             primaryStage.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

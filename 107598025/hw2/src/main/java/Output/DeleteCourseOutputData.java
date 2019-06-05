@@ -5,7 +5,7 @@ public class DeleteCourseOutputData implements OutputData {
 
     private boolean isSuccess;
 
-    public DeleteCourseOutputData(boolean isSuccess){
+    public DeleteCourseOutputData(boolean isSuccess) {
         this.isSuccess = isSuccess;
     }
 
@@ -13,7 +13,7 @@ public class DeleteCourseOutputData implements OutputData {
         return this.isSuccess;
     }
 
-    public void setIsSuccess(boolean isSuccess){
+    public void setIsSuccess(boolean isSuccess) {
         this.isSuccess = isSuccess;
     }
 

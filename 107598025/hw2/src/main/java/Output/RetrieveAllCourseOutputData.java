@@ -8,7 +8,7 @@ public class RetrieveAllCourseOutputData implements OutputData {
     private String courseAttention;
     private String courseRemark;
 
-    public RetrieveAllCourseOutputData(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
+    public RetrieveAllCourseOutputData(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
         this.courseTarget = courseTarget;

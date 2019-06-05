@@ -3,7 +3,7 @@ package Output;
 public class UpdateCourseOutputData implements OutputData {
     private boolean isSuccess;
 
-    public UpdateCourseOutputData(boolean isSuccess){
+    public UpdateCourseOutputData(boolean isSuccess) {
         this.isSuccess = isSuccess;
     }
 

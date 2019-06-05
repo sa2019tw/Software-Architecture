@@ -12,11 +12,11 @@ public class AddCourseUseCase implements UseCase {
 
     private ICourseDao courseDao;
 
-    public AddCourseUseCase(ICourseDao courseDao){
+    public AddCourseUseCase(ICourseDao courseDao) {
         this.courseDao = courseDao;
     }
 
-    public void execute(Input addCourseInput, OutputBoundary addCourseOutput){
+    public void execute(Input addCourseInput, OutputBoundary addCourseOutput) {
         Course course = new Course(addCourseInput.getCourseName(),
                 addCourseInput.getCourseDescription(),
                 addCourseInput.getCourseTarget(),
@@ -24,8 +24,7 @@ public class AddCourseUseCase implements UseCase {
                 addCourseInput.getCourseAttention(),
                 addCourseInput.getCourseRemark());
 
-        boolean isSuccess = courseDao.addCourse(course);
-        OutputData addCourseOutputData = new AddCourseOutputData(isSuccess);
+        OutputData addCourseOutputData = new AddCourseOutputData(courseDao.addCourse(course));
 
         addCourseOutput.setOutputData(addCourseOutputData);
     }

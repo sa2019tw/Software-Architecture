@@ -1,6 +1,6 @@
 package Output;
 
-public class RetrieveOneCourseOutputData implements OutputData{
+public class RetrieveOneCourseOutputData implements OutputData {
     private String courseName;
     private String courseDescription;
     private String courseTarget;
@@ -8,9 +8,10 @@ public class RetrieveOneCourseOutputData implements OutputData{
     private String courseAttention;
     private String courseRemark;
 
-    public RetrieveOneCourseOutputData(){}
+    public RetrieveOneCourseOutputData() {
+    }
 
-    public RetrieveOneCourseOutputData(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark){
+    public RetrieveOneCourseOutputData(String courseName, String courseDescription, String courseTarget, int coursePrice, String courseAttention, String courseRemark) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
         this.courseTarget = courseTarget;

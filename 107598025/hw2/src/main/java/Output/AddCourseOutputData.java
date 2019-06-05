@@ -4,7 +4,7 @@ public class AddCourseOutputData implements OutputData {
 
     private boolean isSuccess;
 
-    public AddCourseOutputData(boolean isSuccess){
+    public AddCourseOutputData(boolean isSuccess) {
         this.isSuccess = isSuccess;
     }
 

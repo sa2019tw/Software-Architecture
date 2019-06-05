@@ -8,7 +8,7 @@ public class InputModel {
     private String courseAttention;
     private String courseRemark;
 
-    public InputModel(String courseName, String courseDescription, String courseTarget, String coursePrice, String courseAttention, String courseRemark){
+    public InputModel(String courseName, String courseDescription, String courseTarget, String coursePrice, String courseAttention, String courseRemark) {
         this.courseName = courseName;
         this.courseDescription = courseDescription;
         this.courseTarget = courseTarget;

@@ -12,7 +12,7 @@ public class MiniStage {
         this.minStageId = UUID.randomUUID().toString();
         this.stageId = stageId;
         this.name = miniStageName;
-        addSwimLane(new SwimLane(minStageId,"Default SwimLane"));
+        addSwimLane(new SwimLane(minStageId, "Default SwimLane"));
     }
 
     public void addSwimLane(SwimLane swimLane) {
@@ -22,7 +22,8 @@ public class MiniStage {
     public String getMiniStageName() {
         return name;
     }
-    public String getMinStageId(){
+
+    public String getMinStageId() {
         return minStageId;
     }
 
@@ -36,5 +37,21 @@ public class MiniStage {
                 return swimLanes.get(i);
         }
         throw new RuntimeException("SwimLane Not Found");
+    }
+
+    public SwimLane getDefaultSwimLane() {
+        return swimLanes.get(0);
+    }
+
+    public boolean isSwimLaneExist(String swimLaneId) {
+        return swimLanes.stream().
+                filter(each -> each.getId().equals(swimLaneId)).findFirst().isPresent();
+    }
+
+    public SwimLane getSwimLaneById(String swimLaneId) {
+        if (!this.isSwimLaneExist(swimLaneId))
+            throw new RuntimeException("SwimLane not found");
+        return swimLanes.stream().
+                filter(each -> each.getId().equals(swimLaneId)).findFirst().get();
     }
 }

@@ -38,4 +38,16 @@ public class Stage {
         }
         throw new RuntimeException("MiniStage not found");
     }
+
+    public SwimLane getDefaultSwimLane() {
+        return miniStages.get(0).getDefaultSwimLane();
+    }
+
+    public SwimLane getSwimLaneById(String swimLaneId) {
+        for(MiniStage miniStage: miniStages){
+            if(miniStage.isSwimLaneExist(swimLaneId))
+                return miniStage.getSwimLaneById(swimLaneId);
+        }
+        throw new RuntimeException("SwimLane not found, Id = "+swimLaneId);
+    }
 }

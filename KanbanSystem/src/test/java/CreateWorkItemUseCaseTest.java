@@ -15,7 +15,6 @@ public class CreateWorkItemUseCaseTest {
 
         useCase.execute(inputData, outputData);
 
-
         WorkItem workItem = workItemRepository.findWorkItem(outputData.getWorkItemId());
         assertEquals("First Work Item", workItem.getName());
     }

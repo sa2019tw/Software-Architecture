@@ -17,4 +17,9 @@ public class InMemoryStageRepository implements StageRepository {
     public void addStage(Stage stage) {
         stageList.add(stage);
     }
+
+    @Override
+    public void update(Stage stage) {
+
+    }
 }

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class SwimLane {
     private String miniStageId,name, id;
@@ -33,5 +30,6 @@ public class SwimLane {
 
     public void unCommitWorkItem(String workItemId) {
         workItemIds.remove(workItemId);
+        DomainEventPublisher.instance().publish(new WorkItemMovedOut(id, workItemId, new Date()));
     }
 }
